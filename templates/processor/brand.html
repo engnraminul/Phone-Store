@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for brand in object_list %}
+
+<h1>{{brand.name}}<h1/>
+
+{% endfor %}
+
+{% endblock %}
