@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+{% for processor in object_list %}
+<h1>{{processor.title}}<h1/>
+{% endfor %}
+
+
+
+{% endblock %}
