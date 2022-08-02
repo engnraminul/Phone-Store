@@ -9,7 +9,7 @@ class ProcessorBrand(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     seo_title = models.CharField(max_length=70)
     seo_des = models.TextField(max_length=160)
-    slug = models.SlugField(max_length=70, null=True, blank=True)
+    slug = models.SlugField(max_length=70, null=True, blank=True, unique=True)
 
 
     def save(self, *args, **kwargs):
@@ -19,3 +19,6 @@ class ProcessorBrand(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['-id']
