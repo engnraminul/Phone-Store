@@ -5,6 +5,6 @@ from StoreMain import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('processor/', include('Phone.urls')),
-    path('', views.index, name="index"),
+    path('', include('Phone.urls')),
+    path('home/', views.index, name="index"),
 ]

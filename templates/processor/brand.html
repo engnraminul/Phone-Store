@@ -5,8 +5,10 @@
 {% for brand in object_list %}
 
 
-<h6><a href="{% url 'Phone:detail' slug=brand.slug %}">{{brand.name}}</a></h6>
+<h6><a href="{% url 'Phone:processor_list' id=brand.id slug=brand.slug %}">{{brand.name}}</a></h6>
 
 {% endfor %}
+
+
 
 {% endblock %}
