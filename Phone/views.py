@@ -14,16 +14,17 @@ class ProcessorBrandList(ListView):
 #     template_name = 'processor/processor_list.html'
 
 
-def ProcessorList(request, id, slug):
-    #processor_list = Processor.objects.all()
-    #brand_id = request.GET.get('brandid')
+def ProcessorList(request, slug, id):
 
-  
     processor_list = Processor.objects.filter(brand_id = id)
+    brand = ProcessorBrand.objects.get(id = id)
+    brand.Processor_Brand.all()
+
     
     
     context={
-        'processor_list':processor_list
+        'processor_list':processor_list,
+        'brand':brand,
         }
 
     return render(request, 'processor/processor_list.html', context )

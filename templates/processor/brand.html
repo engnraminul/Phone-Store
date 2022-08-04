@@ -5,7 +5,7 @@
 {% for brand in object_list %}
 
 
-<h6><a href="{% url 'Phone:processor_list' id=brand.id slug=brand.slug %}">{{brand.name}}</a></h6>
+<h6><a href="{% url 'Phone:processor_list' slug=brand.slug  id=brand.id %}">{{brand.name}} ({{brand.Processor_Brand.count}})</a></h6>
 
 {% endfor %}
 
