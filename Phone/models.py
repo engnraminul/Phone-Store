@@ -1,6 +1,7 @@
 from distutils.command.upload import upload
 from enum import unique
 from pyexpat import model
+from unicodedata import category
 from django.db import models
 from django.forms import CharField, SlugField
 from django.utils.text import slugify
@@ -27,7 +28,7 @@ class ProcessorBrand(models.Model):
 
 
 class Processor(models.Model):
-    brand = models.ForeignKey('ProcessorBrand', on_delete=models.PROTECT, related_name='Processor_Brand', null=True)
+    brand = models.ForeignKey('ProcessorBrand', on_delete=models.PROTECT, related_name='Processor_Brand', null=True, blank=True)
     title = models.CharField(max_length=100, blank=False, null=False, unique=True)
     chipset = models.CharField(max_length=120, blank=True, null=True)
     cpu = models.CharField(max_length=150, blank=True, null=True)
@@ -35,7 +36,7 @@ class Processor(models.Model):
     nm = models.CharField(max_length=20, blank=True, null=True)
     released = models.DateField()
     seo_title = models.CharField(max_length=70)
-    seo_des = models.TextField(max_length=160)
+    seo_des = models.TextField(max_length=None)
     slug = models.SlugField(max_length=70, null=True, blank=True, unique=True)
 
     def save(self, *args, **kwargs):
@@ -67,3 +68,23 @@ class PhoneBrand(models.Model):
     
     class Meta:
         ordering= ['name']
+
+
+
+class Phone(models.Model):
+    STATUS = (
+        ("Released", "Released"),
+        ("Upcoming","Upcoming"),
+        ("Rumor", "Rumor"),
+        ("Draft", "Draft"),
+    )
+    #Basic Informations
+    model = models.CharField(max_length=50)
+    brand = models.ForeignKey(PhoneBrand, on_delete=models.PROTECT, null=True, blank=True)
+    category = models.CharField(max_length=50)
+    status = models.CharField(max_length=20, choices=STATUS)
+    annoucement = models.DateField()
+    release = models.DateField()
+
+    processor = models.ForeignKey(Processor, on_delete=models.PROTECT, null=True, blank=True)
+

@@ -2,13 +2,34 @@
 
 {% block body %}
 
-{% for brand in object_list %}
+<a class="btn btn-primary" href="{% url 'Phone:phone_brand_list' %} ">Phone Brand<a/>
+
+    <hr/>
+
+    <p class="h1 text-center">Processor Brand List</p>
 
 
-<h6><a href="{% url 'Phone:processor_list' slug=brand.slug  id=brand.id %}">{{brand.name}} ({{brand.Processor_Brand.count}})</a></h6>
 
-{% endfor %}
-
-
+<div class="container">
+   
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">processor</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for brand in object_list %}
+      <tr>
+        <td><a href="{% url 'Phone:processor_list' slug=brand.slug %}">{{brand.name}} </a></td>
+        <td>{{brand.Processor_Brand.count}}</td>
+        
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div/>
 
 {% endblock %}

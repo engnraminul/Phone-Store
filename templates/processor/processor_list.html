@@ -6,10 +6,32 @@
 {% endblock %}
 {% block body %}
 
-{% for processor in processor_list %}
-<h1>{{processor.title}}<h1/>
-{% endfor %}
 
 
+<p class="h1 text-center">Processor List</p>
+
+
+
+<div class="container">
+   
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for processor in all_processor %}
+      <tr>
+        <td><a href="#">{{processor.title}} </a></td>
+        
+        
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div/>
 
 {% endblock %}
