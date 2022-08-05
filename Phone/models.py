@@ -1,5 +1,6 @@
 from codecs import charmap_build
 from distutils.command.upload import upload
+from email.mime import image
 from enum import unique
 from platform import platform
 from pyexpat import model
@@ -82,6 +83,7 @@ class Phone(models.Model):
         ("Draft", "Draft"),
     )
     #Basic Informations
+    name = models.CharField(max_length=200, null=True, blank=True)
     model = models.CharField(max_length=50)
     brand = models.ForeignKey(PhoneBrand, on_delete=models.PROTECT, null=True, blank=True)
     category = models.CharField(max_length=50)
@@ -180,3 +182,31 @@ class Phone(models.Model):
     united_states = models.TextField(max_length=None)
     europe = models.TextField(max_length=None)
     india = models.TextField(max_length=None)
+
+    
+    updated = models.DateTimeField(auto_now=True)
+
+    #Images
+    thumbnail = models.ImageField(upload_to = 'phone', null=True)
+
+    #Seo
+    seo_title = models.CharField(max_length=70, null=True, blank=True)
+    seo_des = models.TextField(max_length=170, null=True, blank=True)
+    slug = models.CharField(max_length=70, unique=True, null=True)
+
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Phone, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering= ['-id']
+
+class GalleryImage(models.Model):
+    phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
+    images = models.FileField(upload_to= 'phone')
+    
+    
