@@ -6,6 +6,7 @@ from platform import platform
 from pyexpat import model
 from turtle import color
 from unicodedata import category
+from venv import create
 from django.db import models
 from django.forms import CharField, SlugField
 from django.utils.text import slugify
@@ -90,6 +91,8 @@ class Phone(models.Model):
     status = models.CharField(max_length=20, choices=STATUS)
     annoucement = models.DateField()
     release = models.DateField()
+    created = models.DateTimeField()
+    updated = models.DateTimeField(auto_now=True)
 
     #Network
     network_type = models.CharField(max_length=100)
@@ -105,7 +108,7 @@ class Phone(models.Model):
     five_g_band = models.CharField(max_length=100)
     six_g = models.BooleanField(default=False)
     six_g_band = models.CharField(max_length=100)
-    seven_g = models.BooleanField(default=True)
+    seven_g = models.BooleanField(default=False)
     seven_g_band = models.CharField(max_length=100)
 
     #Body
@@ -183,8 +186,6 @@ class Phone(models.Model):
     europe = models.TextField(max_length=None)
     india = models.TextField(max_length=None)
 
-    
-    updated = models.DateTimeField(auto_now=True)
 
     #Images
     thumbnail = models.ImageField(upload_to = 'phone', null=True)
