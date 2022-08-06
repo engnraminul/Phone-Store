@@ -2,9 +2,10 @@ from django.contrib import admin
 from .models import GalleryImage, ProcessorBrand, Processor, PhoneBrand, Phone
 
 
+
 class GalleryImageAdmin(admin.StackedInline):
     model = GalleryImage
-
+#phone model fieldset
 class ProductAdmin(admin.ModelAdmin):
     inlines = [GalleryImageAdmin]
     #prepopulated_fields = {'slug': ('name',)}
