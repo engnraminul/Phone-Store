@@ -6,7 +6,8 @@ from Phone import views
 app_name = 'Phone'
 
 urlpatterns = [
-    path('', views.ProcessorBrandList.as_view(), name='processor'),
+    path('processor', views.ProcessorBrandList.as_view(), name='processor'),
     path('<slug>', views.ProcessorList, name="processor_list" ),
     path('brand/', views.PhoneBrandList, name="phone_brand_list"),
+    path('', views.home, name= "home"),
 ]

@@ -1,7 +1,8 @@
+from multiprocessing import context
 from unicodedata import name
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.views.generic import ListView, DetailView, TemplateView
-from .models import PhoneBrand, ProcessorBrand, Processor
+from .models import Phone, PhoneBrand, ProcessorBrand, Processor
 
 
 class ProcessorBrandList(ListView):
@@ -22,20 +23,6 @@ def PhoneBrandList(request):
 
     return render(request, 'phone/phone_brand.html', context)
 
-# def ProcessorList(request, slug, id):
-
-#     processor_list = Processor.objects.filter(brand_id = id)
-#     brand = ProcessorBrand.objects.get(id = id)
-#     brand.Processor_Brand.all()
-
-    
-    
-#     context={
-#         'processor_list':processor_list,
-#         'brand':brand,
-#         }
-
-#     return render(request, 'processor/processor_list.html', context )
 
 
 def ProcessorList(request, slug):
@@ -49,3 +36,13 @@ def ProcessorList(request, slug):
     }
     
     return render(request, 'processor/processor_list.html', context)
+
+def home(request):
+    phone = Phone.objects.filter(status = 'Released')
+
+
+    context = {
+        'phone': phone
+    }
+
+    return render(request, 'home.html', context)

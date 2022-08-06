@@ -1,6 +1,15 @@
 from django.contrib import admin
 from .models import GalleryImage, ProcessorBrand, Processor, PhoneBrand, Phone
 
+#Phone Clone
+def clone(modeladmin, request, queryset):
+        for object in queryset:
+            object.id = None
+            object.status = 'Draft'
+            object.name ='(clone) ' + object.name
+            object.save()
+clone.short_description = "Clone"
+
 
 
 class GalleryImageAdmin(admin.StackedInline):
@@ -11,6 +20,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'brand', 'status', 'created', 'admin_photo',)
     list_filter = ('brand', 'processor',)
     search_fields = ('name',)
+    actions = [clone]
     
     #prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
