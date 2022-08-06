@@ -2,11 +2,7 @@ from codecs import charmap_build
 from distutils.command.upload import upload
 from email.mime import image
 from enum import unique
-from platform import platform
 from pyexpat import model
-from turtle import color
-from unicodedata import category
-from venv import create
 from django.db import models
 from django.forms import CharField, SlugField
 from django.utils.text import slugify
@@ -128,7 +124,8 @@ class Phone(models.Model):
     pixel_density = models.CharField(max_length=20)
     refresh_rate = models.CharField(max_length=20)
     protection = models.CharField(max_length=100)
-    display_features = models.CharField(max_length=100)
+    display_features = models.TextField(max_length=None)
+    second_display = models.TextField(max_length=200, null=True, blank=True)
 
     #camera
     back_camera = models.TextField(max_length=None)
@@ -184,6 +181,7 @@ class Phone(models.Model):
     #Price
     united_states = models.TextField(max_length=None)
     europe = models.TextField(max_length=None)
+    china = models.TextField(max_length=None, null=True, blank=True)
     india = models.TextField(max_length=None)
 
 
@@ -204,7 +202,7 @@ class Phone(models.Model):
         return self.name
     
     class Meta:
-        ordering= ['-id']
+        ordering= ['-created']
 
 class GalleryImage(models.Model):
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
