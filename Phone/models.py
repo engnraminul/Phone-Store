@@ -6,6 +6,7 @@ from pyexpat import model
 from django.db import models
 from django.forms import CharField, SlugField
 from django.utils.text import slugify
+from django.utils.safestring import mark_safe
 
 
 class ProcessorBrand(models.Model):
@@ -81,108 +82,108 @@ class Phone(models.Model):
     )
     #Basic Informations
     name = models.CharField(max_length=200, null=True, blank=True)
-    model = models.CharField(max_length=50)
+    model = models.CharField(max_length=50, null=True, blank=True)
     brand = models.ForeignKey(PhoneBrand, on_delete=models.PROTECT, null=True, blank=True)
-    category = models.CharField(max_length=50)
-    status = models.CharField(max_length=20, choices=STATUS)
-    annoucement = models.DateField()
-    release = models.DateField()
+    category = models.CharField(max_length=50, null=True, blank=True)
+    status = models.CharField(max_length=20, choices=STATUS, default='Released')
+    annoucement = models.DateField(null=True, blank=True)
+    release = models.DateField(null=True, blank=True)
     created = models.DateTimeField()
     updated = models.DateTimeField(auto_now=True)
 
     #Network
-    network_type = models.CharField(max_length=100)
-    network_speed = models.CharField(max_length=100)
-    sim = models.CharField(max_length=50)
+    network_type = models.CharField(max_length=100, null=True, blank=True)
+    network_speed = models.CharField(max_length=100, null=True, blank=True)
+    sim = models.CharField(max_length=50, null=True, blank=True)
     two_g= models.BooleanField(default=True)
-    two_g_band = models.CharField(max_length=100)
+    two_g_band = models.CharField(max_length=100, null=True, blank=True)
     three_g =models.BooleanField(default=True)
-    three_g_band = models.CharField(max_length=100)
+    three_g_band = models.CharField(max_length=100, null=True, blank=True)
     four_g = models.BooleanField(default=False)
-    four_g_band = models.CharField(max_length=100)
+    four_g_band = models.CharField(max_length=100, null=True, blank=True)
     five_g = models.BooleanField(default=False)
-    five_g_band = models.CharField(max_length=100)
+    five_g_band = models.CharField(max_length=100, null=True, blank=True)
     six_g = models.BooleanField(default=False)
-    six_g_band = models.CharField(max_length=100)
+    six_g_band = models.CharField(max_length=100, null=True, blank=True)
     seven_g = models.BooleanField(default=False)
-    seven_g_band = models.CharField(max_length=100)
+    seven_g_band = models.CharField(max_length=100, null=True, blank=True)
 
     #Body
-    dimension = models.CharField(max_length=100)
-    weight = models.CharField(max_length=20)
-    front = models.CharField(max_length=50)
-    back = models.CharField(max_length=50)
-    frame = models.CharField(max_length=50)
-    color = models.CharField(max_length=100)
-    body_feature = models.TextField()
+    dimension = models.CharField(max_length=100, null=True, blank=True)
+    weight = models.CharField(max_length=20, null=True, blank=True)
+    front = models.CharField(max_length=50, null=True, blank=True)
+    back = models.CharField(max_length=50, null=True, blank=True)
+    frame = models.CharField(max_length=50, null=True, blank=True)
+    color = models.CharField(max_length=100, null=True, blank=True)
+    body_feature = models.TextField(null=True, blank=True)
 
     #Display
-    display_type = models.CharField(max_length=100)
-    size = models.CharField(max_length=20)
-    resulation = models.CharField(max_length=50)
-    ratio = models.CharField(max_length=20)
-    pixel_density = models.CharField(max_length=20)
-    refresh_rate = models.CharField(max_length=20)
-    protection = models.CharField(max_length=100)
-    display_features = models.TextField(max_length=None)
+    display_type = models.CharField(max_length=100, null=True, blank=True)
+    size = models.CharField(max_length=20, null=True, blank=True)
+    resulation = models.CharField(max_length=50, null=True, blank=True)
+    ratio = models.CharField(max_length=20, null=True, blank=True)
+    pixel_density = models.CharField(max_length=20, null=True, blank=True)
+    refresh_rate = models.CharField(max_length=20, null=True, blank=True)
+    protection = models.CharField(max_length=100, null=True, blank=True)
+    display_features = models.TextField(max_length=None, null=True, blank=True)
     second_display = models.TextField(max_length=200, null=True, blank=True)
 
     #camera
-    back_camera = models.TextField(max_length=None)
-    back_camera_features = models.CharField(max_length=150)
-    back_camera_video = models.CharField(max_length=150)
+    back_camera = models.TextField(max_length=None, null=True, blank=True)
+    back_camera_features = models.CharField(max_length=150, null=True, blank=True)
+    back_camera_video = models.CharField(max_length=150, null=True, blank=True)
 
-    front_camera = models.TextField(max_length=None)
-    front_camera_features = models.CharField(max_length=150)
-    front_camera_video = models.CharField(max_length=150)
+    front_camera = models.TextField(max_length=None, null=True, blank=True)
+    front_camera_features = models.CharField(max_length=150, null=True, blank=True)
+    front_camera_video = models.CharField(max_length=150, null=True, blank=True)
 
     #platform
-    os = models.CharField(max_length=50)
-    os_version = models.CharField(max_length=50)
-    ui = models.CharField(max_length=50)
+    os = models.CharField(max_length=50, null=True, blank=True)
+    os_version = models.CharField(max_length=50, null=True, blank=True)
+    ui = models.CharField(max_length=50, null=True, blank=True)
     processor = models.ForeignKey(Processor, on_delete=models.PROTECT, null=True, blank=True)
-    chipset = models.TextField(max_length=None)
+    chipset = models.TextField(max_length=None, null=True, blank=True)
 
 
     #Memory
-    ram = models.CharField(max_length=100)
-    storage = models.CharField(max_length=100)
-    memory_slot = models.BooleanField(default=False)
-    variant = models.CharField(max_length=50)
-    storage_type = models.CharField(max_length=50)
+    ram = models.CharField(max_length=100, null=True, blank=True)
+    storage = models.CharField(max_length=100, null=True, blank=True)
+    memory_slot = models.BooleanField(default=False, null=True, blank=True)
+    variant = models.CharField(max_length=50, null=True, blank=True)
+    storage_type = models.CharField(max_length=50, null=True, blank=True)
 
     #Audio
-    speaker = models.CharField(max_length=100)
+    speaker = models.CharField(max_length=100, null=True, blank=True)
     audio_jack = models.BooleanField(default=False)
-    audio_features = models.CharField(max_length=100)
+    audio_features = models.CharField(max_length=100, null=True, blank=True)
 
     #Connectivity
-    wifi = models.CharField(max_length=100)
+    wifi = models.CharField(max_length=100, null=True, blank=True)
     hotspot = models.BooleanField(default=True)
     nfc = models.BooleanField(default=False)
     gps = models.BooleanField(default=True)
     radio = models.BooleanField(default=True)
-    usb = models.CharField(max_length=100)
+    usb = models.CharField(max_length=100, null=True, blank=True)
     infrared_port = models.BooleanField(default=False)
 
     #Sensor
-    fingureprint = models.CharField(max_length=100)
-    facelock = models.CharField(max_length=100)
-    sensor = models.CharField(max_length=200)
+    fingureprint = models.CharField(max_length=100, null=True, blank=True)
+    facelock = models.CharField(max_length=100, null=True, blank=True)
+    sensor = models.CharField(max_length=200, null=True, blank=True)
 
     #Battery
-    battery_type = models.CharField(max_length=100)
-    battery_capacity = models.CharField(max_length=50)
-    charging = models.CharField(max_length=100)
-    wireless_charging = models.CharField(max_length=100)
-    reverse_charging = models.CharField(max_length=100)
-    charging_features = models.TextField(max_length=None)
+    battery_type = models.CharField(max_length=100, null=True, blank=True)
+    battery_capacity = models.CharField(max_length=50, null=True, blank=True)
+    charging = models.CharField(max_length=100, null=True, blank=True)
+    wireless_charging = models.CharField(max_length=100, null=True, blank=True)
+    reverse_charging = models.CharField(max_length=100, null=True, blank=True)
+    charging_features = models.TextField(max_length=None, null=True, blank=True)
 
     #Price
-    united_states = models.TextField(max_length=None)
-    europe = models.TextField(max_length=None)
+    united_states = models.TextField(max_length=None, null=True, blank=True)
+    europe = models.TextField(max_length=None, null=True, blank=True)
     china = models.TextField(max_length=None, null=True, blank=True)
-    india = models.TextField(max_length=None)
+    india = models.TextField(max_length=None, null=True, blank=True)
 
 
     #Images
@@ -191,7 +192,7 @@ class Phone(models.Model):
     #Seo
     seo_title = models.CharField(max_length=70, null=True, blank=True)
     seo_des = models.TextField(max_length=170, null=True, blank=True)
-    slug = models.CharField(max_length=70, unique=True, null=True)
+    slug = models.CharField(max_length=70, unique=True, null=True, blank=True)
 
 
     def save(self, *args, **kwargs):
@@ -204,8 +205,14 @@ class Phone(models.Model):
     class Meta:
         ordering= ['-created']
 
+    #Admin List display Show Image
+    def admin_photo(self):
+        return mark_safe('<img src="{}" width="50" />'.format(self.thumbnail.url))
+    admin_photo.short_description = 'Thumbnail'
+    admin_photo.allow_tags =True
+
 class GalleryImage(models.Model):
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
-    images = models.FileField(upload_to= 'phone')
+    images = models.FileField(upload_to= 'phone', null=True, blank=True)
     
     

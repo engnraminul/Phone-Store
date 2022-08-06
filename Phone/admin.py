@@ -8,6 +8,10 @@ class GalleryImageAdmin(admin.StackedInline):
 #phone model fieldset
 class ProductAdmin(admin.ModelAdmin):
     inlines = [GalleryImageAdmin]
+    list_display = ('name', 'brand', 'status', 'created', 'admin_photo',)
+    list_filter = ('brand', 'processor',)
+    search_fields = ('name',)
+    
     #prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
         ('Basic', {
