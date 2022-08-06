@@ -25,7 +25,7 @@
     <tbody>
         {% for processor in all_processor %}
       <tr>
-        <td><a href="#">{{processor.title}} </a></td>
+        <td><a href="{% url 'Phone:phone_by_processor' slug=processor.slug %}">{{processor.title}} </a></td>
         
         
       </tr>

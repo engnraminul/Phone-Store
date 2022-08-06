@@ -70,3 +70,13 @@ def phone_filter(request, slug, status):
     return render(request, 'phone/phone_by_brand.html', context)
 
 
+def phone_by_processor(request, slug):
+    processor = Processor.objects.get(slug=slug)
+    phone = Phone.objects.filter(processor=processor, status='Released')
+
+    context = {
+        'processor':processor,
+        'phone':phone
+    }
+
+    return render(request, 'phone/phone_by_processor.html', context)

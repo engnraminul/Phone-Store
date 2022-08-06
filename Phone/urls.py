@@ -12,6 +12,6 @@ urlpatterns = [
     path('brand/', views.PhoneBrandList, name="phone_brand_list"),
     path('<slug>/', views.phone_by_brand, name="phone_by_brand"),
     path('<slug>/<status>/', views.phone_filter, name="phone_filter"),
-    path
+    path('phone/<slug>', views.phone_by_processor, name="phone_by_processor"),
     
 ]
