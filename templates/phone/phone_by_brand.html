@@ -5,9 +5,9 @@
 <h5><a href="{% url 'Phone:processor' %}">Processor<a/><h5/>
 
     <div class="btn-group">
-        <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
-        <a href="#" class="btn btn-primary">Link</a>
-        <a href="#" class="btn btn-primary">Link</a>
+        <a href="{% url 'Phone:phone_by_brand' slug=brand.slug %}" class="btn btn-primary active" aria-current="page">Released</a>
+        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Upcoming' %}" class="btn btn-primary">Upcoming</a>
+        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Rumor' %}" class="btn btn-primary">Rumor</a>
       </div>
     {{phone.name}}
     

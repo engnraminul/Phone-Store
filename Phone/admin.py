@@ -18,7 +18,7 @@ class GalleryImageAdmin(admin.StackedInline):
 class ProductAdmin(admin.ModelAdmin):
     inlines = [GalleryImageAdmin]
     list_display = ('name', 'brand', 'status', 'created', 'admin_photo',)
-    list_filter = ('brand', 'processor',)
+    list_filter = ('brand', 'processor', 'status',)
     search_fields = ('name',)
     actions = [clone]
     

@@ -7,11 +7,11 @@
 {% for brand in brandlist %}
 
 <div href="#" class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{brand.image.url}}" alt="{{brand.blog_title}}" title="{{brand.blog_title}}">
+    <img class="card-img-top" src="{{brand.image.url}}" alt="{{brand.title}}" title="{{brand.title}}">
     <div class="card-body">
-      <h5 <a href="#">{{brand.name}}</a></h5>
+    <h4 <a href="#">{{brand.name}}</a></h4>
+    <a href="{% url 'Phone:phone_by_brand' slug=brand.slug %}">{{brand.name}}<a/>
     </div>
-    {{brand.about}}
   </div>
 
 {% endfor %}

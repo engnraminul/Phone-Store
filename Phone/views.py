@@ -10,10 +10,6 @@ class ProcessorBrandList(ListView):
     template_name = 'processor/brand.html'
 
 
-# class PhoneBrandList(ListView):
-#     model = PhoneBrand
-#     template_name = 'phone/phone_brand.html'
-
 def PhoneBrandList(request):
     brandlist = PhoneBrand.objects.all()
 
@@ -28,7 +24,7 @@ def PhoneBrandList(request):
 def ProcessorList(request, slug):
     brands=ProcessorBrand.objects.get(slug=slug)
     all_processor=Processor.objects.filter(brand=brands)
-    print(all_processor)
+    #print(all_processor)
 
     context={
         "brand":brands,
@@ -46,3 +42,31 @@ def home(request):
     }
 
     return render(request, 'home.html', context)
+
+
+def phone_by_brand(request, slug):
+    brands=PhoneBrand.objects.get(slug=slug)
+    phone=Phone.objects.filter(brand=brands, status='Released')
+    
+
+    context = {
+        'brand':brands,
+        'phone':phone
+    }
+
+    return render(request, 'phone/phone_by_brand.html', context)
+
+#Phone Filter by Status
+def phone_filter(request, slug, status):
+    brands=PhoneBrand.objects.get(slug=slug)
+    phone=Phone.objects.filter(brand=brands, status=status)
+    
+
+    context = {
+        'brand':brands,
+        'phone':phone
+    }
+
+    return render(request, 'phone/phone_by_brand.html', context)
+
+
