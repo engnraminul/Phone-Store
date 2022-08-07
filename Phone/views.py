@@ -51,7 +51,7 @@ def phone_by_brand(request, slug):
 
     context = {
         'brand':brands,
-        'phone':phone
+        'phone':phone,
     }
 
     return render(request, 'phone/phone_by_brand.html', context)
@@ -80,3 +80,19 @@ def phone_by_processor(request, slug):
     }
 
     return render(request, 'phone/phone_by_processor.html', context)
+
+
+
+
+def Processor_by_brand(request, slug):
+    brand=ProcessorBrand.objects.all()
+    brands = ProcessorBrand.objects.get(slug=slug)
+    processor=Processor.objects.filter(brand=brands)
+    
+
+    context = {
+        'brand':brand,
+        'processor':processor
+    }
+
+    return render(request, 'processor/processor_list.html', context)

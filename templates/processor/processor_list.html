@@ -13,6 +13,12 @@
 
 
 <div class="container">
+
+  <div class="btn-group">
+    {% for brand in brand %}
+    <a href="{% url 'Phone:Processor_by_brand' slug=brand.slug %}" class="btn btn-primary active" aria-current="page">{{brand.name}}</a>
+    {% endfor %}
+  </div>
    
 <table class="table table-striped">
     <thead>
@@ -23,11 +29,9 @@
       </tr>
     </thead>
     <tbody>
-        {% for processor in all_processor %}
+        {% for processor in processor %}
       <tr>
-        <td><a href="{% url 'Phone:phone_by_processor' slug=processor.slug %}">{{processor.title}} </a></td>
-        
-        
+        <td><a href="">{{processor.title}} </a></td>
       </tr>
       {% endfor %}
     </tbody>
