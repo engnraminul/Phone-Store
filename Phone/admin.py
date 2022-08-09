@@ -25,12 +25,12 @@ class ProductAdmin(admin.ModelAdmin):
     #prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
         ('Basic', {
-            'fields': ('name', 'model', 'brand', 'category', 'status', 'annoucement', 'release', 'created', 'thumbnail',),
+            'fields': ('name', 'model', ('brand', 'category', 'status'), ('annoucement', 'release'), ('created'), 'thumbnail', ('price', 'old_price')),
 
         }),
 
         ('Network', {
-            'fields': ('network_type', 'network_speed', 'sim', 'two_g', 'two_g_band', 'three_g', 'three_g_band', 'four_g', 'four_g_band', 'five_g', 'five_g_band', 'six_g', 'six_g_band', 'seven_g', 'seven_g_band', ),
+            'fields': ['network_type', 'network_speed', 'sim', ('two_g', 'two_g_band'), ('three_g', 'three_g_band'), ('four_g', 'four_g_band'), ('five_g', 'five_g_band'), ('six_g', 'six_g_band'), ('seven_g', 'seven_g_band'), ],
 
         }),
 

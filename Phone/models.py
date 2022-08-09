@@ -90,6 +90,8 @@ class Phone(models.Model):
     release = models.DateField(null=True, blank=True)
     created = models.DateTimeField()
     updated = models.DateTimeField(auto_now=True)
+    price = models.IntegerField(null=True, blank=True)
+    old_price = models.IntegerField(null=True, blank=True)
 
     #Network
     network_type = models.CharField(max_length=100, null=True, blank=True)

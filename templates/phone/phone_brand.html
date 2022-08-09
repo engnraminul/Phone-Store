@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block body %}
-<div class="container">
+
 
     
-{% for brand in brandlist %}
+{% for brand in object_list %}
 
 <div href="#" class="card" style="width: 18rem;">
     <img class="card-img-top" src="{{brand.image.url}}" alt="{{brand.title}}" title="{{brand.title}}">
@@ -16,6 +16,6 @@
 
 {% endfor %}
 
-<div/>
+
 
 {% endblock %}

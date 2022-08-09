@@ -12,7 +12,7 @@
 
 
 
-<div class="container">
+
 
   <div class="btn-group">
     {% for brand in brand %}
@@ -31,11 +31,11 @@
     <tbody>
         {% for processor in processor %}
       <tr>
-        <td><a href="">{{processor.title}} </a></td>
+        <td><a href="{% url 'Phone:phone_by_processor' slug=processor.slug %}">{{processor.title}} </a></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
-<div/>
+
 
 {% endblock %}

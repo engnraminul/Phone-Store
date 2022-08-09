@@ -1,0 +1,19 @@
+
+div.scrollmenu {
+    background-color: rgb(25, 105, 180);
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  div.scrollmenu a:hover {
+    background-color: rgb(87, 51, 51);
+  }
+  

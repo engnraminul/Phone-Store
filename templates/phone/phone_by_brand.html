@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container" >
-<h5><a href="{% url 'Phone:processor' %}">Processor<a/><h5/>
 
+    <div class=" p-3 text-center border bg-light">
     <div class="btn-group">
         <a href="{% url 'Phone:phone_by_brand' slug=brand.slug %}" class="btn btn-primary active" aria-current="page">Released</a>
         <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Upcoming' %}" class="btn btn-primary">Upcoming</a>
         <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Rumor' %}" class="btn btn-primary">Rumor</a>
       </div>
-    {{phone.name}}
-    
+      <div/>
+
+    <div class=" p-4 border bg-light">
     <div class="row">
         {% for phone in phone %}
         <div class="col-md-3 col-sm-6">
@@ -34,6 +34,7 @@
         </div>
         {% endfor %}
     </div>
+    <div/>
 
 <style>
     .product-grid{
@@ -136,8 +137,6 @@
     License Terms
 </style>
 
-    <h1>{% now "l, j, F Y" %}<h1/>
-    <h1>{% now "l, j f y" %}<h1/>
 
-<div/>
+
 {% endblock %}
