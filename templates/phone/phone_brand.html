@@ -5,6 +5,9 @@
 
 {% block body %}
 
+<div class=" d-grid p-1 mb-3 text-center border bg-light">
+  <h2 class="fw-bold">Smartphone Brand List</h2>
+  </div>
 <div class="row">
 
   {% for brand in object_list %}
@@ -12,7 +15,7 @@
     <div class="card">
 
       <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
-        5
+        {{brand.phone_brand.count}}
         <span class="visually-hidden">unread messages</span>
       </span>
 
@@ -26,7 +29,7 @@
           <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_by_brand' slug=brand.slug %}">{{brand.name}} </a>
         </a>
         <h6 class="mb-1 mt-1">
-          <strong class="ms-2 text-danger">56</strong>
+          <strong class="ms-2 text-danger">{{brand.phone_brand.count}}</strong>
         </h6>
       </div>
     </div>

@@ -2,11 +2,15 @@
 
 {% block body %}
 
-    <div class=" p-3 text-center border bg-light">
-    <div class="btn-group">
-        <a href="{% url 'Phone:phone_by_brand' slug=brand.slug %}" class="btn btn-primary active" aria-current="page">Released</a>
-        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Upcoming' %}" class="btn btn-primary">Upcoming</a>
-        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Rumor' %}" class="btn btn-primary">Rumor</a>
+<div class=" d-grid p-1 mb-3 text-center border bg-light">
+    <h2>{{brand.name}} All Smartphone List</h2>
+    </div>
+
+    <div class=" d-grid p-1 mb-3 text-center border bg-light">
+    <div class="btn-group ">
+        <a href="{% url 'Phone:phone_by_brand' slug=brand.slug %}" class="btn btn-outline-danger" aria-current="page">Released</a>
+        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Upcoming' %}" class="btn btn-outline-primary">Upcoming</a>
+        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Rumor' %}" class="btn btn-outline-info">Rumor</a>
       </div>
     </div>
 

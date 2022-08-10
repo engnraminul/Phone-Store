@@ -4,38 +4,38 @@
 <meta property="og:title" content="{{brand.seo_title}}" />
 <meta property="og:description" content="{{brand.seo_des}}" />       
 {% endblock %}
+
+
 {% block body %}
 
+  <div class=" d-grid p-1 mb-3 text-center border bg-light">
+    <div class="btn-group btn-toolbar">
+      {% for brand in brand %}
+        <a href="{% url 'Phone:Processor_by_brand' slug=brand.slug %}" class="btn btn-outline-danger" aria-current="page">{{brand.name}}</a>
+        {% endfor %}
+      </div>
+    </div>
 
-
-<p class="h1 text-center">Processor List</p>
-
-
-
-
-
-  <div class="btn-group">
-    {% for brand in brand %}
-    <a href="{% url 'Phone:Processor_by_brand' slug=brand.slug %}" class="btn btn-primary active" aria-current="page">{{brand.name}}</a>
-    {% endfor %}
-  </div>
+  <div class=" d-grid p-1 mb-3 text-center border bg-light">
+    <h2 class="fw-bold">{{brands.name}} All Processor List</h2>
+    </div>
    
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        
-        
-      </tr>
-    </thead>
-    <tbody>
-        {% for processor in processor %}
-      <tr>
-        <td><a href="{% url 'Phone:phone_by_processor' slug=processor.slug %}">{{processor.title}} </a></td>
-      </tr>
+
+    <ol class="list-group list-group-numbered">
+      {% for processor in processor %}
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+      
+          <a class="stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_by_processor' slug=processor.slug %}">{{processor.title}} </a>
+          
+        </div>
+        <span class="badge bg-primary rounded-pill">{{processor.phone_processor.count}}</span>
+
+      </li>
       {% endfor %}
-    </tbody>
-  </table>
+    </ol>
+  
+
 
 
 {% endblock %}

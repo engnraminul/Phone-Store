@@ -83,7 +83,7 @@ class Phone(models.Model):
     #Basic Informations
     name = models.CharField(max_length=200, null=True, blank=True)
     model = models.CharField(max_length=50, null=True, blank=True)
-    brand = models.ForeignKey(PhoneBrand, on_delete=models.PROTECT, null=True, blank=True)
+    brand = models.ForeignKey(PhoneBrand, related_name="phone_brand", on_delete=models.PROTECT, null=True, blank=True)
     category = models.CharField(max_length=50, null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS, default='Released')
     annoucement = models.DateField(null=True, blank=True)
@@ -143,7 +143,7 @@ class Phone(models.Model):
     os = models.CharField(max_length=50, null=True, blank=True)
     os_version = models.CharField(max_length=50, null=True, blank=True)
     ui = models.CharField(max_length=50, null=True, blank=True)
-    processor = models.ForeignKey(Processor, on_delete=models.PROTECT, null=True, blank=True)
+    processor = models.ForeignKey(Processor, related_name="phone_processor", on_delete=models.PROTECT, null=True, blank=True)
     chipset = models.TextField(max_length=None, null=True, blank=True)
 
 

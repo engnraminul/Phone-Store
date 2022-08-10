@@ -18,17 +18,19 @@ class phone_brand_list(ListView):
 
 
 
-def ProcessorList(request, slug):
-    brands=ProcessorBrand.objects.get(slug=slug)
-    all_processor=Processor.objects.filter(brand=brands)
-    #print(all_processor)
+# def ProcessorList(request, slug):
+#     brands=ProcessorBrand.objects.get(slug=slug)
+#     all_processor=Processor.objects.filter(brand=brands)
+#     #print(all_processor)
 
-    context={
-        "brand":brands,
-        "all_processor":all_processor,
-    }
+#     context={
+#         "brand":brands,
+#         "all_processor":all_processor,
+#     }
     
-    return render(request, 'processor/processor_list.html', context)
+#     return render(request, 'processor/processor_list.html', context)
+
+
 
 def home(request):
     phone = Phone.objects.filter()
@@ -66,6 +68,7 @@ def Processor_by_brand(request, slug):
 
     context = {
         'brand':brand,
+        'brands':brands,
         'processor':processor
     }
 
