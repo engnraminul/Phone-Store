@@ -16,6 +16,8 @@ class phone_brand_list(ListView):
 
 
 
+
+
 def ProcessorList(request, slug):
     brands=ProcessorBrand.objects.get(slug=slug)
     all_processor=Processor.objects.filter(brand=brands)
@@ -30,9 +32,11 @@ def ProcessorList(request, slug):
 
 def home(request):
     phone = Phone.objects.filter()
+    
 
 
     context = {
+        
         'phone': phone
     }
 

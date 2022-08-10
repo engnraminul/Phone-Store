@@ -1,21 +1,38 @@
+
+
+
 {% extends 'base.html' %}
 
 {% block body %}
 
+<div class="row">
 
-    
-{% for brand in object_list %}
+  {% for brand in object_list %}
+  <div class="col-lg-3 col-md-3 col-4 mb-4">
+    <div class="card">
 
-<div href="#" class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{brand.image.url}}" alt="{{brand.title}}" title="{{brand.title}}">
-    <div class="card-body">
-    <h4 <a href="#">{{brand.name}}</a></h4>
-    <a href="{% url 'Phone:phone_by_brand' slug=brand.slug %}">{{brand.name}}<a/>
+      <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
+        5
+        <span class="visually-hidden">unread messages</span>
+      </span>
+
+      <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+        <img class="img-fluid img-thumbnail " src="{{ brand.image.url }} "
+          class="w-100" />
+
+      </div>
+      <div class="card-body p-0 bg-light mt-2">
+        <a href="" class="text-reset">
+          <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_by_brand' slug=brand.slug %}">{{brand.name}} </a>
+        </a>
+        <h6 class="mb-1 mt-1">
+          <strong class="ms-2 text-danger">56</strong>
+        </h6>
+      </div>
     </div>
   </div>
 
-{% endfor %}
-
-
+  {% endfor %}
+</div>
 
 {% endblock %}
