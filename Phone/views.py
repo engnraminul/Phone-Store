@@ -5,10 +5,6 @@ from django.views.generic import ListView, DetailView, TemplateView
 from .models import Phone, PhoneBrand, ProcessorBrand, Processor
 
 
-# class ProcessorBrandList(ListView):
-#     model = ProcessorBrand
-#     template_name = 'processor/brand.html'
-
 
 class phone_brand_list(ListView):
     model = PhoneBrand
@@ -18,30 +14,14 @@ class phone_brand_list(ListView):
 
 
 
-# def ProcessorList(request, slug):
-#     brands=ProcessorBrand.objects.get(slug=slug)
-#     all_processor=Processor.objects.filter(brand=brands)
-#     #print(all_processor)
-
-#     context={
-#         "brand":brands,
-#         "all_processor":all_processor,
-#     }
-    
-#     return render(request, 'processor/processor_list.html', context)
-
-
 
 def home(request):
     phone = Phone.objects.filter()
-    
-
 
     context = {
         
         'phone': phone
     }
-
     return render(request, 'home.html', context)
 
 
@@ -76,27 +56,26 @@ def Processor_by_brand(request, slug):
 
 
 
-def phone_by_brand(request,slug):
-    phonebrand=PhoneBrand.objects.get(slug=slug)
-    phone=Phone.objects.filter(brand=phonebrand, status='Released')
-    
-
-    context = {
-        'brand':phonebrand,
-        'phone':phone,
-    }
-
-    return render(request, 'phone/phone_by_brand.html', context)
 
 #Phone Filter by Status
 def phone_filter(request, slug, status):
-    phonebrand=PhoneBrand.objects.get(slug=slug)
-    phone=Phone.objects.filter(brand=phonebrand, status=status)
+    brand=PhoneBrand.objects.get(slug=slug)
+    phone=Phone.objects.filter(brand=brand, status=status)
     
 
     context = {
-        'brand':phonebrand,
+        'brand':brand,
         'phone':phone
     }
 
     return render(request, 'phone/phone_by_brand.html', context)
+
+
+def phone_details(request, slug):
+    phone = Phone.objects.get(slug=slug)
+
+    context = {
+        'phone':phone
+    }
+
+    return render(request, 'phone/phone_details.html', context)

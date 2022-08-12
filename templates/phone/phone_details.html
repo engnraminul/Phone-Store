@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class=" d-grid p-1 mb-3 text-center border bg-light">
+    <h1 class="h3 fw-bold">{{phone.name}}</h1>
+    </div>
+
+    
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 mb-4">
+            <img class="img-thumbnail" src="{{phone.thumbnail.url}}" alt="">
+            
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12 mb-4">
+            <div class="border">
+                <h5 class="fw-bold">Price : <span>{{phone.price}}</span></h5>
+                <hr>
+                <div><span class="h5">Released : </span> <span>{{phone.release}}</span></div>
+                <hr>
+                <div><span class="h5">OS : </span> <span>{{phone.os}} {{phone.os_version}}</span></div>
+            </div>
+        </div>
+      </div>
+
+
+
+{% endblock %}

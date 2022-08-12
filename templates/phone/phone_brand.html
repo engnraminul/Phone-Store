@@ -26,7 +26,7 @@
       </div>
       <div class="card-body p-0 bg-light mt-2">
         <a href="" class="text-reset">
-          <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_by_brand' slug=brand.slug %}">{{brand.name}} </a>
+          <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}} </a>
         </a>
         <h6 class="mb-1 mt-1">
           <strong class="ms-2 text-danger">{{brand.phone_brand.count}}</strong>
