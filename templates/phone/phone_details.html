@@ -15,15 +15,54 @@
         </div>
 
         <div class="col-lg-6 col-md-6 col-12 mb-4">
-            <div class="border">
+            <div class="border text-start">
                 <h5 class="fw-bold">Price : <span>{{phone.price}}</span></h5>
-                <hr>
+                
                 <div><span class="h5">Released : </span> <span>{{phone.release}}</span></div>
-                <hr>
+                
                 <div><span class="h5">OS : </span> <span>{{phone.os}} {{phone.os_version}}</span></div>
+                
+                <div><span class="h5">RAM : </span> <span>{{phone.ram}} GB</span></div>
             </div>
         </div>
       </div>
+
+    
+
+
+      <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:10px">
+        <h4 class="border mb-0 text-start bg-info text-white">Primary Spec</h4>
+       
+        <tbody>
+           <tr>
+                <td>Model</td>
+                <td>{{phone.name}}</td>
+           </tr>
+           <tr>
+                <td>Brand</td>
+                <td>{{phone.brand}}</td>
+              
+           </tr>
+           <tr>
+                <td>Category</td>
+                <td>{{phone.category}}</td>
+              
+           </tr>
+           <tr>
+                <td>Status</td>
+                <td>{{phone.status}}</td>
+           </tr>
+           <tr>
+            <td>Annoucement</td>
+            <td>{{phone.annoucement}}</td>
+           </tr>
+           <tr>
+            <td>Release</td>
+            <td>{{phone.release}}</td>
+           </tr>
+
+        </tbody>
+     </table>
 
 
 
