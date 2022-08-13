@@ -65,7 +65,8 @@ def phone_filter(request, slug, status):
 
     context = {
         'brand':brand,
-        'phone':phone
+        'phone':phone,
+        'status':status,
     }
 
     return render(request, 'phone/phone_by_brand.html', context)

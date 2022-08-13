@@ -16,4 +16,9 @@ div.scrollmenu {
   div.scrollmenu a:hover {
     background-color: rgb(87, 51, 51);
   }
-  
+
+
+
+  .td-title{
+    font-weight: bold;
+  }

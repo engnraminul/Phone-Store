@@ -17,53 +17,156 @@
         <div class="col-lg-6 col-md-6 col-12 mb-4">
             <div class="border text-start">
                 <h5 class="fw-bold">Price : <span>{{phone.price}}</span></h5>
-                
+                <hr class="m-1">
                 <div><span class="h5">Released : </span> <span>{{phone.release}}</span></div>
-                
+                <hr class="m-1">
                 <div><span class="h5">OS : </span> <span>{{phone.os}} {{phone.os_version}}</span></div>
-                
+                <hr class="m-1">
                 <div><span class="h5">RAM : </span> <span>{{phone.ram}} GB</span></div>
+                <hr class="m-1">
+                <div><span class="h5">Storage : </span> <span>{{phone.storage}} GB</span></div>
             </div>
         </div>
       </div>
 
     
 
+      <div class="row">
+        <div class="col-12">
+          <! -- Primary Information -->
+            <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info text-white">Primary Spec</h4>
+               
+                <tbody>
+                   <tr>
+                        <td class="td-title">Model</td>
+                        <td class="td-data">{{phone.name}}</td>
+                   </tr>
+                   <tr>
+                        <td class="td-title">Brand</td>
+                        <td class="td-data">{{phone.brand}}</td>
+                      
+                   </tr>
+                   <tr>
+                        <td class="td-title">Category</td>
+                        <td class="td-data">{{phone.category}}</td>
+                      
+                   </tr>
+                   <tr>
+                        <td class="td-title">Status</td>
+                        <td class="td-data">{{phone.status}}</td>
+                   </tr>
+                   <tr>
+                    <td class="td-title">Annoucement</td>
+                    <td class="td-data">{{phone.annoucement}}</td>
+                   </tr>
+                   <tr>
+                    <td class="td-title">Release</td>
+                    <td class="td-data">{{phone.release}}</td>
+                   </tr>
+                   
+        
+                </tbody>
+             </table>
 
-      <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:10px">
-        <h4 class="border mb-0 text-start bg-info text-white">Primary Spec</h4>
-       
-        <tbody>
-           <tr>
-                <td>Model</td>
-                <td>{{phone.name}}</td>
-           </tr>
-           <tr>
-                <td>Brand</td>
-                <td>{{phone.brand}}</td>
-              
-           </tr>
-           <tr>
-                <td>Category</td>
-                <td>{{phone.category}}</td>
-              
-           </tr>
-           <tr>
-                <td>Status</td>
-                <td>{{phone.status}}</td>
-           </tr>
-           <tr>
-            <td>Annoucement</td>
-            <td>{{phone.annoucement}}</td>
-           </tr>
-           <tr>
-            <td>Release</td>
-            <td>{{phone.release}}</td>
-           </tr>
+             <! -- Network -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Network</h4>
+               
+                <tbody>
+                   <tr>
+                        <td class="td-title">Network Type</td>
+                        <td class="td-data">{{phone.network_type}}</td>
+                   </tr>
+                   <tr>
+                        <td class="td-title">Network Speed</td>
+                        <td class="td-data">{{phone.network_speed}}</td>
+                      
+                   </tr>
+                   <tr>
+                        <td class="td-title">SIM</td>
+                        <td class="td-data">{{phone.sim}}</td>
+                      
+                   </tr>
+                   <tr>
+                        <td class="td-title">2G Network</td>
+                        {% if phone.two_g == True %}
+                    <td class="td-data">Yes | {{phone.two_g_band}}</td>
+                    {% else %}
+                    <td class="td-data">No</td>
+                    {% endif %}
+                   </tr>
+                   <tr>
+                    <td class="td-title">3G Network</td>
+                    {% if phone.three_g == True %}
+                    <td class="td-data">Yes | {{phone.three_g_band}}</td>
+                    {% else %}
+                    <td class="td-data">No</td>
+                    {% endif %}
+                   </tr>
 
-        </tbody>
-     </table>
+                   <tr>
+                    <td class="td-title">4G Network</td>
+                    {% if phone.four_g == True %}
+                    <td class="td-data">Yes | {{phone.four_g_band}}</td>
+                    {% else %}
+                    <td class="td-data">No</td>
+                    {% endif %}
+                   </tr>
+
+                   <tr>
+                    <td class="td-title">5G Network</td>
+                    {% if phone.five_g == True %}
+                    <td class="td-data">Yes | {{phone.five_g_band}}</td>
+                    {% else %}
+                    <td class="td-data">No</td>
+                    {% endif %}
+                   </tr>
+
+                   <tr>
+                    <td class="td-title">6G Network</td>
+                    {% if phone.six_g == True %}
+                    <td class="td-data">Yes | {{phone.six_g_band}}</td>
+                    {% else %}
+                    <td class="td-data">No</td>
+                    {% endif %}
+                   </tr>
+
+                   {% if phone.seven_g == True %}
+
+                   <tr>
+                    <td class="td-title">7G Network</td>
+                    {% if phone.seven_g == True %}
+                    <td class="td-data">Yes | {{phone.seven_g_band}}</td>
+                    {% else %}
+                    <td class="td-data">No | {{phone.seven_g_band}}</td>
+                    {% endif %}
+                   </tr>
+
+                   {% endif %}
+
+        
+                </tbody>
+             </table>
+
+        </div>
+      </div>
+      
+  
+      <style>
+          .td-title{
+    font-weight: 600;
+  }
+
+      </style>
+
+{% endblock %}
 
 
+{% block sidebar %}
+
+
+
+    
 
 {% endblock %}
