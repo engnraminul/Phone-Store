@@ -61,8 +61,10 @@
                     <td class="td-data">{{phone.annoucement}}</td>
                    </tr>
                    <tr>
-                    <td class="td-title">Release</td>
-                    <td class="td-data">{{phone.release}}</td>
+                    {% if phone.release %}
+                         <td class="td-title">Released</td>
+                         <td class="td-data">{{phone.release}}</td>
+                         {% endif %}
                    </tr>
                    
         
@@ -99,36 +101,36 @@
                    <tr>
                     <td class="td-title">3G Network</td>
                     {% if phone.three_g == True %}
-                    <td class="td-data">Yes | {{phone.three_g_band}}</td>
+                         <td class="td-data">Yes | {{phone.three_g_band}}</td>
                     {% else %}
-                    <td class="td-data">No</td>
+                         <td class="td-data">No</td>
                     {% endif %}
                    </tr>
 
                    <tr>
                     <td class="td-title">4G Network</td>
                     {% if phone.four_g == True %}
-                    <td class="td-data">Yes | {{phone.four_g_band}}</td>
+                         <td class="td-data">Yes | {{phone.four_g_band}}</td>
                     {% else %}
-                    <td class="td-data">No</td>
+                         <td class="td-data">No</td>
                     {% endif %}
                    </tr>
 
                    <tr>
                     <td class="td-title">5G Network</td>
                     {% if phone.five_g == True %}
-                    <td class="td-data">Yes | {{phone.five_g_band}}</td>
+                         <td class="td-data">Yes | {{phone.five_g_band}}</td>
                     {% else %}
-                    <td class="td-data">No</td>
+                         <td class="td-data">No</td>
                     {% endif %}
                    </tr>
 
                    <tr>
                     <td class="td-title">6G Network</td>
                     {% if phone.six_g == True %}
-                    <td class="td-data">Yes | {{phone.six_g_band}}</td>
+                         <td class="td-data">Yes | {{phone.six_g_band}}</td>
                     {% else %}
-                    <td class="td-data">No</td>
+                         <td class="td-data">No</td>
                     {% endif %}
                    </tr>
 
@@ -137,9 +139,9 @@
                    <tr>
                     <td class="td-title">7G Network</td>
                     {% if phone.seven_g == True %}
-                    <td class="td-data">Yes | {{phone.seven_g_band}}</td>
+                         <td class="td-data">Yes | {{phone.seven_g_band}}</td>
                     {% else %}
-                    <td class="td-data">No | {{phone.seven_g_band}}</td>
+                         <td class="td-data">No | {{phone.seven_g_band}}</td>
                     {% endif %}
                    </tr>
 
@@ -148,6 +150,128 @@
         
                 </tbody>
              </table>
+
+
+             <! -- Body -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Body</h4>
+               
+                <tbody>
+                   
+                   <tr>
+                    {% if phone.dimension %}
+                         <td class="td-title">Dimension</td>
+                         <td class="td-data">{{phone.dimension}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.weight %}
+                         <td class="td-title">Weight</td>
+                         <td class="td-data">{{phone.weight}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.front %}
+                         <td class="td-title">Fron</td>
+                         <td class="td-data">{{phone.front}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.back %}
+                         <td class="td-title">Back</td>
+                         <td class="td-data">{{phone.back}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.frame %}
+                         <td class="td-title">Frame</td>
+                         <td class="td-data">{{phone.frame}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.color %}
+                         <td class="td-title">Color</td>
+                         <td class="td-data">{{phone.color}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.body_feature %}
+                         <td class="td-title">Features</td>
+                         <td class="td-data">{{phone.body_feature}}</td>
+                         {% endif %}
+                   </tr>
+
+        
+                </tbody>
+             </table>
+
+
+             <! -- Display -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Display</h4>
+               
+                <tbody>
+                   
+                   <tr>
+                    {% if phone.display_type %}
+                         <td class="td-title">Display Type</td>
+                         <td class="td-data">{{phone.display_type}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.size %}
+                         <td class="td-title">Size</td>
+                         <td class="td-data">{{phone.size}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.resulation %}
+                         <td class="td-title">Resulation</td>
+                         <td class="td-data">{{phone.resulation}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.ratio %}
+                         <td class="td-title">Ratio</td>
+                         <td class="td-data">{{phone.ratio}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.pixel_density %}
+                         <td class="td-title">Pixel Density</td>
+                         <td class="td-data">{{phone.pixel_density}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.refresh_rate %}
+                         <td class="td-title">Refresh Rate</td>
+                         <td class="td-data">{{phone.refresh_rate}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.protection %}
+                         <td class="td-title">Protection</td>
+                         <td class="td-data">{{phone.protection}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.second_display %}
+                         <td class="td-title">2nd Display</td>
+                         <td class="td-data">{{phone.second_display}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.display_features %}
+                         <td class="td-title">Features</td>
+                         <td class="td-data">{{phone.display_features}}</td>
+                         {% endif %}
+                   </tr>
+
+        
+                </tbody>
+             </table>
+
+
 
         </div>
       </div>
