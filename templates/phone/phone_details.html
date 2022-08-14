@@ -212,10 +212,10 @@
                
                 <tbody>
                    
-                   <tr>
+                   <tr class="">
                     {% if phone.display_type %}
                          <td class="td-title">Display Type</td>
-                         <td class="td-data">{{phone.display_type}}</td>
+                         <td class="td-data" >{{phone.display_type}}</td>
                          {% endif %}
                    </tr>
                    <tr>
@@ -272,25 +272,186 @@
              </table>
 
 
+             <! -- Back Camera -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Back Camera</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.back_camera %}
+                         <td class="td-title">Lens</td>
+                         <td class="td-data" >{{phone.back_camera}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.back_camera_features %}
+                         <td class="td-title">Features</td>
+                         <td class="td-data">{{phone.back_camera_features}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.back_camera_video %}
+                         <td class="td-title">Video Record</td>
+                         <td class="td-data">{{phone.back_camera_video}}</td>
+                         {% endif %}
+                   </tr>
+                </tbody>
+             </table>
+
+
+             <! -- Front Camera -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Front Camera</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.front_camera %}
+                         <td class="td-title">Lens</td>
+                         <td class="td-data" >{{phone.front_camera}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.front_camera_features %}
+                         <td class="td-title">Features</td>
+                         <td class="td-data">{{phone.front_camera_features}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.front_camera_video %}
+                         <td class="td-title">Video Record</td>
+                         <td class="td-data">{{phone.front_camera_video}}</td>
+                         {% endif %}
+                   </tr>
+                </tbody>
+             </table>
+
+
+             <! -- Platform -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Platform</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.os %}
+                         <td class="td-title">Operating System</td>
+                         <td class="td-data" >{{phone.os}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.os_version %}
+                         <td class="td-title">Version</td>
+                         <td class="td-data">{{phone.os_version}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.ui %}
+                         <td class="td-title">User Interface</td>
+                         <td class="td-data">{{phone.ui}}</td>
+                         {% endif %}
+                   </tr>
+                   {% if phone.chipset %}
+                    <tr>
+                         {% if phone.chipset %}
+                         <td class="td-title">Processor</td>
+                         <td class="td-data">{{phone.chipset}}</td>
+                         {% endif %}
+                   </tr>
+                   {% else %}
+                   <tr>
+                         {% if phone.processor.chipset %}
+                         <td class="td-title">Chipset</td>
+                         <td class="td-data">{{phone.processor.chipset}}</td>
+                         {% endif %}
+                    </tr>
+                    <tr>
+                         {% if phone.processor.cpu %}
+                         <td class="td-title">CPU</td>
+                         <td class="td-data">{{phone.processor.cpu}}</td>
+                         {% endif %}
+                    </tr>
+                    <tr>
+                         {% if phone.processor.gpu %}
+                         <td class="td-title">GPU</td>
+                         <td class="td-data">{{phone.processor.gpu}}</td>
+                         {% endif %}
+                    </tr>
+                    <tr>
+                         {% if phone.processor.nm %}
+                         <td class="td-title">Technology Node</td>
+                         <td class="td-data">{{phone.processor.nm}}</td>
+                         {% endif %}
+                    </tr>
+
+                    {% endif %}
+
+
+                </tbody>
+             </table>
+
+
+             <! -- Memory -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Memory</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.ram %}
+                         <td class="td-title">RAM</td>
+                         <td class="td-data" >{{phone.ram}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.storage %}
+                         <td class="td-title">Storage</td>
+                         <td class="td-data">{{phone.storage}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                         {% if phone.memory_slot == True %}
+                         <td class="td-title">Extra Slot</td>
+                         <td class="td-data">Yes</td>
+                         {% else %}
+                         <td class="td-title">Extra Slot</td>
+                         <td class="td-data">No</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.variant %}
+                         <td class="td-title">Variants</td>
+                         <td class="td-data">{{phone.variant}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.storage_type %}
+                         <td class="td-title">Storage Type</td>
+                         <td class="td-data">{{phone.storage_type}}</td>
+                         {% endif %}
+                   </tr>
+                </tbody>
+             </table>
+
+
 
         </div>
       </div>
       
-  
-      <style>
-          .td-title{
+ 
+      
+<style>
+.td-title{
     font-weight: 600;
+    color: brown;
+    width: 35%;
+    
+    
   }
 
-      </style>
-
-{% endblock %}
 
 
-{% block sidebar %}
-
-
-
-    
+</style>
 
 {% endblock %}
