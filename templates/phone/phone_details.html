@@ -15,16 +15,38 @@
         </div>
 
         <div class="col-lg-6 col-md-6 col-12 mb-4">
-            <div class="border text-start">
-                <h5 class="fw-bold">Price : <span>{{phone.price}}</span></h5>
-                <hr class="m-1">
-                <div><span class="h5">Released : </span> <span>{{phone.release}}</span></div>
-                <hr class="m-1">
-                <div><span class="h5">OS : </span> <span>{{phone.os}} {{phone.os_version}}</span></div>
-                <hr class="m-1">
-                <div><span class="h5">RAM : </span> <span>{{phone.ram}} GB</span></div>
-                <hr class="m-1">
-                <div><span class="h5">Storage : </span> <span>{{phone.storage}} GB</span></div>
+
+          <div class="text-start">
+               <h5 class="fw-bold shadow p-2 rounded bg-dark"><span style="color: white;">Price : </span>  
+                    {% if phone.price %}
+                    <span class="icon">{{phone.price}}$</span>
+                    {% else %}
+                    <span class="icon">0.00$</span>
+                    {% endif %}
+               </h5>
+          </div>
+
+
+          <div class="border text-start">   
+                <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="h5">Released : </span> 
+                    {% if phone.release %}
+                    <span>{{phone.release}}</span>
+                    {% else %}
+                    <span>{{phone.status}}</span>
+                    {% endif %}
+               </div>
+                
+                <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="h5">OS : </span> <span>{{phone.os}} {{phone.os_version}}</span></div>
+
+                <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="h5">Display : </span> <span>{{phone.size}} | {{phone.display_type}} GB</span></div>
+                
+                <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="h5">RAM : </span> <span>{{phone.ram}} GB</span></div>
+                
+                <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="h5">Storage : </span> <span>{{phone.storage}}</span></div>
+
+                <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="h5">Chipset : </span> <span>{{phone.processor.title}}</span></div>
+
+                <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="h5">Battery : </span> <span>{{phone.battery_capacity}}</span></div>
             </div>
         </div>
       </div>
@@ -281,7 +303,7 @@
                    <tr class="">
                     {% if phone.back_camera %}
                          <td class="td-title">Lens</td>
-                         <td class="td-data" >{{phone.back_camera}}</td>
+                         <td class="td-data" >{{phone.back_camera|linebreaks}}</td>
                          {% endif %}
                    </tr>
                    <tr>
@@ -309,7 +331,7 @@
                    <tr class="">
                     {% if phone.front_camera %}
                          <td class="td-title">Lens</td>
-                         <td class="td-data" >{{phone.front_camera}}</td>
+                         <td class="td-data" >{{phone.front_camera|linebreaks}}</td>
                          {% endif %}
                    </tr>
                    <tr>
@@ -356,7 +378,7 @@
                     <tr>
                          {% if phone.chipset %}
                          <td class="td-title">Processor</td>
-                         <td class="td-data">{{phone.chipset}}</td>
+                         <td class="td-data">{{phone.chipset|linebreaks}}</td>
                          {% endif %}
                    </tr>
                    {% else %}
@@ -617,25 +639,25 @@
                    <tr class="">
                     {% if phone.united_states %}
                          <td class="td-title">United States</td>
-                         <td class="td-data" >{{phone.united_states}}</td>
+                         <td class="td-data" >{{phone.united_states|linebreaks}}</td>
                          {% endif %}
                    </tr>
                    <tr>
                     {% if phone.europe %}
                          <td class="td-title">Europe</td>
-                         <td class="td-data">{{phone.europe}}</td>
+                         <td class="td-data">{{phone.europe|linebreaks}}</td>
                          {% endif %}
                    </tr>
                    <tr>
                     {% if phone.china %}
                          <td class="td-title">China</td>
-                         <td class="td-data">{{phone.china}}</td>
+                         <td class="td-data">{{phone.china|linebreaks}}</td>
                          {% endif %}
                    </tr>
                    <tr>
                     {% if phone.india %}
                          <td class="td-title">India</td>
-                         <td class="td-data">{{phone.india}}</td>
+                         <td class="td-data">{{phone.india|linebreaks}}</td>
                          {% endif %}
                    </tr>
 
@@ -654,9 +676,18 @@
     font-weight: 600;
     color: brown;
     width: 35%;
-    
-    
+}
+
+  .bg-info{
+     background-color: brown;
+     color: rgb(247, 245, 245);
   }
+
+.icon{
+     color: coral;
+     padding: 5px;
+     font-size: 20px;
+}
 
 
 
