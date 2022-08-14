@@ -435,6 +435,214 @@
              </table>
 
 
+             <! -- Audio -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Audio</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.speaker %}
+                         <td class="td-title">Speaker</td>
+                         <td class="td-data" >{{phone.speaker}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                         {% if phone.audio_jack == True %}
+                         <td class="td-title">Extra Slot</td>
+                         <td class="td-data">Yes</td>
+                         {% else %}
+                         <td class="td-title">Extra Slot</td>
+                         <td class="td-data">No</td>
+                         {% endif %}
+                         </tr>
+                    <tr>
+                    {% if phone.audio_features %}
+                         <td class="td-title">Features</td>
+                         <td class="td-data">{{phone.audio_features}}</td>
+                         {% endif %}
+                    </tr>
+                </tbody>
+             </table>
+
+             <! -- Connectivity -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Connectivity</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.wifi %}
+                         <td class="td-title">WLAN</td>
+                         <td class="td-data" >{{phone.wifi}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                         {% if phone.hotspot == True %}
+                         <td class="td-title">Hotspot</td>
+                         <td class="td-data">Yes</td>
+                         {% else %}
+                         <td class="td-title">Hotspot</td>
+                         <td class="td-data">No</td>
+                         {% endif %}
+                    </tr>
+                    
+                    <tr>
+                         {% if phone.nfc == True %}
+                         <td class="td-title">NFC</td>
+                         <td class="td-data">Yes</td>
+                         {% else %}
+                         <td class="td-title">NFC</td>
+                         <td class="td-data">No</td>
+                         {% endif %}
+                    </tr>
+                    
+                    <tr>
+                         {% if phone.gps == True %}
+                         <td class="td-title">GPS</td>
+                         <td class="td-data">Yes</td>
+                         {% else %}
+                         <td class="td-title">GPS</td>
+                         <td class="td-data">No</td>
+                         {% endif %}
+                    </tr>
+                    <tr>
+                         {% if phone.radio == True %}
+                         <td class="td-title">Radio</td>
+                         <td class="td-data">Yes</td>
+                         {% else %}
+                         <td class="td-title">Radio</td>
+                         <td class="td-data">No</td>
+                         {% endif %}
+                    </tr>
+                    <tr>
+                         {% if phone.infrared_port == True %}
+                         <td class="td-title">Infrared Port</td>
+                         <td class="td-data">Yes</td>
+                         {% else %}
+                         <td class="td-title">Infrared Port</td>
+                         <td class="td-data">No</td>
+                         {% endif %}
+                    </tr>
+                    <tr>
+                         {% if phone.usb %}
+                         <td class="td-title">USB</td>
+                         <td class="td-data">{{phone.usb}}</td>
+                         {% endif %}
+                    </tr>
+
+                    
+                </tbody>
+             </table>
+
+             <! -- Sensor -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Secuirity Sensor</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.fingureprint %}
+                         <td class="td-title">Fingureprint</td>
+                         <td class="td-data" >{{phone.fingureprint}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.facelock %}
+                         <td class="td-title">Facelock</td>
+                         <td class="td-data">{{phone.facelock}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.sensor %}
+                         <td class="td-title">Sensor</td>
+                         <td class="td-data">{{phone.sensor}}</td>
+                         {% endif %}
+                   </tr>
+                </tbody>
+             </table>
+
+             <! -- Battery -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Battery</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.battery_type %}
+                         <td class="td-title">Battery Type</td>
+                         <td class="td-data" >{{phone.battery_type}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.battery_capacity %}
+                         <td class="td-title">Battery Capacity</td>
+                         <td class="td-data">{{phone.battery_capacity}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.charging %}
+                         <td class="td-title">Charging</td>
+                         <td class="td-data">{{phone.charging}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.wireless_charging %}
+                         <td class="td-title">Wireless Charging</td>
+                         <td class="td-data">{{phone.wireless_charging}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.reverse_charging %}
+                         <td class="td-title">Reverse Charging</td>
+                         <td class="td-data">{{phone.reverse_charging}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.charging_features %}
+                         <td class="td-title">Features</td>
+                         <td class="td-data">{{phone.charging_features}}</td>
+                         {% endif %}
+                   </tr>
+
+                </tbody>
+             </table>
+
+             <! -- Price -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h4 class="border mb-0 p-1 text-start bg-info">Price</h4>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    {% if phone.united_states %}
+                         <td class="td-title">United States</td>
+                         <td class="td-data" >{{phone.united_states}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.europe %}
+                         <td class="td-title">Europe</td>
+                         <td class="td-data">{{phone.europe}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.china %}
+                         <td class="td-title">China</td>
+                         <td class="td-data">{{phone.china}}</td>
+                         {% endif %}
+                   </tr>
+                   <tr>
+                    {% if phone.india %}
+                         <td class="td-title">India</td>
+                         <td class="td-data">{{phone.india}}</td>
+                         {% endif %}
+                   </tr>
+
+                </tbody>
+             </table>
+
+
 
         </div>
       </div>
