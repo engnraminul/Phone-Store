@@ -1,3 +1,4 @@
+from unicodedata import name
 from django import views
 from django.contrib import admin
 from django.urls import path
@@ -12,6 +13,7 @@ urlpatterns = [
     path('brand/', views.phone_brand_list.as_view(), name="phone_brand_list"),
     path('<slug>/<status>/', views.phone_filter, name="phone_filter"),
     path('phone/<slug>', views.phone_by_processor, name="phone_by_processor"),
-    path('<slug>/', views.phone_details, name="phone_details")
+    path('<slug>/', views.phone_details, name="phone_details"),
+    path('images/<slug>', views.phone_gallery, name="phone_gallery"),
     
 ]

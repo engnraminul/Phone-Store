@@ -2,7 +2,7 @@ from multiprocessing import context
 from unicodedata import name
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.views.generic import ListView, DetailView, TemplateView
-from .models import Phone, PhoneBrand, ProcessorBrand, Processor
+from .models import GalleryImage, Phone, PhoneBrand, ProcessorBrand, Processor
 
 
 
@@ -80,3 +80,15 @@ def phone_details(request, slug):
     }
 
     return render(request, 'phone/phone_details.html', context)
+
+def phone_gallery(request, slug):
+    phone = Phone.objects.get(slug=slug)
+    gallery = GalleryImage.objects.filter(phone=phone)
+    
+
+    context = {
+        'phone':phone,
+        'gallery':gallery,
+    }
+
+    return render(request, 'phone/phone_gallery.html', context)

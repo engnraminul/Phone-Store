@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-12 mb-4">
-            <img class="img-thumbnail" src="{{phone.thumbnail.url}}" alt="">
+            <a href="{% url 'Phone:phone_gallery' slug=phone.slug %}"><img class="img-thumbnail" src="{{phone.thumbnail.url}}" alt=""></a>
             
         </div>
 
@@ -48,6 +48,13 @@
 
                 <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="h5">Battery : </span> <span>{{phone.battery_capacity}}</span></div>
             </div>
+
+            <div class="text-start ">
+               <a href="{% url 'Phone:phone_gallery' slug=phone.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-chevron-double-right " style="color: white;"> More Pictures </span> </h5></a>
+          </div>
+
+
+
         </div>
       </div>
 
@@ -688,6 +695,7 @@
      padding: 5px;
      font-size: 20px;
 }
+
 
 
 
