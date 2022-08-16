@@ -5,7 +5,8 @@ from Phone.models import PhoneBrand
 
 register = template.Library()
 
-@register.simple_tag(takes_context=True, name='phone_brand')
-def phone_brand():
-    brand=PhoneBrand.objects.all()
-    return brand
+@register.filter
+def brand_tags(request):
+    if request:
+        brand_tags = PhoneBrand.objects.filter(published=True)
+        return brand_tags

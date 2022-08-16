@@ -60,6 +60,7 @@ class PhoneBrand(models.Model):
     seo_title = models.CharField(max_length=70)
     seo_des = models.TextField(max_length=160)
     slug = models.SlugField(max_length=70, null=True, blank=True, unique=True)
+    published = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
