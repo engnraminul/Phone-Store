@@ -16,13 +16,15 @@
 
         <div class="col-lg-6 col-md-6 col-12 mb-4">
 
-          <div class="text-start">
-               <h5 class="fw-bold shadow p-2 rounded bg-dark"><span style="color: white;">Price : </span>  
+          <div class="">
+               <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
                     {% if phone.price %}
                     <span class="icon">{{phone.price}}$</span>
                     {% else %}
                     <span class="icon">0.00$</span>
                     {% endif %}
+
+                    <span class="text-end h6" style="color: white;"> (Our Rating : 8/10)</span>
                </h5>
           </div>
 
@@ -677,7 +679,18 @@
       </div>
       
  
+   
       
+      
+    
+     
+
+
+
+
+
+
+
 <style>
 .td-title{
     font-weight: 600;
@@ -696,9 +709,13 @@
      font-size: 20px;
 }
 
-
-
-
 </style>
+
+
+{% block sidebar %}
+
+
+
+{% endblock %}
 
 {% endblock %}

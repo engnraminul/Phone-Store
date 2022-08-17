@@ -16,7 +16,7 @@ class phone_brand_list(ListView):
 
 
 def home(request):
-    phone = Phone.objects.filter()
+    phone = Phone.objects.filter().order_by('-created')
 
     context = {
         

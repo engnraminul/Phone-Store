@@ -35,7 +35,11 @@
                 <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_details' slug=phone.slug %}">{{phone.name}} </a>
               </a>
               <h6 class="mb-1 mt-1">
-                <s>{{phone.old_price}}$</s><strong class="ms-2 text-danger">{{phone.price}}$</strong>
+                {% if phone.price %}
+                <s> {% if phone.old_price %} {{phone.old_price}}$ {% endif %}</s><strong class="ms-2 text-danger">{{phone.price}}$</strong>
+                {% else %}
+                <strong class="ms-2 text-danger">0.00$</strong>
+                {% endif %}
               </h6>
             </div>
           </div>
