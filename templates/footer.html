@@ -1,3 +1,5 @@
+{% load page_tags %}
+
 <section class="">
     <!-- Footer -->
     <footer class="text-center text-white" style="background-color: #0a4275;">
@@ -6,10 +8,11 @@
         <!-- Section: CTA -->
         <section class="">
           <p class="d-flex justify-content-center align-items-center">
-            <span class="me-3">Register for free</span>
-            <button type="button" class="btn btn-outline-light btn-rounded">
-              Sign up!
-            </button>
+
+            {% for page in request|page_tags %}
+            <span class="me-3">{{page.title}}</span>
+            {% endfor %}
+            
           </p>
         </section>
         <!-- Section: CTA -->
@@ -19,7 +22,7 @@
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">PhoneStore</a>
+        <a class="text-white text-decoration-none" href="https://mdbootstrap.com/">PhoneStore</a>
       </div>
       <!-- Copyright -->
     </footer>
