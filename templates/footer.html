@@ -10,7 +10,7 @@
           <p class="d-flex justify-content-center align-items-center">
 
             {% for page in request|page_tags %}
-            <span class="me-3">{{page.title}}</span>
+            <a class="text-decoration-none text-danger" href="{% url 'page:page_detail' slug=page.slug %}"><span class="me-3">{{page.title}}</span></a>
             {% endfor %}
             
           </p>
@@ -22,7 +22,7 @@
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
-        <a class="text-white text-decoration-none" href="https://mdbootstrap.com/">PhoneStore</a>
+        <a class="text-white text-decoration-none" href="#">PhoneStore</a>
       </div>
       <!-- Copyright -->
     </footer>
