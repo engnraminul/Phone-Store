@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
-from django.utils.safestring import mark_safe
+from tinymce import models as tinymce_models
 
 
 
 class Page(models.Model):
     title = models.CharField(max_length=250, verbose_name="Tilte")
-    content = models.TextField(verbose_name="Content")
+    content = tinymce_models.HTMLField()
     slug = models.SlugField(max_length=250, unique=True, blank=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
