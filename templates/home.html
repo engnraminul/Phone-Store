@@ -24,7 +24,7 @@
             </div>
             <div class="card-body p-0 bg-light mt-2">
               <a href="" class="text-reset">
-                <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_details' slug=phone.slug %}">{{phone.name}} </a>
+                <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{{phone.get_absolute_url}}">{{phone.name}} </a>
               </a>
               <h6 class="mb-1 mt-1">
                 {% if phone.price %}

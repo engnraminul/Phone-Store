@@ -2,11 +2,10 @@ from codecs import charmap_build
 from distutils.command.upload import upload
 from email.mime import image
 from enum import unique
-from pyexpat import model
 from django.db import models
-from django.forms import CharField, SlugField
 from django.utils.text import slugify
 from django.utils.safestring import mark_safe
+from django.urls import reverse
 
 
 class ProcessorBrand(models.Model):
@@ -71,6 +70,10 @@ class PhoneBrand(models.Model):
     
     class Meta:
         ordering= ['name']
+
+
+    def get_absolute_url(self):
+        return reverse("Phone:phone_brand_list", kwargs={"slug": self.slug})
 
 
 
@@ -213,6 +216,10 @@ class Phone(models.Model):
         return mark_safe('<img src="{}" width="50" />'.format(self.thumbnail.url))
     admin_photo.short_description = 'Thumbnail'
     admin_photo.allow_tags =True
+
+    def get_absolute_url(self):
+        return reverse("Phone:phone_details", kwargs={"slug": self.slug})
+    
 
 class GalleryImage(models.Model):
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE)

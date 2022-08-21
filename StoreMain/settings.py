@@ -1,6 +1,7 @@
 
 from pathlib import Path
 import os
+from tkinter.tix import Tree
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,6 +25,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
@@ -43,18 +45,20 @@ INSTALLED_APPS = [
     
 ]
 
-TINYMCE_DEFAULT_CONFIG = {
-    "theme": "silver",
-    "height": 500,
-    "menubar": True,
-    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
-    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
-    "code,help,wordcount",
-    "toolbar": "undo redo | formatselect | "
-    "bold italic backcolor | alignleft aligncenter "
-    "alignright alignjustify | bullist numlist outdent indent | "
-    "removeformat | help",
-}
+# TINYMCE_DEFAULT_CONFIG = {
+#     "theme": "silver",
+#     "height": 500,
+#     "menubar": True,
+#     "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+#     "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+#     "code,help,wordcount",
+#     "toolbar": "undo redo | formatselect | "
+#     "bold italic backcolor | alignleft aligncenter "
+#     "alignright alignjustify | bullist numlist outdent indent | "
+#     "removeformat | help",
+# }
+
+
 
 
 MIDDLEWARE = [
@@ -149,3 +153,4 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
