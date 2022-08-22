@@ -26,6 +26,14 @@ div.scrollmenu {
 
   /*Scrollmenu end */
 
+  /*phone details */
+
+  
+
+
+
+/*phone details end */
+
 
 /*Navbar*/
 
@@ -272,13 +280,13 @@ nav .logo.space{
 
 /* Search */
 .results-card{
-  width: 100%;
+  width: 75%;
   box-shadow: 0 8px 8px 0 rgba(0,0,0,0.25);
-  transition: 0.5s;
+  transition: 0.005s;
   border-radius: 7px;
-  padding: 15px 15px;
+  padding: 15px 5px;
   margin: 0 auto;
-  background-color: rgb(211, 20, 20);
+  background-color: rgb(243, 243, 243);
 }
 
 .not-visible{
@@ -292,4 +300,18 @@ nav .logo.space{
 .phone-img{
   width: 50px;
   height: 50px;
+}
+@media only screen and (min-width: 768px) {
+  .results-card{
+    width: 50%;
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.25);
+    transition: 0.005s;
+    border-radius: 7px;
+    padding: 15px 5px;
+    margin: 0 auto;
+    background-color: rgb(253, 251, 251);
+    text-decoration: none;
+    object-fit: cover;
+    object-position: 15% 50%;
+  }
 }

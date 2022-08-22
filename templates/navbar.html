@@ -12,10 +12,10 @@
          <a/>
          <div class="nav-items">
             <li><a href="{% url 'Phone:Processor_by_brand' slug='snapdragon' %}">Processor</a></li>
-            <li><a href="{% url 'Phone:phone_brand_list' %}">Brand</a></li>
+            <li><a href="{% url 'Phone:phone_brand_list' brand='brand' %}">Brand</a></li>
             <li><a href="#">Blogs</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Compare</a></li>
+            
          </div>
          <div class="search-icon">
             <span class="fas fa-search"></span>
@@ -28,7 +28,10 @@
             <input type="search" id = "search-input" class="search-data" placeholder="Search" required>
             <button type="submit" class="fas fa-search"></button>
          </form>
-         <div id = "results-box" class = "results-card not-visible bg-light text-decoration-none"></div>
+        
+         
+         <div data-bs-spy="scroll" id = "results-box" class = "results-card not-visible mt-3 scrollspy-example"></div>
+            
          
       </nav>
       

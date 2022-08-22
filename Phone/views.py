@@ -29,7 +29,6 @@ def home(request):
 
 def phone_by_processor(request, slug):
     processor = Processor.objects.get(slug=slug)
-    #processor = get_object_or_404(Processor, slug=slug)
     phone = Phone.objects.filter(processor=processor, status='Released')
 
     context = {
@@ -78,7 +77,6 @@ def phone_filter(request, slug, status):
 
 def phone_details(request, slug):
     phone = Phone.objects.get(slug=slug)
-    #phone = get_object_or_404(Phone, slug=slug)
 
     context = {
         'phone':phone
@@ -100,40 +98,13 @@ def phone_gallery(request, slug):
 
     return render(request, 'phone/phone_gallery.html', context)
 
-# def is_ajax(request):
-#     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
-
-# def search_results(request):
-#     if is_ajax(request):
-#         res = None
-#         phone = request.POST.get('phone')
-#         qs = Phone.objects.filter(name_icontains=phone)
-#         if len(qs) > 0 and len(phone) > 0:
-#             data = []
-#             for pos in qs:
-#                 item = {
-#                     'slug':pos.slug,
-#                     'name':pos.name,
-#                     'thumbnail':pos.thumbnail,
-#                 }
-#                 data.append(item)
-            
-#             res = data
-        
-#         else:
-#             res = 'Phone not found!'
-#         return JsonResponse({'data':res})
-    
-#     return JsonResponse({})
-
-
 
 
 def search_result(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         res = None
         phone = request.POST.get('phone')
-        query_s= Phone.objects.filter(Q(name__icontains=phone))
+        query_s= Phone.objects.filter(name__icontains=phone)
         if len(query_s) > 0 and len(phone) > 0:
             data = []
             for pos in query_s:
@@ -141,6 +112,7 @@ def search_result(request):
                     'slug':pos.slug,
                     'name':pos.name,
                     'thumbnail':str(pos.thumbnail.url),
+                    'status':pos.status,
                 }
                 data.append(item)
             

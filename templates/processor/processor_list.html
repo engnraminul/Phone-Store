@@ -29,7 +29,7 @@
       <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
       
-          <a class="stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_by_processor' slug=processor.slug %}">{{processor.title}} </a>
+          <a class="stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_by_processor' slug=processor.slug  %}">{{processor.title}} </a>
           
         </div>
         <span class="badge bg-primary rounded-pill">{{processor.phone_processor.count}}</span>

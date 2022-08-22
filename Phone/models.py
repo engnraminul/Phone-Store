@@ -74,6 +74,7 @@ class PhoneBrand(models.Model):
 
     def get_absolute_url(self):
         return reverse("Phone:phone_brand_list", kwargs={"slug": self.slug})
+    
 
 
 
@@ -224,5 +225,7 @@ class Phone(models.Model):
 class GalleryImage(models.Model):
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
     images = models.FileField(upload_to= 'phone', null=True, blank=True)
+
+
     
     

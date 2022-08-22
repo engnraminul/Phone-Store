@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+       
+{% endblock %}
+
 {% block body %}
 
 <div class=" d-grid p-1 mb-3 text-center border bg-light">
@@ -680,45 +684,61 @@
 
 
 <!--Question Anser-->
-<div class="h4 fw-bolder border">Some Question and Anwser for {{phone.name}}</div>
-<div class="row">
+<div class="h5 fw-bolder border">Some Question and Anwser for {{phone.name}}</div>
+<div class="row border">
      <div class="col text-start">
 
-          <h2 class="h6 fw-bolder"><span class="text-danger">Q: </span>{{phone.name}} Smartphone Release Date?</h6>
+          <h2 class="h6 fw-bolder"><span class="text-danger">Q: </span>{{phone.name}} phone Release Date?</h6>
           <p> <span class="text-danger">Ans: </span>{{phone.name}} Smartphone Released in {{phone.release}}.</p>
           <hr>
 
+          <h2 class="h6 fw-bolder"><span class="text-danger">Q: </span> Which processor is used in {{phone.name}} phone?</h6>
+          <p> <span class="text-danger">Ans: </span>{{phone.name}} ‍Smartphone uses {{phone.processor}} processor.</p>
+          <hr>
+
+          <h2 class="h6 fw-bolder"><span class="text-danger">Q: </span> Which Display is used in {{phone.name}} phone?</h6>
+          <p> <span class="text-danger">Ans: </span>{{phone.name}} ‍Smartphone uses {{phone.size}} {{phone.display_type}}, {{phone.refresh_rate}} Display.</p>
+          <hr>
+
+          <h2 class="h6 fw-bolder"><span class="text-danger">Q: </span> How much RAM is used in {{phone.name}} phone?</h6>
+          <p> <span class="text-danger">Ans: </span>{{phone.name}} smartphone uses {{phone.ram}} RAM.</p>
+          <hr>
+
+          <h2 class="h6 fw-bolder"><span class="text-danger">Q: </span> How much Memory is used in {{phone.name}} phone?</h6>
+          <p> <span class="text-danger">Ans: </span>{{phone.name}} smartphone uses {{phone.storage}} internal Memory.</p>
+          <hr>
+
      </div>
+     
 </div>
 
-
-
-
 <style>
-.td-title{
-    font-weight: 600;
-    color: brown;
-    width: 35%;
-}
 
-  .bg-info{
-     background-color: brown;
-     color: rgb(247, 245, 245);
-  }
-
-.icon{
-     color: coral;
-     padding: 5px;
-     font-size: 20px;
-}
-
+     .td-title{
+          font-weight: 600;
+          color: brown;
+          width: 35%;
+          font-weight: bold;
+      }
+      
+        .bg-info{
+           background-color: brown;
+           color: rgb(247, 245, 245);
+        }
+      
+      .icon{
+           color: coral;
+           padding: 5px;
+           font-size: 20px;
+      }
 </style>
 
+{% endblock %}
 
 {% block sidebar %}
 
-
-
-{% endblock %}
+<h1>Sidebar</h1>
 
 {% endblock %}
+
+
