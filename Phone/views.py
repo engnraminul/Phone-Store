@@ -3,6 +3,7 @@ from django.views.generic import ListView
 from .models import GalleryImage, Phone, PhoneBrand, ProcessorBrand, Processor
 from django.http import JsonResponse
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 
@@ -17,11 +18,20 @@ class phone_brand_list(ListView):
 
 
 def home(request):
-    phone = Phone.objects.filter().order_by('-created')
+    phone = Phone.objects.filter(status='Released').order_by('-created')
+    U_phone= Phone.objects.filter(status='Upcoming').order_by('-created')
+    paginator = Paginator(phone, 1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+
+    
 
     context = {
         
-        'phone': phone
+        'phone': phone,
+        'u_phone': U_phone,
+        'page_obj': page_obj,
     }
     return render(request, 'home.html', context)
 
