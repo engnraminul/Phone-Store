@@ -139,10 +139,14 @@ def search_result(request):
 def phone_list(request, status):
     
     phone = Phone.objects.filter(status=status)
+    paginator = Paginator(phone, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
 
     context = {
-        'phone': phone,
+        'page_obj': page_obj,
+        'status':status,
     }
 
     return render(request, 'phone/phone_list.html', context)
