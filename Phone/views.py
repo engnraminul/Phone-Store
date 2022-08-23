@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.views.generic import ListView
 from .models import GalleryImage, Phone, PhoneBrand, ProcessorBrand, Processor
@@ -19,18 +20,18 @@ class phone_brand_list(ListView):
 
 def home(request):
     phone = Phone.objects.filter(status='Released').order_by('-created')
-    U_phone= Phone.objects.filter(status='Upcoming').order_by('-created')
-    paginator = Paginator(phone, 1)
+    u_phone= Phone.objects.filter(status='Upcoming').order_by('-created')
+    paginator = Paginator(phone, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
+    
     
 
     
 
     context = {
-        
-        'phone': phone,
-        'u_phone': U_phone,
+        'u_phone': u_phone,
         'page_obj': page_obj,
     }
     return render(request, 'home.html', context)
@@ -133,3 +134,15 @@ def search_result(request):
     
     return JsonResponse({})
 
+
+
+def phone_list(request, status):
+    
+    phone = Phone.objects.filter(status=status)
+
+
+    context = {
+        'phone': phone,
+    }
+
+    return render(request, 'phone/phone_list.html', context)

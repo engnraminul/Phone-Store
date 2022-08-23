@@ -13,6 +13,7 @@ urlpatterns = [
     path('phone/<slug>', views.phone_by_processor, name="phone_by_processor"),
     path('<slug>/<status>', views.phone_filter, name="phone_filter"),
     path('<slug>/images/', views.phone_gallery, name="phone_gallery"),
+    path('phones/<status>/', views.phone_list, name="phone_list"),
     
     
     

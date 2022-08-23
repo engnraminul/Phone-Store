@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class=" d-grid p-1 mb-3 text-center border bg-light">
+    <h2>Smartphone List</h2>
+    </div>
+
+    <div class=" d-grid p-1 mb-3 text-center border bg-light">
+    <div class="btn-group ">
+        <a href="{% url 'Phone:phone_list'  status='Released' %}" class="btn btn-outline-danger" aria-current="page">Released</a>
+        <a href="{% url 'Phone:phone_list'  status='Upcoming' %}" class="btn btn-outline-primary">Upcoming</a>
+        <a href="{% url 'Phone:phone_list'  status='Rumor' %}" class="btn btn-outline-info">Rumor</a>
+      </div>
+    </div>
+
+    <div class="row">
+
+        {% for phone in phone %}
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="card">
+
+            <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
+              {{phone.status}}
+              <span class="visually-hidden">unread messages</span>
+            </span>
+
+            <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+              <img class="img-fluid" src="{{ phone.thumbnail.url }}"
+                class="w-100" />
+
+            </div>
+            <div class="card-body p-0 bg-light mt-2">
+              <a href="" class="text-reset">
+                <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{{phone.get_absolute_url}}">{{phone.name}} </a>
+              </a>
+              <h6 class="mb-1 mt-1">
+                {% if phone.price %}
+                <s> {% if phone.old_price %} {{phone.old_price}}$ {% endif %}</s><strong class="ms-2 text-danger">{{phone.price}}$</strong>
+                {% else %}
+                <strong class="ms-2 text-danger">0.00$</strong>
+                {% endif %}
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+
+
+
+{% endblock %}
