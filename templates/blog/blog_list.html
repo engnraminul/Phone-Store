@@ -1,8 +1,34 @@
 {% extends 'base.html' %}
-
+{% load custom_filters %}
 
 {% block body %}
 
-<h5>Blog List</h5>
+
+{% for blog in blog %}
+
+<div class="row">
+    <div class="col-4 col-sm-4">
+        <img src="{{blog.image.url}}" alt="" width="100%">
+    </div>
+    <div class="col-8 col-sm-8">
+        <h2 class="h6 text-start fw-bold">{{blog.title}}</h2>
+        <p>{{blog.content|range_filter|safe}}</p>
+        
+    </div>
+</div>
+<hr>
+
+<style>
+    @media only screen and (max-width: 600px) {
+   p{
+    display: none;
+    
+    
+  }
+}
+</style>
+
+{% endfor %}
+
 
 {% endblock body %}
