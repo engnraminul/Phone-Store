@@ -1,10 +1,12 @@
-from multiprocessing import context
+from django.views.generic import TemplateView
+from turtle import title
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.views.generic import ListView
 from .models import GalleryImage, Phone, PhoneBrand, ProcessorBrand, Processor
 from django.http import JsonResponse
 from django.db.models import Q
 from django.core.paginator import Paginator
+
 
 
 
@@ -21,7 +23,8 @@ class phone_brand_list(ListView):
 def home(request):
     phone = Phone.objects.filter(status='Released').order_by('-created')
     u_phone= Phone.objects.filter(status='Upcoming').order_by('-created')
-    paginator = Paginator(phone, 2)
+    
+    paginator = Paginator(phone, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -33,6 +36,7 @@ def home(request):
     context = {
         'u_phone': u_phone,
         'page_obj': page_obj,
+        
     }
     return render(request, 'home.html', context)
 
@@ -115,7 +119,7 @@ def search_result(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         res = None
         phone = request.POST.get('phone')
-        query_s= Phone.objects.filter(name__icontains=phone)
+        query_s= Phone.objects.filter(name__icontains=phone)[:5]
         if len(query_s) > 0 and len(phone) > 0:
             data = []
             for pos in query_s:
@@ -139,7 +143,7 @@ def search_result(request):
 def phone_list(request, status):
     
     phone = Phone.objects.filter(status=status)
-    paginator = Paginator(phone, 3)
+    paginator = Paginator(phone, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -150,3 +154,35 @@ def phone_list(request, status):
     }
 
     return render(request, 'phone/phone_list.html', context)
+
+
+
+
+class Compare(TemplateView):
+    def get(self, request, *args, **kwargs):
+        phone = Phone.objects.all()
+
+        context = {
+            'phone':phone,
+            
+        }
+        return render(request, 'phone/compare.html', context)
+
+    def post(self, request, *args, **kwargs):
+        compare_1 = request.POST.get('phonbe1')
+        compare_2 = request.POST.get('phonbe1')
+        compare_3 = request.POST.get('phonbe1')
+        print(compare_1)
+        print("print")
+        phone1 = Phone.objects.filter(name=compare_1)
+        phone2 = Phone.objects.filter(name=compare_2)
+        phone3 = Phone.objects.filter(name=compare_3)
+
+        context = {
+            'phone1':phone1,
+            'phone2':phone2,
+            'phone3':phone3,
+                
+            }
+        return render(request, 'phone/compare.html', context)
+            

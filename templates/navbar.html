@@ -15,7 +15,7 @@
             <li><a href="{% url 'Phone:Processor_by_brand' slug='snapdragon' %}">Processor</a></li>
             <li><a href="{% url 'Phone:phone_brand_list' brand='brand' %}">Brand</a></li>
             <li><a href="#">Blogs</a></li>
-            <li><a href="#">Compare</a></li>
+            <li><a href="{% url 'Phone:compare'%}">Compare</a></li>
             
          </div>
          <div class="search-icon">
@@ -31,7 +31,7 @@
          </form>
         
          
-         <div data-bs-spy="scroll" id = "results-box" class = "results-card not-visible mt-3 scrollspy-example"></div>
+         <div id = "results-box" class = "results-card not-visible mt-3 scrollspy-example"></div>
             
          
       </nav>

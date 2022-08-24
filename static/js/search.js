@@ -16,14 +16,13 @@ const sendSearchData = (phone) => {
                 result_box.innerHTML = "";
                 data.forEach(phone=> {
                     result_box.innerHTML += `
-                    <a href="${phone.slug}/">
+                    <a href="${phone.slug}">
                     <div class="row m-0 p-0">
                         <div class="col-4">
                             <img src="${phone.thumbnail}" class="phone-img" alt="">  
                         </div>
                         <div class="col-8">
-                            <p style="text-decoration: none;">${phone.name}</p>
-                            <p style="text-decoration: none!important;">${phone.status}</p>
+                            <p class="p-tag m-0" style="text-decoration: none;">${phone.name}</p>
                         </div>
 
                     </div>
@@ -61,3 +60,4 @@ search_input.addEventListener('keyup', e=>{
 
     sendSearchData(e.target.value)
 })
+
