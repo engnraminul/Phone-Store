@@ -8,11 +8,12 @@
 
 <div class="row">
     <div class="col-4 col-sm-4">
-        <img src="{{blog.image.url}}" alt="" width="100%">
+        <a href="{% url 'blog:blog_detail' title=blog.slug %}"><img src="{{blog.image.url}}" alt="" width="100%"></a>
     </div>
-    <div class="col-8 col-sm-8">
-        <h2 class="h6 text-start fw-bold">{{blog.title}}</h2>
+    <div class="col-8 col-sm-8 mt-2">
+        <a href="{% url 'blog:blog_detail' title=blog.slug %}"><h5 class="text-start fw-bold text-dark">{{blog.title}}</h5></a>
         <p>{{blog.content|range_filter|safe}}</p>
+        <h6 class="fs-7 text-start">Published : {{blog.publish_date}}</h6>
         
     </div>
 </div>
@@ -25,6 +26,22 @@
     
     
   }
+  h5{
+    font-size: 15px;
+  }
+  h6{
+    font-size: 10px;
+  }
+}
+
+a:link{
+  text-decoration: none!important;
+}
+
+
+
+p{
+    text-align: justify;
 }
 </style>
 

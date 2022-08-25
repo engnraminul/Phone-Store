@@ -7,11 +7,11 @@ from tinymce import models as tinymce_models
 class Blog(models.Model):
     title = models.CharField(max_length=250, verbose_name="Tilte")
     content = tinymce_models.HTMLField()
-    image = models.ImageField(upload_to = 'blog', null=True, blank=True)
+    image = models.ImageField(upload_to ='blog', null=False, blank=False)
     seo_title= models.CharField(max_length=80, blank=True, null=True)
     seo_des = models.TextField(blank=True, null=True)
-    publish_date = models.DateTimeField(auto_now_add=True)
-    update_date = models.DateTimeField(auto_now=True)
+    publish_date = models.DateField(auto_now_add=False)
+    update_date = models.DateField(auto_now=True)
     slug = models.SlugField(max_length=250, unique=True, blank=True)
 
     class Meta:

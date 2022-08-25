@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block body %}
+
+
+{% for blog in blog %}
+
+<div class="row">
+    <div class="col-12">
+      <h1 class="text-start title">{{blog.title}}</h1>
+      <p>Published: {{blog.publish_date}}</p>
+      <img src="{{blog.image.url}}" alt="" width="100%">
+      <p>{{blog.content|safe}}</p>
+
+
+    </div>
+</div>
+<hr>
+
+<style>
+    @media only screen and (max-width: 600px) {
+   
+  h5{
+    font-size: 15px;
+  }
+  h6{
+    font-size: 10px;
+  }
+  .title{
+    font-size: 20px;
+    
+  }
+}
+
+@media only screen and (min-width: 601px) {
+.title{
+    font-size: 30px;
+    
+  }
+}
+
+p{
+    text-align: justify;
+}
+</style>
+
+{% endfor %}
+
+
+{% endblock body %}
