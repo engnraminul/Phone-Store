@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import GalleryImage, ProcessorBrand, Processor, PhoneBrand, Phone
+import datetime
 
 #Phone Clone
 def clone(modeladmin, request, queryset):
@@ -7,6 +8,7 @@ def clone(modeladmin, request, queryset):
             object.id = None
             object.status = 'Draft'
             object.name ='(clone) ' + object.name
+            object.created=datetime.datetime.now()
             object.save()
 clone.short_description = "Clone"
 

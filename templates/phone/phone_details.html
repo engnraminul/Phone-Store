@@ -7,7 +7,7 @@
 {% block body %}
 
 <div class=" d-grid p-1 mb-3 text-center border bg-light">
-    <h1 class="h3 fw-bold">{{phone.name}}</h1>
+    <h1 class="h4 fw-bold">{{phone.name}}</h1>
 </div>
 
     <!--breadcrumb--> 
@@ -42,7 +42,7 @@
 
 
           <div class="border text-start">   
-                <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="h5">Released : </span> 
+                <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Released : </span> 
                     {% if phone.release %}
                     <span>{{phone.release}}</span>
                     {% else %}
@@ -50,17 +50,17 @@
                     {% endif %}
                </div>
                 
-                <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="h5">OS : </span> <span>{{phone.os}} {{phone.os_version}}</span></div>
+                <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.os}} {{phone.os_version}}</span></div>
 
-                <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="h5">Display : </span> <span>{{phone.size}} | {{phone.display_type}} GB</span></div>
+                <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.size}} | {{phone.display_type}} GB</span></div>
                 
-                <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="h5">RAM : </span> <span>{{phone.ram}} GB</span></div>
+                <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.ram}} GB</span></div>
                 
-                <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="h5">Storage : </span> <span>{{phone.storage}}</span></div>
+                <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.storage}}</span></div>
 
-                <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="h5">Chipset : </span> <span>{{phone.processor.title}}</span></div>
+                <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.processor.title}}</span></div>
 
-                <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="h5">Battery : </span> <span>{{phone.battery_capacity}}</span></div>
+                <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.battery_capacity}}</span></div>
             </div>
 
             <div class="text-start ">
@@ -87,7 +87,7 @@
                    </tr>
                    <tr>
                         <td class="td-title">Brand</td>
-                        <td class="td-data">{{phone.brand}}</td>
+                        <td class="td-data">{{phone.brand}}<a href="{% url 'Phone:phone_filter' slug=phone.brand.slug status='Released' %}"> → See All Smartphone</a></td>
                       
                    </tr>
                    <tr>
@@ -215,7 +215,7 @@
                    </tr>
                    <tr>
                     {% if phone.front %}
-                         <td class="td-title">Fron</td>
+                         <td class="td-title">Front</td>
                          <td class="td-data">{{phone.front}}</td>
                          {% endif %}
                    </tr>
@@ -400,13 +400,14 @@
                          {% if phone.chipset %}
                          <td class="td-title">Processor</td>
                          <td class="td-data">{{phone.chipset|linebreaks}}</td>
+                         
                          {% endif %}
                    </tr>
                    {% else %}
                    <tr>
                          {% if phone.processor.chipset %}
                          <td class="td-title">Chipset</td>
-                         <td class="td-data">{{phone.processor.chipset}}</td>
+                         <td class="td-data">{{phone.processor.chipset}} <a href="{% url 'Phone:phone_by_processor' slug=phone.processor.slug %}"> → See All Smartphone</a></td>
                          {% endif %}
                     </tr>
                     <tr>
@@ -725,7 +726,7 @@
      .td-title{
           font-weight: 600;
           color: brown;
-          width: 35%;
+          width: 30%;
           
       }
       .head-title{
@@ -752,6 +753,11 @@
          .td-data{
           font-size: 14px;
          }
+       }
+
+       .feature-title{
+          font-weight: 600;
+          font-size: 18px;
        }
 </style>
 

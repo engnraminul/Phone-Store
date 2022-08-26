@@ -24,7 +24,7 @@ def home(request):
     phone = Phone.objects.filter(status='Released').order_by('-created')
     u_phone= Phone.objects.filter(status='Upcoming').order_by('-created')
     
-    paginator = Paginator(phone, 4)
+    paginator = Paginator(phone, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
