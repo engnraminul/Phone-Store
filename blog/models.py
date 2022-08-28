@@ -54,6 +54,6 @@ class Top10(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        super(Blog, self).save(*args, **kwargs)
+        super(Top10, self).save(*args, **kwargs)
 
 

@@ -92,9 +92,11 @@ def phone_filter(request, slug, status):
 
 def phone_details(request, slug):
     phone = Phone.objects.get(slug=slug)
+    brand_phone = Phone.objects.filter(brand=phone.brand,)[:6]
 
     context = {
-        'phone':phone
+        'phone':phone,
+        'brand_phone':brand_phone,
     }
 
     return render(request, 'phone/phone_details.html', context)

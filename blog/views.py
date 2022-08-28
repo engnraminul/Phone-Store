@@ -1,5 +1,3 @@
-import imp
-from multiprocessing import context
 from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
@@ -24,3 +22,15 @@ def blog_detail(request, title):
     }
 
     return render(request, 'blog/blog_detail.html', context)
+
+
+def top10_list(request):
+    top10 = Top10.objects.all()
+    paginator = Paginator(top10, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'page_obj':page_obj,
+    }
+    return render(request, 'blog/top10_list.html', context)

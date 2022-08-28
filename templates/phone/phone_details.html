@@ -718,6 +718,7 @@
           <hr>
 
      </div>
+
      
 </div>
 
@@ -765,7 +766,47 @@
 
 {% block sidebar %}
 
-<h1>Sidebar</h1>
+<h4 class="fw-bold">More <a href="{% url 'Phone:phone_filter' slug=phone.brand.slug status='Released' %}">{{phone.brand.name}}</a> Phone</h4>
+<div class="row">
+
+     {% for phone in brand_phone %}
+     <div class=" sidebar-card col-4 mb-4">
+       <div class="card">
+
+         <!-- <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
+           {{phone.status}}
+           <span class="visually-hidden">unread messages</span>
+         </span> -->
+
+         <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+           <img class="img-fluid" src="{{ phone.thumbnail.url }}"
+             class="w-100" />
+
+         </div>
+         <div class="card-body p-0 bg-light mt-2">
+           <a href="" class="text-reset">
+             <a class="sidebar-card-title mb-3 stretched-link text-decoration-none fw-bold" href="{{phone.get_absolute_url}}">{{phone.name}} </a>
+           </a>
+           <h6 class="mb-1 mt-1">
+             {% if phone.price %}
+             <s> {% if phone.old_price %} {{phone.old_price}}$ {% endif %}</s><strong class="ms-2 text-danger">{{phone.price}}$</strong>
+             {% else %}
+             <strong class="ms-2 text-danger">0.00$</strong>
+             {% endif %}
+           </h6>
+         </div>
+       </div>
+     </div>
+
+     {% endfor %}
+   </div>
+
+   <style>
+     .sidebar-card-title{
+          font-size: 15px;
+     }
+     
+   </style>
 
 {% endblock %}
 
