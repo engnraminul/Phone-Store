@@ -136,44 +136,44 @@
                    <tr>
                         <td class="td-title">2G Network</td>
                         {% if phone.two_g == True %}
-                    <td class="td-data">Yes | {{phone.two_g_band}}</td>
+                    <td class="td-data"><span class=" text-success">Yes</span> | {{phone.two_g_band}}</td>
                     {% else %}
-                    <td class="td-data">No</td>
+                    <td class="td-data"><span class=" text-danger">No</span></td>
                     {% endif %}
                    </tr>
                    <tr>
                     <td class="td-title">3G Network</td>
                     {% if phone.three_g == True %}
-                         <td class="td-data">Yes | {{phone.three_g_band}}</td>
+                         <td class="td-data"><span class=" text-success">Yes</span> | {{phone.three_g_band}}</td>
                     {% else %}
-                         <td class="td-data">No</td>
+                         <td class="td-data"><span class=" text-danger">No</span></td>
                     {% endif %}
                    </tr>
 
                    <tr>
                     <td class="td-title">4G Network</td>
                     {% if phone.four_g == True %}
-                         <td class="td-data">Yes | {{phone.four_g_band}}</td>
+                         <td class="td-data"><span class=" text-success">Yes</span> | {{phone.four_g_band}}</td>
                     {% else %}
-                         <td class="td-data">No</td>
+                         <td class="td-data"><span class=" text-danger">No</span></td>
                     {% endif %}
                    </tr>
 
                    <tr>
                     <td class="td-title">5G Network</td>
                     {% if phone.five_g == True %}
-                         <td class="td-data">Yes | {{phone.five_g_band}}</td>
+                         <td class="td-data"><span class=" text-success">Yes</span> | {{phone.five_g_band}}</td>
                     {% else %}
-                         <td class="td-data">No</td>
+                         <td class="td-data"><span class=" text-danger">No</span></td>
                     {% endif %}
                    </tr>
 
                    <tr>
                     <td class="td-title">6G Network</td>
                     {% if phone.six_g == True %}
-                         <td class="td-data">Yes | {{phone.six_g_band}}</td>
+                         <td class="td-data"><span class=" text-success">Yes</span> | {{phone.six_g_band}}</td>
                     {% else %}
-                         <td class="td-data">No</td>
+                         <td class="td-data"><span class=" text-danger">No</span></td>
                     {% endif %}
                    </tr>
 
@@ -182,9 +182,9 @@
                    <tr>
                     <td class="td-title">7G Network</td>
                     {% if phone.seven_g == True %}
-                         <td class="td-data">Yes | {{phone.seven_g_band}}</td>
+                         <td class="td-data"><span class=" text-success">Yes</span> | {{phone.seven_g_band}}</td>
                     {% else %}
-                         <td class="td-data">No | {{phone.seven_g_band}}</td>
+                         <td class="td-data"><span class=" text-danger">No</span> | {{phone.seven_g_band}}</td>
                     {% endif %}
                    </tr>
 
@@ -457,10 +457,10 @@
                    <tr>
                          {% if phone.memory_slot == True %}
                          <td class="td-title">Extra Slot</td>
-                         <td class="td-data">Yes</td>
+                         <td class="td-data text-success">Yes</td>
                          {% else %}
                          <td class="td-title">Extra Slot</td>
-                         <td class="td-data">No</td>
+                         <td class="td-data text-danger">No</td>
                          {% endif %}
                    </tr>
                    <tr>
@@ -494,10 +494,10 @@
                    <tr>
                          {% if phone.audio_jack == True %}
                          <td class="td-title">Extra Slot</td>
-                         <td class="td-data">Yes</td>
+                         <td class="td-data text-success">Yes</td>
                          {% else %}
                          <td class="td-title">Extra Slot</td>
-                         <td class="td-data">No</td>
+                         <td class="td-data text-danger">No</td>
                          {% endif %}
                          </tr>
                     <tr>
@@ -524,48 +524,48 @@
                    <tr>
                          {% if phone.hotspot == True %}
                          <td class="td-title">Hotspot</td>
-                         <td class="td-data">Yes</td>
+                         <td class="td-data text-success">Yes</td>
                          {% else %}
                          <td class="td-title">Hotspot</td>
-                         <td class="td-data">No</td>
+                         <td class="td-data text-danger">No</td>
                          {% endif %}
                     </tr>
                     
                     <tr>
                          {% if phone.nfc == True %}
                          <td class="td-title">NFC</td>
-                         <td class="td-data">Yes</td>
+                         <td class="td-data text-success">Yes</td>
                          {% else %}
                          <td class="td-title">NFC</td>
-                         <td class="td-data">No</td>
+                         <td class="td-data text-danger">No</td>
                          {% endif %}
                     </tr>
                     
                     <tr>
                          {% if phone.gps == True %}
                          <td class="td-title">GPS</td>
-                         <td class="td-data">Yes</td>
+                         <td class="td-data text-success">Yes</td>
                          {% else %}
                          <td class="td-title">GPS</td>
-                         <td class="td-data">No</td>
+                         <td class="td-data text-danger">No</td>
                          {% endif %}
                     </tr>
                     <tr>
                          {% if phone.radio == True %}
                          <td class="td-title">Radio</td>
-                         <td class="td-data">Yes</td>
+                         <td class="td-data text-success">Yes</td>
                          {% else %}
                          <td class="td-title">Radio</td>
-                         <td class="td-data">No</td>
+                         <td class="td-data text-danger">No</td>
                          {% endif %}
                     </tr>
                     <tr>
                          {% if phone.infrared_port == True %}
                          <td class="td-title">Infrared Port</td>
-                         <td class="td-data">Yes</td>
+                         <td class="td-data text-success">Yes</td>
                          {% else %}
                          <td class="td-title">Infrared Port</td>
-                         <td class="td-data">No</td>
+                         <td class="td-data text-danger">No</td>
                          {% endif %}
                     </tr>
                     <tr>
