@@ -4,16 +4,16 @@
 {% block body %}
 
 
-{% for blog in page_obj %}
+{% for top10 in page_obj %}
 
 <div class="row">
     <div class="col-4 col-sm-4">
-        <a href="{% url 'blog:blog_detail' title=blog.slug %}"><img src="{{blog.image.url}}" alt="" width="100%"></a>
+        <a href="{% url 'blog:top10_detail' slug=top10.slug %}"><img src="{{top10.image.url}}" alt="" width="100%"></a>
     </div>
     <div class="col-8 col-sm-8 mt-2">
-        <a href="{% url 'blog:blog_detail' title=blog.slug %}"><h5 class="text-start fw-bold text-dark">{{blog.title}}</h5></a>
-        <p>{{blog.seo_des|range_filter|safe}}</p>
-        <h6 class="fs-7 text-start">Published : {{blog.publish_date}}</h6>
+        <a href="{% url 'blog:top10_detail' slug=top10.slug %}"><h5 class="text-start fw-bold text-dark">{{top10.title}}</h5></a>
+        <p>{{top10.seo_des|range_filter|safe}}</p>
+        <h6 class="fs-7 text-start">Published : {{top10.publish_date}}</h6>
         
     </div>
 </div>

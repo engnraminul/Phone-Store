@@ -22,7 +22,7 @@ const sendSearchData = (phone) => {
                             <img src="${phone.thumbnail}" class="phone-img" alt="">  
                         </div>
                         <div class="col-8">
-                            <p class="p-tag m-0" style="text-decoration: none;">${phone.name}</p>
+                            <p class="p-tag m-0" id="result_title">${phone.name}</p>
                         </div>
 
                     </div>
@@ -52,10 +52,14 @@ const search_input = document.getElementById('search-input')
 const result_box = document.getElementById('results-box')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')[0].value
 
+
+
+
 search_input.addEventListener('keyup', e=>{
     console.log(e.target.value)
     if (result_box.classList.contains('not-visible')){
         result_box.classList.remove('not-visible')
+        
     }
 
     sendSearchData(e.target.value)

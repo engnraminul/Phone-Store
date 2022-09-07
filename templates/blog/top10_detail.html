@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+{% for top10 in top10 %}
+
+<h1>{{top10.title}}</h1>
+{{top10.phone1.name}}
+{{top10.phone2.name}}
+
+{% endfor %}
+
+
+
+
+
+{% endblock body %}

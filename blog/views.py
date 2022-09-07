@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
@@ -34,3 +35,13 @@ def top10_list(request):
         'page_obj':page_obj,
     }
     return render(request, 'blog/top10_list.html', context)
+
+
+def top10_detail(request, slug):
+    top10 = Top10.objects.filter(slug=slug)
+
+    context = {
+        'top10':top10,
+    }
+
+    return render(request, 'blog/top10_detail.html', context)
