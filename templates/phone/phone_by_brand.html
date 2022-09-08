@@ -20,10 +20,11 @@
         <div class="col-lg-3 col-md-4 col-6 mb-4">
           <div class="card">
 
-            <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
-              {{phone.status}}
-              <span class="visually-hidden">unread messages</span>
-            </span>
+            {% if phone.status == 'Upcoming' or phone.status == 'Rumor' %}
+
+            <span class="position-absolute top-10 start-80 badge rounded-pill bg-info">
+              {{phone.status}}</span>
+              {% endif %}
 
             <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
               <img class="img-fluid" src="{{ phone.thumbnail.url }}"

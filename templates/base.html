@@ -38,7 +38,7 @@
                       <div class="scrollmenu">
 
                         {% for brand in request|brand_tags %}
-                        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}}</a>|
+                        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}}</a><Span class="text-danger">|</Span>
                         {% endfor %}
                     </div>
                      </div>

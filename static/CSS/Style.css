@@ -26,7 +26,8 @@ div.scrollmenu {
 }
   
   div.scrollmenu a:hover {
-    background-color: rgb(158, 25, 25);
+    background-color: rgb(252, 250, 250);
+    color: rgb(25, 105, 180);
   }
 
 
