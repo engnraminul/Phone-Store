@@ -16,16 +16,11 @@
                 
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
                 <base href="/">
-                
-                
-                
-
-   
             
                 <!-- Bootstrap CSS -->
                 
             
-                <title>Phone Store</title>
+                <title>SpecBuzz</title>
                 {% block head %}
                 
                 {% endblock %}
@@ -43,16 +38,14 @@
                       <div class="scrollmenu">
 
                         {% for brand in request|brand_tags %}
-                        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}}</a>
-                        
-
+                        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}}</a>|
                         {% endfor %}
                     </div>
                      </div>
 
 
 
-<section style="">
+<section>
     <div class="text-center container py-5">
       <h6 class="mt-1 mb-4"><strong>Top Ads Place</strong></h6>
   
@@ -62,10 +55,6 @@
         {%  block body %}
                       
         {% endblock  %} 
-
-
-
-
     </div>
 
 
@@ -73,18 +62,8 @@
     
     <div class="col-12 col-md-12 col-lg-4">
       <div class=" border">
-
-
-
-
-
-
-
-
-
 {% block sidebar %}
 
-    
 
 {% endblock %}
 
@@ -99,7 +78,6 @@
 
   {% include 'footer.html' %}
 
-</body>
 
 
 
