@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
@@ -16,7 +15,7 @@ def blog_list(request):
 
 
 def blog_detail(request, title):
-    blog = Blog.objects.filter(slug=title)
+    blog = Blog.objects.get(slug=title)
 
     context = {
         'blog':blog,
@@ -38,10 +37,10 @@ def top10_list(request):
 
 
 def top10_detail(request, slug):
-    top10 = Top10.objects.filter(slug=slug)
+    top10 = Top10.objects.get(slug=slug)
 
     context = {
-        'top10':top10,
+        'phone':top10,
     }
 
     return render(request, 'blog/top10_detail.html', context)

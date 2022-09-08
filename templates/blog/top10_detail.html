@@ -3,16 +3,531 @@
 
 {% block body %}
 
-
-{% for top10 in top10 %}
-
-<h1>{{top10.title}}</h1>
-{{top10.phone1.name}}
-{{top10.phone2.name}}
-
-{% endfor %}
+<div class=" d-grid p-1 mb-3 text-center border bg-light">
+  <h1 class="h3 fw-bold">{{phone.title}}</h1>
+</div>
 
 
+<!--Phone 1-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone1.slug %}" class="h5 fw-bold">1. {{phone.phone1.name}}</a>
+</div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-12 mb-4">
+        <a href="{% url 'Phone:phone_details' slug=phone.phone1.slug %}"><img class="img-thumbnail" src="{{phone.phone1.thumbnail.url}}" alt=""></a>
+        
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-12 mb-4">
+
+      <div class="">
+          <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                {% if phone.phone1.price %}
+                <span class="icon">{{phone.phone1.price}}$</span>
+                {% else %}
+                <span class="icon">0.00$</span>
+                {% endif %}
+          </h5>
+      </div>
+
+
+      <div class="border text-start">   
+            <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                {% if phone.phone1.release %}
+                <span>{{phone.phone1.release}}</span>
+                {% else %}
+                <span>{{phone.phone1.status}}</span>
+                {% endif %}
+          </div>
+            
+            <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone1.os}} {{phone.phone1.os_version}}</span></div>
+            <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone1.size}} | {{phone.phone1.display_type}}</span></div>
+            <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone1.ram}}</span></div>
+            <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone1.storage}}</span></div>
+            <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone1.processor.title}}</span></div>
+            <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone1.camera_short}}</span></div>
+            <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone1.battery_capacity}}</span></div>
+        </div>
+      
+        <div class="text-start ">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone1.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+        </div>
+    </div>
+  </div>
+
+
+
+<!--Phone 2-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone2.slug %}" class="h5 fw-bold">2. {{phone.phone2.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone2.slug %}"><img class="img-thumbnail" src="{{phone.phone2.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone2.price %}
+                  <span class="icon">{{phone.phone2.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone2.release %}
+                  <span>{{phone.phone2.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone2.status}}</span>
+                  {% endif %}
+            </div>
+              
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone2.os}} {{phone.phone2.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone2.size}} | {{phone.phone2.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone2.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone2.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone2.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone2.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone2.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone2.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+  
+
+<!--Phone 3-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone3.slug %}" class="h5 fw-bold">3. {{phone.phone3.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone3.slug %}"><img class="img-thumbnail" src="{{phone.phone3.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone3.price %}
+                  <span class="icon">{{phone.phone3.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone3.release %}
+                  <span>{{phone.phone3.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone3.status}}</span>
+                  {% endif %}
+            </div>
+              
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone3.os}} {{phone.phone3.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone3.size}} | {{phone.phone3.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone3.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone3.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone3.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone3.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone3.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone3.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+  
+
+<!--Phone 4-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone4.slug %}" class="h5 fw-bold">4. {{phone.phone4.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone4.slug %}"><img class="img-thumbnail" src="{{phone.phone4.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone4.price %}
+                  <span class="icon">{{phone.phone4.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone4.release %}
+                  <span>{{phone.phone4.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone4.status}}</span>
+                  {% endif %}
+            </div>
+              
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone4.os}} {{phone.phone4.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone4.size}} | {{phone.phone4.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone4.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone4.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone4.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone4.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone4.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone4.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+
+
+<!--Phone 5-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone5.slug %}" class="h5 fw-bold">5. {{phone.phone5.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone5.slug %}"><img class="img-thumbnail" src="{{phone.phone5.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone5.price %}
+                  <span class="icon">{{phone.phone5.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone5.release %}
+                  <span>{{phone.phone5.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone5.status}}</span>
+                  {% endif %}
+            </div>
+              
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone5.os}} {{phone.phone5.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone5.size}} | {{phone.phone5.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone5.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone5.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone5.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone5.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone5.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone4.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+
+
+<!--Phone 6-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone6.slug %}" class="h5 fw-bold">6. {{phone.phone6.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone6.slug %}"><img class="img-thumbnail" src="{{phone.phone6.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone6.price %}
+                  <span class="icon">{{phone.phone6.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone6.release %}
+                  <span>{{phone.phone6.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone6.status}}</span>
+                  {% endif %}
+            </div>
+              
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone6.os}} {{phone.phone6.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone6.size}} | {{phone.phone6.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone6.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone6.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone6.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone6.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone6.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone6.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+
+
+<!--Phone 7-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone7.slug %}" class="h5 fw-bold">7. {{phone.phone7.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone7.slug %}"><img class="img-thumbnail" src="{{phone.phone7.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone7.price %}
+                  <span class="icon">{{phone.phone7.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone7.release %}
+                  <span>{{phone.phone7.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone7.status}}</span>
+                  {% endif %}
+            </div>
+              
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone7.os}} {{phone.phone7.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone7.size}} | {{phone.phone7.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone7.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone7.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone7.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone7.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone7.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone7.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+
+<!--Phone 8-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone8.slug %}" class="h5 fw-bold">8. {{phone.phone8.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone8.slug %}"><img class="img-thumbnail" src="{{phone.phone8.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone8.price %}
+                  <span class="icon">{{phone.phone8.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone8.release %}
+                  <span>{{phone.phone8.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone8.status}}</span>
+                  {% endif %}
+            </div>
+              
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone8.os}} {{phone.phone8.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone8.size}} | {{phone.phone8.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone8.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone8.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone8.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone8.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone8.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone8.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+
+<!--Phone 9-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone9.slug %}" class="h5 fw-bold">9. {{phone.phone9.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone9.slug %}"><img class="img-thumbnail" src="{{phone.phone9.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone9.price %}
+                  <span class="icon">{{phone.phone9.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone9.release %}
+                  <span>{{phone.phone9.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone9.status}}</span>
+                  {% endif %}
+            </div>
+            
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone9.os}} {{phone.phone9.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone9.size}} | {{phone.phone9.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone9.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone9.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone9.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone9.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone9.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone9.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+
+<!--Phone 10-->
+<div class=" d-grid p-1 mb-3">
+  <a href="{% url 'Phone:phone_details' slug=phone.phone10.slug %}" class="h5 fw-bold">10. {{phone.phone10.name}}</a>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+          <a href="{% url 'Phone:phone_details' slug=phone.phone10.slug %}"><img class="img-thumbnail" src="{{phone.phone10.thumbnail.url}}" alt=""></a>
+          
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-12 mb-4">
+  
+        <div class="">
+            <h5 class="fw-bold shadow p-2 rounded bg-dark text-start"><span style="color: white;">Price : </span>  
+                  {% if phone.phone10.price %}
+                  <span class="icon">{{phone.phone10.price}}$</span>
+                  {% else %}
+                  <span class="icon">0.00$</span>
+                  {% endif %}
+            </h5>
+        </div>
+  
+  
+        <div class="border text-start">   
+              <div class="shadow-sm p-1"> <span class="icon bi bi-table"></span><span class="feature-title">Release : </span> 
+                  {% if phone.phone10.release %}
+                  <span>{{phone.phone10.release}}</span>
+                  {% else %}
+                  <span>{{phone.phone10.status}}</span>
+                  {% endif %}
+            </div>
+            
+              <div class="shadow-sm p-1"><span class="icon bi bi-android2"></span><span class="feature-title">OS : </span> <span>{{phone.phone10.os}} {{phone.phone10.os_version}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Display : </span> <span>{{phone.phone10.size}} | {{phone.phone10.display_type}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-memory"></span><span class="feature-title">RAM : </span> <span>{{phone.phone10.ram}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-hdd"></span><span class="feature-title">Storage : </span> <span>{{phone.phone10.storage}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-cpu"></span><span class="feature-title">Chipset : </span> <span>{{phone.phone10.processor.title}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-camera"></span><span class="feature-title">Camera : </span> <span>{{phone.phone10.camera_short}}</span></div>
+              <div class="shadow-sm p-1"><span class="icon bi bi-battery-charging"></span><span class="feature-title">Battery : </span> <span>{{phone.phone10.battery_capacity}}</span></div>
+          </div>
+        
+          <div class="text-start ">
+            <a href="{% url 'Phone:phone_details' slug=phone.phone10.slug %}" class="text-decoration-none"><h5 class="fw-bold shadow p-2 rounded bg-success mt-4"><span class="bi bi-card-list " style="color: white;"> Full Specifications </span> </h5></a>
+          </div>
+      </div>
+  </div>
+
+<style>
+
+  .h5{
+    text-align: left;
+  }
+
+  .td-title{
+       font-weight: 600;
+       color: rgb(21, 118, 131);
+       width: 30%;
+       
+   }
+   .head-title{
+       background-color: #dae5e7;
+       color: brown;
+       font-weight: bolder;
+       font-size: 20px;
+       box-shadow: inset 0px -1px 1px rgb(189 41 41);
+   }
+   
+   .icon{
+        color: coral;
+        padding: 5px;
+        font-size: 20px;
+   }
+   a{
+       text-decoration: none;
+   }
+
+   @media only screen and (max-width: 600px) {
+      .td-title{
+       font-size: 14px;
+      }
+      .td-data{
+       font-size: 14px;
+      }
+    }
+
+    .feature-title{
+       font-weight: 600;
+       font-size: 18px;
+    }
+</style>
 
 
 

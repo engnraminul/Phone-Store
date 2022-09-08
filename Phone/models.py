@@ -143,6 +143,8 @@ class Phone(models.Model):
     front_camera = models.TextField(max_length=None, null=True, blank=True)
     front_camera_features = models.CharField(max_length=150, null=True, blank=True)
     front_camera_video = models.CharField(max_length=150, null=True, blank=True)
+    camera_short = models.CharField(max_length=150, null=True, blank=True)
+
 
     #platform
     os = models.CharField(max_length=50, null=True, blank=True)

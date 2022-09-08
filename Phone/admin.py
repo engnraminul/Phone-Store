@@ -47,7 +47,7 @@ class ProductAdmin(admin.ModelAdmin):
         }),
 
         ('Camera', {
-            'fields': ('back_camera', 'back_camera_features', 'back_camera_video',  'front_camera', 'front_camera_features', 'front_camera_video',),
+            'fields': ('back_camera', 'back_camera_features', 'back_camera_video',  'front_camera', 'front_camera_features', 'front_camera_video', 'camera_short'),
 
         }),
 

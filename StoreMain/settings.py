@@ -1,7 +1,6 @@
-
 from pathlib import Path
 import os
-from tkinter.tix import Tree
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

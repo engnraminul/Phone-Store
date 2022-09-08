@@ -1,4 +1,3 @@
-from turtle import title
 from django.urls import path
 from blog import views
 
