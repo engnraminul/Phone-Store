@@ -22,9 +22,9 @@
                  Category
                </a>
                <ul class="dropdown-menu bg-dark mt-3">
-                 <li><a class="dropdown-item" href="#">Smartphone</a></li>
-                 <li><a class="dropdown-item" href="#">Tablet</a></li>
-                 <li><a class="dropdown-item" href="#">Feature Phone</a></li>
+                 <li><a class="dropdown-item" href="{% url 'Phone:phone_by_category' category='Smartphone' %}">Smartphone</a></li>
+                 <li><a class="dropdown-item" href="{% url 'Phone:phone_by_category' category='Tablet' %}">Tablet</a></li>
+                 <li><a class="dropdown-item" href="{% url 'Phone:phone_by_category' category='Feature-Phone' %}">Feature Phone</a></li>
                </ul>
             </li>
             <li><a href="{% url 'blog:blog_list' %}">Blogs</a></li>

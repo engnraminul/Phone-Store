@@ -49,7 +49,6 @@ def phone_by_processor(request, slug):
         'processor':processor,
         'phone':phone
     }
-
     return render(request, 'phone/phone_by_processor.html', context)
 
 
@@ -57,7 +56,6 @@ def phone_by_processor(request, slug):
 
 def Processor_by_brand(request, slug):
     brand=ProcessorBrand.objects.all()
-    #brands = get_object_or_404(ProcessorBrand, slug=slug)
     brands = ProcessorBrand.objects.get(slug=slug)
     processor=Processor.objects.filter(brand=brands)
     
@@ -76,16 +74,13 @@ def Processor_by_brand(request, slug):
 #Phone Filter by Status
 def phone_filter(request, slug, status):
     brand=PhoneBrand.objects.get(slug=slug)
-    #brand = get_object_or_404(PhoneBrand, slug=slug)
     phone=Phone.objects.filter(brand=brand, status=status)
-    
 
     context = {
         'brand':brand,
         'phone':phone,
         'status':status,
     }
-
     return render(request, 'phone/phone_by_brand.html', context)
 
 
@@ -97,13 +92,11 @@ def phone_details(request, slug):
         'phone':phone,
         'brand_phone':brand_phone,
     }
-
     return render(request, 'phone/phone_details.html', context)
 
 
 def phone_gallery(request, slug):
     phone = Phone.objects.get(slug=slug)
-    #phone = get_object_or_404(Phone, slug=slug)
     gallery = GalleryImage.objects.filter(phone=phone)
     
 
@@ -157,6 +150,20 @@ def phone_list(request, status):
     return render(request, 'phone/phone_list.html', context)
 
 
+def phone_by_category(request, category):
+    
+    phone = Phone.objects.filter(category=category)
+    paginator = Paginator(phone, 4)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+
+    context = {
+        'page_obj': page_obj,
+        'category':category,
+    }
+
+    return render(request, 'phone/phone_by_category.html', context)
 
 
 class Compare(TemplateView):

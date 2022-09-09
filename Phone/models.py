@@ -88,7 +88,7 @@ class Phone(models.Model):
     CATEGORY = (
         ("Smartphone", "Smartphone"),
         ("Tablet","Tablet"),
-        ("Feature Phone", "Feature Phone"),
+        ("Feature-Phone", "Feature Phone"),
         
     )
     #Basic Informations
