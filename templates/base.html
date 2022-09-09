@@ -29,19 +29,20 @@
               
 
 
-              <body>
+<body>
                 
 
-                     {% include 'navbar.html' %}
+{% include 'navbar.html' %}
 
-                     <div class="container">
-                      <div class="scrollmenu">
 
-                        {% for brand in request|brand_tags %}
-                        <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}}</a><Span class="text-danger">|</Span>
-                        {% endfor %}
-                    </div>
-                     </div>
+
+<div class="container">
+  <div class="scrollmenu">
+    {% for brand in request|brand_tags %}
+      <a href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}}</a><Span class="text-danger">|</Span>
+        {% endfor %}
+  </div>
+ </div>
 
 
 
@@ -88,6 +89,7 @@
                 <!-- Option 1: Bootstrap Bundle with Popper -->
                 <script src= "{% static 'js/bootstrap.min.js' %}"></script>
                 <script defer src="{% static 'js/search.js' %}" defer> </script>
+                <script src= "{% static 'js/bootstrap.bundle.min.js' %}"></script>
                 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                 
               

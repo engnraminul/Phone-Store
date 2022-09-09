@@ -85,11 +85,17 @@ class Phone(models.Model):
         ("Rumor", "Rumor"),
         ("Draft", "Draft"),
     )
+    CATEGORY = (
+        ("Smartphone", "Smartphone"),
+        ("Tablet","Tablet"),
+        ("Feature Phone", "Feature Phone"),
+        
+    )
     #Basic Informations
     name = models.CharField(max_length=200, null=True, blank=True)
     model = models.CharField(max_length=50, null=True, blank=True)
     brand = models.ForeignKey(PhoneBrand, related_name="phone_brand", on_delete=models.PROTECT, null=True, blank=True)
-    category = models.CharField(max_length=50, null=True, blank=True)
+    category = models.CharField(max_length=50, choices=CATEGORY, default='Smartphone')
     status = models.CharField(max_length=20, choices=STATUS, default='Released')
     annoucement = models.DateField(null=True, blank=True)
     release = models.DateField(null=True, blank=True)

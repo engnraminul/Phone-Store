@@ -1,5 +1,8 @@
 
 
+      
+
+
    
       <nav class="sticky-top ">
          <div class="menu-icon">
@@ -9,14 +12,25 @@
          <div class="logo">
            <span class="text-primary">Spec</span><span class="text-danger">Buzz</span>
          </div>
-         <a/>
+      </a>
          <div class="nav-items">
             <li><a href="{% url 'Phone:phone_list' status='Released' %}">Phones</a></li>
             <li><a href="{% url 'Phone:Processor_by_brand' slug='snapdragon' %}">Processor</a></li>
             <li><a href="{% url 'Phone:phone_brand_list' brand='brand' %}">Brand</a></li>
+            <li class="dropdown">
+               <a type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                 Category
+               </a>
+               <ul class="dropdown-menu bg-dark mt-3">
+                 <li><a class="dropdown-item" href="#">Smartphone</a></li>
+                 <li><a class="dropdown-item" href="#">Tablet</a></li>
+                 <li><a class="dropdown-item" href="#">Feature Phone</a></li>
+               </ul>
+            </li>
             <li><a href="{% url 'blog:blog_list' %}">Blogs</a></li>
             <li><a href="{% url 'blog:top10'%}">Top 10</a></li>
             <li><a href="{% url 'Phone:compare'%}">Compare</a></li>
+            
             
          </div>
          <div class="search-icon">
@@ -66,8 +80,4 @@
            cancelBtn.classList.add("show");
          }
       </script>
-
-      <style>
-        
-      </style>
 
