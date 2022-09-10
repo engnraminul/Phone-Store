@@ -6,11 +6,11 @@
     <h2>Smartphone Compare</h2>
     </div>
 
-<form>
-
-<div class="row ">
-  <div class="col-12 col-md-4 col-lg-4 d-flex">
-    <input type="text" list="phone" placeholder="phone 1" name="phone1" class="form-control">
+<form method="post">
+  {% csrf_token %}
+<div class="row" style="--bs-gutter-x: 0.3rem">
+  <div class="col-6 col-md-4 col-lg-4 d-flex">
+    <input type="text" list="phone" placeholder="phone 1" name="phone1" class="form-control" required default={{phone1.name}}>
 
     <datalist id="phone">
       {% for phone in phone %}
@@ -21,8 +21,8 @@
   </div>
 
 
-<div class="col-12 col-md-4 col-lg-4 d-flex">
-  <input type="text" list="phone" placeholder="phone 2" name="phone2" class="form-control">
+<div class="col-6 col-md-4 col-lg-4 d-flex">
+  <input type="text" list="phone" placeholder="phone 2" name="phone2" class="form-control" required>
 
   <datalist id="phone">
     {% for phone in phone %}
@@ -32,34 +32,29 @@
   </datalist>
 </div>
 
-<div class="col-12 col-md-4 col-lg-4 d-flex">
-  <input type="text" list="phone" placeholder="phone 3" name="phone3" class="form-control">
 
-  <datalist id="phone">
-    {% for phone in phone %}
-      <option value="{{phone.name}}"></option>
-    {% endfor %}
-
-  </datalist>
+<div class="col-4 col-md-2 col-lg-1 d-grid p-1">
+  <a class="btn btn-info bi bi-arrow-clockwise" href="{% url 'Phone:compare' %}"></a>
 </div>
 
+<div class="col-8 col-md-2 col-lg-3 d-grid p-1">
+<button type="submit" class="btn btn btn-primary">Compare</button>
+</div>
 </div>
 
-<button type="submit" class="btn btn btn-primary mt-2">Compare</button>
+
+
 
 </form>
 
 
 <div class="row">
-  <divclass="col-12 col-md-4 col-lg-4 d-flex">
+  <div class="col-6 col-md-4 col-lg-6 d-flex ">
     {{phone1.name}}
   </div>
-  <divclass="col-12 col-md-4 col-lg-4 d-flex">
-    
-  </div>
-  <divclass="col-12 col-md-4 col-lg-4 d-flex">
-    
-  </div>
+  <div class="col-6 col-md-4 col-lg-6 d-flex ">
+    {{phone2.name}}
 </div>
+
 
 {% endblock %}

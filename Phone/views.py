@@ -177,20 +177,21 @@ class Compare(TemplateView):
         return render(request, 'phone/compare.html', context)
 
     def post(self, request, *args, **kwargs):
-        compare_1 = request.POST.get('phonbe1')
-        compare_2 = request.POST.get('phonbe1')
-        compare_3 = request.POST.get('phonbe1')
-        print(compare_1)
-        print("print")
-        phone1 = Phone.objects.filter(name=compare_1)
-        phone2 = Phone.objects.filter(name=compare_2)
-        phone3 = Phone.objects.filter(name=compare_3)
+        if request.method =='POST' or request.method == 'post':
+            compare_1 = request.POST.get('phone1')
+            compare_2 = request.POST.get('phone2')
+            
+            print(compare_1)
+            print("print..............................")
+            phone1 = Phone.objects.get(name=compare_1)
+            phone2 = Phone.objects.get(name=compare_2)
+            
 
-        context = {
-            'phone1':phone1,
-            'phone2':phone2,
-            'phone3':phone3,
+            context = {
+                'phone1':phone1,
+                'phone2':phone2,
                 
-            }
-        return render(request, 'phone/compare.html', context)
+                    
+                }
+            return render(request, 'phone/compare.html', context)
             
