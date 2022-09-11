@@ -20,21 +20,15 @@ class phone_brand_list(ListView):
 
 
 def home(request):
-    phone = Phone.objects.filter(status='Released').order_by('-created')
-    u_phone= Phone.objects.filter(status='Upcoming').order_by('-created')
-    
-    paginator = Paginator(phone, 8)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
+    phone = Phone.objects.filter(status='Released').order_by('-created')[:12]
+    u_phone= Phone.objects.filter(status='Upcoming').order_by('-created')[:8]
     
     
 
-    
 
     context = {
         'u_phone': u_phone,
-        'page_obj': page_obj,
+        'phone': phone,
         
     }
     return render(request, 'home.html', context)
@@ -44,10 +38,14 @@ def home(request):
 def phone_by_processor(request, slug):
     processor = Processor.objects.get(slug=slug)
     phone = Phone.objects.filter(processor=processor, status='Released')
+    paginator = Paginator(phone, 1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
 
     context = {
+        'page_obj': page_obj,
         'processor':processor,
-        'phone':phone
     }
     return render(request, 'phone/phone_by_processor.html', context)
 
