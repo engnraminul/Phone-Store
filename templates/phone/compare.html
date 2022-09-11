@@ -1,60 +1,1257 @@
 {% extends 'base.html' %}
 
+{% block head %}
+      
+{% endblock %}
+
+
 {% block body %}
 
 <div class=" d-grid p-1 mb-3 text-center border bg-light">
-    <h2>Smartphone Compare</h2>
-    </div>
+     <h1 class="h3 fw-bolder">Smartphone Compare</h1>
+     </div>
+ 
+ <form method="post">
+   {% csrf_token %}
+ <div class="row" style="--bs-gutter-x: 0.3rem">
+   <div class="col-6 col-md-4 col-lg-4 d-flex">
+     <input type="text" list="phone" placeholder="phone 1" name="phone1" class="form-control" required default={{phone1.name}}>
+ 
+     <datalist id="phone">
+       {% for phone in phonelist %}
+         <option value="{{phone.name}}"></option>
+       {% endfor %}
+ 
+     </datalist>
+   </div>
+ 
+ 
+ <div class="col-6 col-md-4 col-lg-4 d-flex">
+   <input type="text" list="phone" placeholder="phone 2" name="phone2" class="form-control" required>
+ 
+   <datalist id="phone">
+     {% for phone in phonelist %}
+       <option value="{{phone.name}}"></option>
+     {% endfor %}
+ 
+   </datalist>
+ </div>
+ 
+ 
+ <div class="col-4 col-md-2 col-lg-1 d-grid p-1">
+   <a class="btn btn-danger bi bi-arrow-clockwise" href="{% url 'Phone:compare' %}"></a>
+ </div>
+ 
+ <div class="col-8 col-md-2 col-lg-3 d-grid p-1">
+ <button type="submit" class="btn btn btn-info">Compare</button>
+ </div>
+ </div>
+ </form>
+ 
+ <!-- compare Result -->
+ {% if phone %}
+ <div class="row mt-3">
+   <div class="col-12 ">
+     <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+      <tbody>
+           <tr>
+                <td class="td-title">Image</td>
+               <td class="td-data"><img src="{{phone.thumbnail.url}}" width="100%" alt="{{phone.name}}"></td>
+               <td class="td-data"><img src="{{phone2.thumbnail.url}}" width="100%" alt="{{phone2.name}}"></td>
+           </tr>
+      
+       <h4 class="border mb-0 p-1 text-start head-title">Primary Spec</h4>
+      
+       
+          <tr>
+               <td class="td-title">Model</td>
+               <td class="td-data">{{phone.name}}</td>
+               <td class="td-data">{{phone2.name}}</td>
+          </tr>
+          <tr>
+               <td class="td-title">Brand</td>
+               <td class="td-data">{{phone.brand}}</td>
+               <td class="td-data">{{phone2.brand}}</td>
+             
+          </tr>
+          <tr>
+               <td class="td-title">Category</td>
+               <td class="td-data">{{phone.category}}</td>
+               <td class="td-data">{{phone2.category}}</td>
+             
+          </tr>
+          <tr>
+               <td class="td-title">Status</td>
+               <td class="td-data">{{phone.status}}</td>
+               <td class="td-data">{{phone2.status}}</td>
+          </tr>
+          <tr>
+           <td class="td-title">Annoucement</td>
+           <td class="td-data">{{phone.annoucement}}</td>
+           <td class="td-data">{{phone2.annoucement}}</td>
+          </tr>
+          <tr>
+           
+                <td class="td-title">Released</td>
 
-<form method="post">
-  {% csrf_token %}
-<div class="row" style="--bs-gutter-x: 0.3rem">
-  <div class="col-6 col-md-4 col-lg-4 d-flex">
-    <input type="text" list="phone" placeholder="phone 1" name="phone1" class="form-control" required default={{phone1.name}}>
+                {% if phone.release %}
+                <td class="td-data">{{phone.release}}</td>
+                {% else %}
+                <td class="td-data"></td>
+               {% endif %}
 
-    <datalist id="phone">
-      {% for phone in phone %}
-        <option value="{{phone.name}}"></option>
-      {% endfor %}
+               {% if phone2.release %}
+                <td class="td-data">{{phone2.release}}</td>
+                {% else %}
+                <td class="td-data"></td>
+               {% endif %}
+          </tr>
+          
+ 
+       </tbody>
+    </table>
+ 
+    <! -- Network -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Network</h4>
+      
+       <tbody>
+          <tr>
+               <td class="td-title">Network Type</td>
 
-    </datalist>
-  </div>
+               {% if phone.network_type %}
+               <td class="td-data">{{phone.network_type}}</td>
+               {% else %}
+                <td class="td-data"></td>
+               {% endif %}
+
+                {% if phone2.network_type %}
+               <td class="td-data">{{phone2.network_type}}</td>
+               {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+               <td class="td-title">Network Speed</td>
+
+               {% if phone.network_speed %}
+               <td class="td-data">{{phone.network_speed}}</td>
+               {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.network_speed %}
+               <td class="td-data">{{phone2.network_speed}}</td>
+               {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+             
+          </tr>
+          <tr>
+               <td class="td-title">SIM</td>
+
+               {% if phone.sim %}
+               <td class="td-data">{{phone.sim}}</td>
+               {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.sim %}
+               <td class="td-data">{{phone2.sim}}</td>
+               {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+             
+          </tr>
+          <tr>
+               <td class="td-title">2G Network</td>
+               {% if phone.two_g == True %}
+           <td class="td-data"><span class=" text-success">Yes</span> | {{phone.two_g_band}}</td>
+           {% else %}
+           <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+
+           {% if phone2.two_g == True %}
+           <td class="td-data"><span class=" text-success">Yes</span> | {{phone2.two_g_band}}</td>
+           {% else %}
+           <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+          </tr>
+          <tr>
+           <td class="td-title">3G Network</td>
+           {% if phone.three_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone.three_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+
+           {% if phone2.three_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone2.three_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+          </tr>
+ 
+          <tr>
+           <td class="td-title">4G Network</td>
+           {% if phone.four_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone.four_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+
+           {% if phone2.four_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone2.four_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+          </tr>
+ 
+          <tr>
+           <td class="td-title">5G Network</td>
+           {% if phone.five_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone.five_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+
+           {% if phone2.five_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone2.five_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+          </tr>
+ 
+          <tr>
+           <td class="td-title">6G Network</td>
+           {% if phone.six_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone.six_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+
+           {% if phone2.six_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone2.six_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+          </tr>
+ 
+          {% if phone.seven_g == True %}
+ 
+          <tr>
+           <td class="td-title">7G Network</td>
+           {% if phone.seven_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone.seven_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+
+           {% if phone2.seven_g == True %}
+                <td class="td-data"><span class=" text-success">Yes</span> | {{phone2.seven_g_band}}</td>
+           {% else %}
+                <td class="td-data"><span class=" text-danger">No</span></td>
+           {% endif %}
+          </tr>
+ 
+          {% endif %}
+ 
+ 
+       </tbody>
+    </table>
+ 
+ 
+    <! -- Body -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Body</h4>
+      
+       <tbody>
+          
+          <tr>
+           
+                <td class="td-title">Dimension</td>
+
+                {% if phone.dimension %}
+                <td class="td-data">{{phone.dimension}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.dimension %}
+                <td class="td-data">{{phone2.dimension}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Weight</td>
+                {% if phone.weight %}
+
+                <td class="td-data">{{phone.weight}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.weight %}
+                <td class="td-data">{{phone2.weight}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Front</td>
+
+                {% if phone.front %}
+                <td class="td-data">{{phone.front}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.front %}
+                <td class="td-data">{{phone2.front}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Back</td>
+
+                {% if phone.back %}
+                <td class="td-data">{{phone.back}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.back %}
+                <td class="td-data">{{phone2.back}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Frame</td>
+
+                {% if phone.frame %}
+                <td class="td-data">{{phone.frame}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.frame %}
+                <td class="td-data">{{phone2.frame}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Color</td>
+
+                {% if phone.color %}
+                <td class="td-data">{{phone.color}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.color %}
+                <td class="td-data">{{phone2.color}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Features</td>
+
+                {% if phone.body_feature %}
+                <td class="td-data">{{phone.body_feature}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.body_feature %}
+                <td class="td-data">{{phone2.body_feature}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+ 
+ 
+       </tbody>
+    </table>
+ 
+ 
+    <! -- Display -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Display</h4>
+      
+       <tbody>
+          
+          <tr class="">
+           
+                <td class="td-title">Display Type</td>
+
+                {% if phone.display_type %}
+                <td class="td-data" >{{phone.display_type}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.display_type %}
+                <td class="td-data" >{{phone2.display_type}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Size</td>
+
+                {% if phone.size %}
+                <td class="td-data">{{phone.size}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.size %}
+                <td class="td-data">{{phone2.size}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Resulation</td>
+
+                {% if phone.resulation %}
+                <td class="td-data">{{phone.resulation}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.resulation %}
+                <td class="td-data">{{phone2.resulation}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Ratio</td>
+
+                {% if phone.ratio %}
+                <td class="td-data">{{phone.ratio}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.ratio %}
+                <td class="td-data">{{phone2.ratio}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Pixel Density</td>
+
+                {% if phone.pixel_density %}
+                <td class="td-data">{{phone.pixel_density}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.pixel_density %}
+                <td class="td-data">{{phone2.pixel_density}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Refresh Rate</td>
+
+                {% if phone.refresh_rate %}
+                <td class="td-data">{{phone.refresh_rate}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.refresh_rate %}
+                <td class="td-data">{{phone2.refresh_rate}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Protection</td>
+
+                {% if phone.protection %}
+                <td class="td-data">{{phone.protection}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.protection %}
+                <td class="td-data">{{phone2.protection}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">2nd Display</td>
+                {% if phone.second_display %}
+                <td class="td-data">{{phone.second_display}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.second_display %}
+                <td class="td-data">{{phone2.second_display}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Features</td>
+                {% if phone.display_features %}
+                <td class="td-data">{{phone.display_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.display_features %}
+                <td class="td-data">{{phone2.display_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+ 
+ 
+       </tbody>
+    </table>
+ 
+ 
+    <! -- Back Camera -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Back Camera</h4>
+      
+       <tbody>
+          
+          <tr class="">
+           
+                <td class="td-title">Lens</td>
+                {% if phone.back_camera %}
+                <td class="td-data" >{{phone.back_camera|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.back_camera %}
+                <td class="td-data" >{{phone2.back_camera|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Features</td>
+                {% if phone.back_camera_features %}
+                <td class="td-data">{{phone.back_camera_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.back_camera_features %}
+                <td class="td-data">{{phone2.back_camera_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Video Record</td>
+
+                {% if phone.back_camera_video %}
+                <td class="td-data">{{phone.back_camera_video}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.back_camera_video %}
+                <td class="td-data">{{phone2.back_camera_video}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+       </tbody>
+    </table>
+ 
+ 
+    <! -- Front Camera -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Front Camera</h4>
+      
+       <tbody>
+          
+          <tr class="">
+                <td class="td-title">Lens</td>
+
+                {% if phone.front_camera %}
+                <td class="td-data" >{{phone.front_camera|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone.front_camera %}
+                <td class="td-data" >{{phone2.front_camera|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Features</td>
+
+                {% if phone.front_camera_features %}
+                <td class="td-data">{{phone.front_camera_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.front_camera_features %}
+                <td class="td-data">{{phone2.front_camera_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Video Record</td>
+
+                {% if phone.front_camera_video %}
+                <td class="td-data">{{phone.front_camera_video}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.front_camera_video %}
+                <td class="td-data">{{phone2.front_camera_video}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+       </tbody>
+    </table>
+ 
+ 
+    <! -- Platform -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Platform</h4>
+      
+       <tbody>
+          
+          <tr class="">
+           {% if phone.os %}
+                <td class="td-title">Operating System</td>
+                <td class="td-data" >{{phone.os}}</td>
+                <td class="td-data" >{{phone2.os}}</td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Version</td>
+                {% if phone.os_version %}
+                <td class="td-data">{{phone.os_version}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.os_version %}
+                <td class="td-data">{{phone2.os_version}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">User Interface</td>
+                {% if phone.ui %}
+                <td class="td-data">{{phone.ui}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
 
 
-<div class="col-6 col-md-4 col-lg-4 d-flex">
-  <input type="text" list="phone" placeholder="phone 2" name="phone2" class="form-control" required>
+                {% if phone2.ui %}
+                <td class="td-data">{{phone2.ui}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          
+          
+          
+          <tr>
+                
+                <td class="td-title">Chipset</td>
+                {% if phone.processor.chipset %}
+                <td class="td-data">{{phone.processor.chipset}} </td>
+                {% endif %}
+                {% if phone2.processor.chipset %}
+                <td class="td-data">{{phone2.processor.chipset}} </td>
+                {% endif %}
+           </tr>
+           <tr>
+                
+                <td class="td-title">CPU</td>
+                {% if phone.processor.cpu %}
+                <td class="td-data">{{phone.processor.cpu}}</td>
+                {% endif %}
+                {% if phone2.processor.cpu %}
+                <td class="td-data">{{phone2.processor.cpu}}</td>
+                {% endif %}
+           </tr>
+           <tr>
+                
+                <td class="td-title">GPU</td>
+                {% if phone.processor.gpu %}
+                <td class="td-data">{{phone.processor.gpu}}</td>
+                {% endif %}
+                {% if phone2.processor.gpu %}
+                <td class="td-data">{{phone2.processor.gpu}}</td>
+                {% endif %}
+           </tr>
+           <tr>
+                
+                <td class="td-title">Technology Node</td>
+                {% if phone.processor.nm %}
+                <td class="td-data">{{phone.processor.nm}}</td>
+                {% endif %}
+                {% if phone2.processor.nm %}
+                <td class="td-data">{{phone2.processor.nm}}</td>
+                {% endif %}
+           </tr>
+ 
+           
+ 
+ 
+       </tbody>
+    </table>
+ 
+ 
+    <! -- Memory -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Memory</h4>
+      
+       <tbody>
+          
+          <tr class="">
+               <td class="td-title">RAM</td>
+               {% if phone.ram %}
+                <td class="td-data" >{{phone.ram}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
 
-  <datalist id="phone">
-    {% for phone in phone %}
-      <option value="{{phone.name}}"></option>
-    {% endfor %}
+                {% if phone2.ram %}
+                <td class="td-data" >{{phone2.ram}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Storage</td>
+                {% if phone.storage %}
+                <td class="td-data">{{phone.storage}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
 
-  </datalist>
-</div>
+                {% if phone2.storage %}
+                <td class="td-data">{{phone2.storage}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+               <td class="td-title">Extra Slot</td>
+
+                {% if phone.memory_slot == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+
+                {% if phone2.memory_slot == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+          </tr>
+          <tr>
+               <td class="td-title">Variants</td>
+               {% if phone.variant %}
+                <td class="td-data">{{phone.variant}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.variant %}
+                <td class="td-data">{{phone2.variant}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+               <td class="td-title">Storage Type</td>
+               {% if phone.storage_type %}
+                <td class="td-data">{{phone.storage_type}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.storage_type %}
+                <td class="td-data">{{phone2.storage_type}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+       </tbody>
+    </table>
+ 
+    <! -- Audio -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Audio</h4>
+      
+       <tbody>
+          
+          <tr class="">
+           
+                <td class="td-title">Speaker</td>
+                {% if phone.speaker %}
+                <td class="td-data" >{{phone.speaker}}</td>
+                {% endif %}
+                {% if phone2.speaker %}
+                <td class="td-data" >{{phone2.speaker}}</td>
+                {% endif %}
+          </tr>
+          <tr>
+               <td class="td-title">Audio Jack</td>
+
+                {% if phone.audio_jack == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+
+                {% if phone2.audio_jack == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %} 
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+                </tr>
+           <tr>
+               <td class="td-title">Features</td>
+               {% if phone.audio_features %}
+                <td class="td-data">{{phone.audio_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.audio_features %}
+                <td class="td-data">{{phone2.audio_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+           </tr>
+       </tbody>
+    </table>
+ 
+    <! -- Connectivity -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Connectivity</h4>
+      
+       <tbody>
+          
+          <tr class="">
+                <td class="td-title">WLAN</td>
+                {% if phone.wifi %}
+                <td class="td-data" >{{phone.wifi}}</td>
+                {% else %}
+                <td class="td-data" ></td>
+                {% endif %}
+
+                {% if phone2.wifi %}
+                <td class="td-data" >{{phone2.wifi}}</td>
+                {% else %}
+                <td class="td-data" ></td>
+                {% endif %}
+          </tr>
+          <tr>
+               <td class="td-title">Hotspot</td>
+
+                {% if phone.hotspot == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+                {% if phone2.hotspot == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+           </tr>
+           
+           <tr>
+               <td class="td-title">NFC</td>
+
+                {% if phone.nfc == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+
+                {% if phone2.nfc == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+           </tr>
+           
+           <tr>
+               <td class="td-title">GPS</td>
+
+                {% if phone.gps == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+
+                {% if phone2.gps == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+           </tr>
+           <tr>
+                <td class="td-title">Radio</td>
+                {% if phone.radio == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+
+                {% if phone2.radio == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+           </tr>
+           <tr>
+                <td class="td-title">Infrared Port</td>
+
+                {% if phone.infrared_port == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+
+                {% if phone2.infrared_port == True %}
+                <td class="td-data text-success">Yes</td>
+                {% else %}
+                <td class="td-data text-danger">No</td>
+                {% endif %}
+           </tr>
+           <tr>
+               <td class="td-title">USB</td>
+
+                {% if phone.usb %}
+                <td class="td-data">{{phone.usb}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.usb %}
+                <td class="td-data">{{phone2.usb}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
 
 
-<div class="col-4 col-md-2 col-lg-1 d-grid p-1">
-  <a class="btn btn-info bi bi-arrow-clockwise" href="{% url 'Phone:compare' %}"></a>
-</div>
+           </tr>
+ 
+           
+       </tbody>
+    </table>
+ 
+    <! -- Sensor -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Secuirity Sensor</h4>
+      
+       <tbody>
+          
+          <tr class="">
+               <td class="td-title">Fingureprint</td>
+               {% if phone.fingureprint %}
+                <td class="td-data" >{{phone.fingureprint}}</td>
+                {% endif %}
+                {% if phone2.fingureprint %}
+                <td class="td-data" >{{phone2.fingureprint}}</td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Facelock</td>
+                {% if phone.facelock %}
+                <td class="td-data">{{phone.facelock}}</td>
+                {% endif %}
 
-<div class="col-8 col-md-2 col-lg-3 d-grid p-1">
-<button type="submit" class="btn btn btn-primary">Compare</button>
-</div>
-</div>
+                {% if phone2.facelock %}
+                <td class="td-data">{{phone2.facelock}}</td>
+                {% endif %}
+          </tr>
+          <tr>
+                <td class="td-title">Sensor</td>
+                {% if phone.sensor %}
+                <td class="td-data">{{phone.sensor}}</td>
+                {% endif %}
+
+                {% if phone2.sensor %}
+                <td class="td-data">{{phone2.sensor}}</td>
+                {% endif %}
+          </tr>
+       </tbody>
+    </table>
+ 
+    <! -- Battery -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Battery</h4>
+      
+       <tbody>
+          
+          <tr class="">
+           
+                <td class="td-title">Battery Type</td>
+                {% if phone.battery_type %}
+                <td class="td-data" >{{phone.battery_type}}</td>
+                {% endif %}
+
+                {% if phone2.battery_type %}
+                <td class="td-data" >{{phone2.battery_type}}</td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Battery Capacity</td>
+                {% if phone.battery_capacity %}
+                <td class="td-data">{{phone.battery_capacity}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.battery_capacity %}
+                <td class="td-data">{{phone2.battery_capacity}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Charging</td>
+                {% if phone.charging %}
+                <td class="td-data">{{phone.charging}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.charging %}
+                <td class="td-data">{{phone2.charging}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Wireless Charging</td>
+                {% if phone.wireless_charging %}
+                <td class="td-data">{{phone.wireless_charging}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.wireless_charging %}
+                <td class="td-data">{{phone2.wireless_charging}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Reverse Charging</td>
+                {% if phone.reverse_charging %}
+                <td class="td-data">{{phone.reverse_charging}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.reverse_charging %}
+                <td class="td-data">{{phone2.reverse_charging}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Features</td>
+                {% if phone.charging_features %}
+                <td class="td-data">{{phone.charging_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.charging_features %}
+                <td class="td-data">{{phone2.charging_features}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+ 
+       </tbody>
+    </table>
+ 
+    <! -- Price -->
+    <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+       <h4 class="border mb-0 p-1 text-start head-title">Price</h4>
+      
+       <tbody>
+          
+          <tr class="">
+           
+                <td class="td-title">United States</td>
+                {% if phone.united_states %}
+                <td class="td-data" >{{phone.united_states|linebreaks}}</td>
+                {% else %}
+                <td class="td-data" ></td>
+                {% endif %}
+
+                {% if phone2.united_states %}
+                <td class="td-data" >{{phone2.united_states|linebreaks}}</td>
+                {% else %}
+                <td class="td-data" ></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">Europe</td>
+                {% if phone.europe %}
+                <td class="td-data">{{phone.europe|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.europe %}
+                <td class="td-data">{{phone2.europe|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">China</td>
+                {% if phone.china %}
+                <td class="td-data">{{phone.china|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.china %}
+                <td class="td-data">{{phone2.china|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+          <tr>
+           
+                <td class="td-title">India</td>
+                {% if phone.india %}
+                <td class="td-data">{{phone.india|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+
+                {% if phone2.india %}
+                <td class="td-data">{{phone2.india|linebreaks}}</td>
+                {% else %}
+                <td class="td-data"></td>
+                {% endif %}
+          </tr>
+ 
+       </tbody>
+    </table>
+ 
+   </div>
+ {% endif %}
+  
+ <style>
+
+     .td-title{
+          font-weight: 600;
+          color: rgb(21, 118, 131);
+          width: 30%;
+          
+      }
+      .td-data{
+       width:35%;
+      }
+   
+      .head-title{
+          background-color: #dae5e7;
+          color: brown;
+          font-weight: bolder;
+          font-size: 20px;
+          box-shadow: inset 0px -1px 1px rgb(189 41 41);
+      }
+      
+      .icon{
+           color: coral;
+           padding: 5px;
+           font-size: 20px;
+      }
+      a{
+          text-decoration: none;
+      }
+   
+      @media only screen and (max-width: 600px) {
+         .td-title{
+          font-size: 14px;
+         }
+         .td-data{
+          font-size: 14px;
+         }
+       }
+   
+       .feature-title{
+          font-weight: 600;
+          font-size: 18px;
+       }
+   </style>
+
+
+{% endblock %}
 
 
 
 
-</form>
-
-
-<div class="row">
-  <div class="col-6 col-md-4 col-lg-6 d-flex ">
-    {{phone1.name}}
-  </div>
-  <div class="col-6 col-md-4 col-lg-6 d-flex ">
-    {{phone2.name}}
-</div>
+{% block sidebar %}
 
 
 {% endblock %}

@@ -168,10 +168,10 @@ def phone_by_category(request, category):
 
 class Compare(TemplateView):
     def get(self, request, *args, **kwargs):
-        phone = Phone.objects.all()
+        phonelist = Phone.objects.all()
 
         context = {
-            'phone':phone,
+            'phonelist':phonelist,
             
         }
         return render(request, 'phone/compare.html', context)
@@ -188,7 +188,7 @@ class Compare(TemplateView):
             
 
             context = {
-                'phone1':phone1,
+                'phone':phone1,
                 'phone2':phone2,
                 
                     
