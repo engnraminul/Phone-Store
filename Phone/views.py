@@ -181,15 +181,20 @@ class Compare(TemplateView):
             
             print(compare_1)
             print("print..............................")
-            phone1 = Phone.objects.get(name=compare_1)
-            phone2 = Phone.objects.get(name=compare_2)
-            
+            if Phone.objects.filter(name=compare_1) and Phone.objects.filter(name=compare_2):
+                phone1 = Phone.objects.get(name=compare_1)
+                phone2 = Phone.objects.get(name=compare_2)
 
-            context = {
-                'phone':phone1,
-                'phone2':phone2,
-                
+                context = {
+                    'phone':phone1,
+                    'phone2':phone2,
                     
-                }
-            return render(request, 'phone/compare.html', context)
+                        
+                    }
+                return render(request, 'phone/compare.html', context)
+            else:
+                context = {
+                    'error':"Please Select Phone Name from Suggest List or Enter Correct Name!",  
+                    }
+                return render(request, 'phone/compare.html', context)
             
