@@ -1,10 +1,33 @@
 from django import views
 from django.urls import path
 from Phone import views 
+from django.contrib.sitemaps.views import sitemap
+from Phone.sitemap import PhoneSitemap, PhoneBrandSitemap, ProcessorBrandSitemap, PhoneProcessorSitemap
 
 app_name = 'Phone'
 
+
+sitemaps = {
+		"phone": PhoneSitemap,
+}
+
+phonebrandsitemaps = {
+		"phonebrand": PhoneBrandSitemap,
+}
+
+phonebrandsitemaps = {
+		"processorbrand": ProcessorBrandSitemap,
+}
+
+phoneprocessorsitemaps = {
+		"processorbrand": PhoneProcessorSitemap,
+}
 urlpatterns = [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('phonebrand_sitemap.xml', sitemap, {'sitemaps': phonebrandsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('processorbrand_sitemap.xml', sitemap, {'sitemaps': phonebrandsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('phoneprocessor_sitemap.xml', sitemap, {'sitemaps': phoneprocessorsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+                
     
     path('compare', views.Compare.as_view(), name="compare"),
     path('<slug>', views.phone_details, name="phone_details"),
@@ -17,6 +40,7 @@ urlpatterns = [
     path('<slug>/images/', views.phone_gallery, name="phone_gallery"),
     path('phones/<status>/', views.phone_list, name="phone_list"),
     path('category/<category>/', views.phone_by_category, name="phone_by_category"),
+    
     
     
     

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from tinymce import models as tinymce_models
 from Phone.models import Phone
+from django.urls import reverse
 
 
 
@@ -24,6 +25,9 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse("blog:blog_detail", kwargs={"title":self.slug})
 
 
 class Top10(models.Model):
@@ -54,5 +58,8 @@ class Top10(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Top10, self).save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse("blog:top10_detail", kwargs={"slug":self.slug})
 
 

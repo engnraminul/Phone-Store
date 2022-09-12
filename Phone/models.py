@@ -25,7 +25,9 @@ class ProcessorBrand(models.Model):
 
     class Meta:
         ordering = ['name']
-        
+    
+    def get_absolute_url(self):
+        return reverse("Phone:Processor_by_brand", kwargs={"slug":self.slug})
 
 
 class Processor(models.Model):
@@ -49,6 +51,11 @@ class Processor(models.Model):
     
     class Meta:
         ordering= ['-released']
+    
+
+    def get_absolute_url(self):
+        return reverse("Phone:phone_by_processor", kwargs={"slug":self.slug})
+
 
 
 
@@ -73,7 +80,7 @@ class PhoneBrand(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse("Phone:phone_brand_list", kwargs={"slug": self.slug})
+        return reverse("Phone:phone_filter", kwargs={"slug":self.slug, "status":'Released'})
     
 
 
