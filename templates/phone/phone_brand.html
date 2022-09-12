@@ -25,10 +25,10 @@
   <div class="col-lg-3 col-md-3 col-4 mb-4">
     <div class="card">
 
-      <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
+      <!-- <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
         {{brand.phone_brand.count}}
         <span class="visually-hidden">unread messages</span>
-      </span>
+      </span> -->
 
       <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
         <img class="img-fluid img-thumbnail " src="{{ brand.image.url }} "
@@ -40,7 +40,7 @@
           <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}} </a>
         </a>
         <h6 class="mb-1 mt-1">
-          <strong class="ms-2 text-danger">{{brand.phone_brand.count}}</strong>
+          <strong class="ms-2 text-danger">({{brand.phone_brand.count}})</strong>
         </h6>
       </div>
     </div>

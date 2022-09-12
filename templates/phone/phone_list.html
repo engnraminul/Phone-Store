@@ -3,16 +3,16 @@
 {% block body %}
 
 <div class=" d-grid p-1 mb-3 text-center border bg-light">
-    <h2>Smartphone List</h2>
+    <h1 class="h4 fw-bolder">All {{status}} Smartphone</h2>
     </div>
 
-    <div class=" d-grid p-1 mb-3 text-center border bg-light">
-    <div class="btn-group ">
-        <a href="{% url 'Phone:phone_list'  status='Released' %}" class="btn btn-outline-danger" aria-current="page">Released</a>
-        <a href="{% url 'Phone:phone_list'  status='Upcoming' %}" class="btn btn-outline-primary">Upcoming</a>
-        <a href="{% url 'Phone:phone_list'  status='Rumor' %}" class="btn btn-outline-info">Rumor</a>
+    <div class=" d-grid p-1 mb-2 text-center border bg-light" >
+      <div class="scrollmenu btn-group btn-sm">
+        <a style="padding: 5px;" href="{% url 'Phone:phone_list'  status='Released' %}" class="btn" aria-current="page">Released</a>
+        <a style="padding: 5px;" href="{% url 'Phone:phone_list'  status='Upcoming' %}" class="btn ">Upcoming</a>
+        <a style="padding: 5px;" href="{% url 'Phone:phone_list'  status='Rumor' %}" class="btn ">Rumor</a>
+        </div>
       </div>
-    </div>
 
     <div class="row">
 

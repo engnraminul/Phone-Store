@@ -57,11 +57,14 @@ def Processor_by_brand(request, slug):
     brands = ProcessorBrand.objects.get(slug=slug)
     processor=Processor.objects.filter(brand=brands)
     
+    paginator = Paginator(processor, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'brand':brand,
         'brands':brands,
-        'processor':processor
+        'page_obj': page_obj,
     }
 
     return render(request, 'processor/processor_list.html', context)
@@ -74,9 +77,13 @@ def phone_filter(request, slug, status):
     brand=PhoneBrand.objects.get(slug=slug)
     phone=Phone.objects.filter(brand=brand, status=status)
 
+    paginator = Paginator(phone, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
         'brand':brand,
-        'phone':phone,
+        'page_obj':page_obj,
         'status':status,
     }
     return render(request, 'phone/phone_by_brand.html', context)
@@ -194,7 +201,7 @@ class Compare(TemplateView):
                 return render(request, 'phone/compare.html', context)
             else:
                 context = {
-                    'error':"Please Select Phone Name from Suggest List or Enter Correct Name!",  
+                    'error':"Please select phone name from suggest list or Enter correct name!",  
                     }
                 return render(request, 'phone/compare.html', context)
             
