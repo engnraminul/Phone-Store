@@ -1,49 +1,55 @@
-
-{% extends 'base.html' %}
-{% load static %}
-
-{% block head %}
+{% extends 'base.html' %} {% load static %} {% block head %}
 <title>All Smartphone Barnd List- {{date}}</title>
-<meta name="description" content="Specbuzz provide all brand smartphone specification, images and price. You can see all brand smartphone specification in SpecBuzz."/>
+<meta
+  name="description"
+  content="Specbuzz provide all brand smartphone specification, images and price. You can see all brand smartphone specification in SpecBuzz."
+/>
 <link rel="canonical" href="https://specbuzz.com{{request.get_full_path}}" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="All Smartphone Barnd List- {{date}}" />
-<meta property="og:description" content="Specbuzz provide all brand smartphone specification, images and price. You can see all brand smartphone specification in SpecBuzz." />
-<meta property="og:url" content="https://specbuzz.com{{request.get_full_path}}" />  
+<meta
+  property="og:description"
+  content="Specbuzz provide all brand smartphone specification, images and price. You can see all brand smartphone specification in SpecBuzz."
+/>
+<meta
+  property="og:url"
+  content="https://specbuzz.com{{request.get_full_path}}"
+/>
 
-{% endblock %}
+{% endblock %} {% block body %}
 
-
-
-
-
-{% block body %}
-
-<div class=" d-grid p-1 mb-3 text-center border bg-light">
-  <h2 class="fw-bold">Smartphone Brand List</h2>
-  </div>
+<div class="d-grid p-1 mb-3 text-center border bg-light">
+  <h2 class="fw-bold page-title">Smartphone Brand List</h2>
+</div>
 <div class="row">
-
   {% for brand in brand_list %}
   <div class="col-lg-3 col-md-3 col-4 mb-4">
     <div class="card">
-
       <!-- <span class="position-absolute top-80 start-50 translate-middle badge rounded-pill bg-info">
         {{brand.phone_brand.count}}
         <span class="visually-hidden">unread messages</span>
       </span> -->
 
       <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-        <img class="img-fluid img-thumbnail " src="{{ brand.image.url }}" alt="{{brand.name}}"
-          class="w-100" />
-
+        <img
+          class="img-fluid img-thumbnail"
+          src="{{ brand.image.url }}"
+          alt="{{brand.name}}"
+          class="w-100"
+        />
       </div>
       <div class="card-body p-0 bg-light mt-2">
         <a href="" class="text-reset">
-          <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}">{{brand.name}} </a>
+          <a
+            class="card-title mb-3 stretched-link text-decoration-none fw-bold"
+            href="{% url 'Phone:phone_filter' slug=brand.slug status='Released' %}"
+            >{{brand.name}}
+          </a>
         </a>
         <h6 class="mb-1 mt-1">
-          <strong class="ms-2 text-danger">({{brand.phone_brand.count}})</strong>
+          <strong class="ms-2 text-danger"
+            >({{brand.phone_brand.count}})</strong
+          >
         </h6>
       </div>
     </div>

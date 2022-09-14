@@ -16,6 +16,7 @@ clone.short_description = "Clone"
 
 class GalleryImageAdmin(admin.StackedInline):
     model = GalleryImage
+    
 #phone model fieldset
 class ProductAdmin(admin.ModelAdmin):
     inlines = [GalleryImageAdmin]

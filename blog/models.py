@@ -47,6 +47,7 @@ class Top10(models.Model):
     seo_title= models.CharField(max_length=80, blank=True, null=True)
     seo_des = models.TextField(max_length=170,blank=True, null=True)
     slug = models.SlugField(max_length=170, unique=True, blank=True)
+    published = models.BooleanField(default=True)
 
 
     class Meta:
