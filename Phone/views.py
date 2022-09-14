@@ -10,8 +10,6 @@ import datetime
 
 
 
-
-
 def phone_brand_list(request, brand):
     brand_list = PhoneBrand.objects.all()
     currentdate = datetime.date.today()
@@ -111,6 +109,8 @@ def phone_filter(request, slug, status):
 
 def phone_details(request, slug):
     phone = Phone.objects.get(slug=slug)
+    phone.views += 1
+    phone.save()
     brand_phone = Phone.objects.filter(brand=phone.brand,)[:6]
     currentdate = datetime.date.today()
     date = currentdate.strftime("%B, %Y")

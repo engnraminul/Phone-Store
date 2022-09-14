@@ -6,7 +6,6 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.safestring import mark_safe
 from django.urls import reverse
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class ProcessorBrand(models.Model):
@@ -111,7 +110,6 @@ class Phone(models.Model):
     updated = models.DateTimeField(auto_now=True)
     price = models.IntegerField(null=True, blank=True)
     old_price = models.IntegerField(null=True, blank=True)
-    
     rating = models.FloatField(null=True, blank=True)
 
 
@@ -219,6 +217,7 @@ class Phone(models.Model):
     seo_title = models.CharField(max_length=70, null=True, blank=True)
     seo_des = models.TextField(max_length=170, null=True, blank=True)
     slug = models.CharField(max_length=70, unique=True, null=True, blank=True)
+    views = models.IntegerField(default=0)
 
 
     def save(self, *args, **kwargs):

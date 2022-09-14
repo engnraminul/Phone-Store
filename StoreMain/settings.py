@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'blog',
     'tinymce',
     
+    
 ]
 
 TINYMCE_DEFAULT_CONFIG = {
