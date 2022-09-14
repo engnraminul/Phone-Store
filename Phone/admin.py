@@ -27,7 +27,7 @@ class ProductAdmin(admin.ModelAdmin):
     #prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
         ('Basic', {
-            'fields': ('name', 'model', ('brand', 'category', 'status'), ('annoucement', 'release'), ('created'), 'thumbnail', ('price', 'old_price')),
+            'fields': ('name', 'model', ('brand', 'category', 'status'), ('annoucement', 'release'), ('created'), 'thumbnail', ('price', 'old_price'), 'rating',),
 
         }),
 

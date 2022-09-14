@@ -54,7 +54,18 @@
                     <span class="icon">0.00$</span>
                     {% endif %}
 
-                    <span class="text-end h6" style="color: white;"> (Our Rating : 8/10)</span>
+                    {% if phone.rating > 8.9 %}
+                    <span class="text-end h6 bi bi-star-fill" style="color: #32CD32;"> ( {{phone.rating}}/10)</span>
+                    {% elif phone.rating > 7.9 %}
+                    <span class="text-end h6 bi bi-star-fill" style="color: #66CDAA;"> ( {{phone.rating}}/10)</span>
+                    {% elif phone.rating > 6.9 %}
+                    <span class="text-end h6 bi bi-star-fill" style="color: #F0E68C;"> ( {{phone.rating}}/10)</span>
+                    {% elif phone.rating > 5.9 %}
+                    <span class="text-end h6 bi bi-star-fill" style="color: #FF8C00;"> ( {{phone.rating}}/10)</span>
+                    {% elif phone.rating < 5.9 %}
+                    <span class="text-end h6 bi bi-star-fill" style="color: #DC143C;"> ( {{phone.rating}}/10)</span>
+                    {% endif %}
+
                </h5>
           </div>
 
@@ -705,6 +716,7 @@
         </div>
       </div>
 
+<div class="bi bi-eye-fill text-start"></div>
 
 
 <div class="row">
