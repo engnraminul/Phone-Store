@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load custom_filters %}
 
-{% block body %}
+{% block head %}
+<title>Blog List | SpecBuzz</title>
+{% endblock %}
 
+{% block body %}
 
 {% for blog in page_obj %}
 

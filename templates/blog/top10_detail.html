@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 
+{% block head %}
+     <title>{{phone.seo_title}} - {{date}}></title>
+     <meta name="description" content="{{phone.seo_des}}"/>
+     <link rel="canonical" href="https://specbuzz.com{{request.get_full_path}}" />
+     <meta property="og:type" content="article" />
+     <meta property="og:title" content="{{phone.seo_title}} - {{date}}" />
+     <meta property="og:description" content="{{phone.seo_des}}" />
+     <meta property="og:url" content="https://specbuzz.com{{request.get_full_path}}" />
+     <meta property="og:updated_time" content="{{phone.update_date}}" />
+     <meta property="og:image" content="https://specbuzz.com{{phone.image.url}}" />
+     <meta property="og:image:secure_url" content="https://specbuzz.com{{phone.image.url}}" />
+     <meta property="og:image:width" content="1280" />
+     <meta property="og:image:height" content="720" />
+     <meta property="og:image:alt" content="{{phone.title}}" />
+     <meta property="og:image:type" content="image/jpeg" />
+{% endblock %}
 
 {% block body %}
 
@@ -14,7 +30,7 @@
 </div>
   <div class="row">
     <div class="col-lg-6 col-md-6 col-12 mb-4">
-        <a href="{% url 'Phone:phone_details' slug=phone.phone1.slug %}"><img class="img-thumbnail" src="{{phone.phone1.thumbnail.url}}" alt=""></a>
+        <a href="{% url 'Phone:phone_details' slug=phone.phone1.slug %}"><img class="img-thumbnail" src="{{phone.phone1.thumbnail.url}}" alt="{{phone.phone1.name}}"></a>
         
     </div>
 
@@ -63,7 +79,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone2.slug %}"><img class="img-thumbnail" src="{{phone.phone2.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone2.slug %}"><img class="img-thumbnail" src="{{phone.phone2.thumbnail.url}}" alt="{{phone.phone2.name}}"></a>
           
       </div>
   
@@ -111,7 +127,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone3.slug %}"><img class="img-thumbnail" src="{{phone.phone3.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone3.slug %}"><img class="img-thumbnail" src="{{phone.phone3.thumbnail.url}}" alt="{{phone.phone3.name}}"></a>
           
       </div>
   
@@ -159,7 +175,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone4.slug %}"><img class="img-thumbnail" src="{{phone.phone4.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone4.slug %}"><img class="img-thumbnail" src="{{phone.phone4.thumbnail.url}}" alt="{{phone.phone4.name}}"></a>
           
       </div>
   
@@ -207,7 +223,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone5.slug %}"><img class="img-thumbnail" src="{{phone.phone5.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone5.slug %}"><img class="img-thumbnail" src="{{phone.phone5.thumbnail.url}}" alt="{{phone.phone5.name}}"></a>
           
       </div>
   
@@ -255,7 +271,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone6.slug %}"><img class="img-thumbnail" src="{{phone.phone6.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone6.slug %}"><img class="img-thumbnail" src="{{phone.phone6.thumbnail.url}}" alt="{{phone.phone6.name}}"></a>
           
       </div>
   
@@ -303,7 +319,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone7.slug %}"><img class="img-thumbnail" src="{{phone.phone7.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone7.slug %}"><img class="img-thumbnail" src="{{phone.phone7.thumbnail.url}}" alt="{{phone.phone7.name}}"></a>
           
       </div>
   
@@ -397,7 +413,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone9.slug %}"><img class="img-thumbnail" src="{{phone.phone9.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone9.slug %}"><img class="img-thumbnail" src="{{phone.phone9.thumbnail.url}}" alt="{{phone.phone9.name}}"></a>
           
       </div>
   
@@ -444,7 +460,7 @@
 </div>
   <div class="row">
       <div class="col-lg-6 col-md-6 col-12 mb-4">
-          <a href="{% url 'Phone:phone_details' slug=phone.phone10.slug %}"><img class="img-thumbnail" src="{{phone.phone10.thumbnail.url}}" alt=""></a>
+          <a href="{% url 'Phone:phone_details' slug=phone.phone10.slug %}"><img class="img-thumbnail" src="{{phone.phone10.thumbnail.url}}" alt="{{phone.phone10.name}}"></a>
           
       </div>
   

@@ -1,18 +1,28 @@
+from multiprocessing import context
+from urllib import request
 from django.views.generic import TemplateView
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.views.generic import ListView
 from .models import GalleryImage, Phone, PhoneBrand, ProcessorBrand, Processor
 from django.http import JsonResponse
-from django.db.models import Q
 from django.core.paginator import Paginator
+import datetime
 
 
 
 
 
-class phone_brand_list(ListView):
-    model = PhoneBrand
-    template_name = 'phone/phone_brand.html'
+def phone_brand_list(request, brand):
+    brand_list = PhoneBrand.objects.all()
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
+
+    context= {
+        'brand_list': brand_list,
+        'date': date,
+    }
+
+    return render(request, 'phone/phone_brand.html', context)
 
 
 
@@ -41,11 +51,14 @@ def phone_by_processor(request, slug):
     paginator = Paginator(phone, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
 
 
     context = {
-        'page_obj': page_obj,
+        'page_obj':page_obj,
         'processor':processor,
+        'date':date,
     }
     return render(request, 'phone/phone_by_processor.html', context)
 
@@ -61,10 +74,14 @@ def Processor_by_brand(request, slug):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
+
     context = {
         'brand':brand,
         'brands':brands,
         'page_obj': page_obj,
+        'date':date,
     }
 
     return render(request, 'processor/processor_list.html', context)
@@ -76,6 +93,8 @@ def Processor_by_brand(request, slug):
 def phone_filter(request, slug, status):
     brand=PhoneBrand.objects.get(slug=slug)
     phone=Phone.objects.filter(brand=brand, status=status)
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
 
     paginator = Paginator(phone, 2)
     page_number = request.GET.get('page')
@@ -85,6 +104,7 @@ def phone_filter(request, slug, status):
         'brand':brand,
         'page_obj':page_obj,
         'status':status,
+        'date':date,
     }
     return render(request, 'phone/phone_by_brand.html', context)
 
@@ -92,10 +112,14 @@ def phone_filter(request, slug, status):
 def phone_details(request, slug):
     phone = Phone.objects.get(slug=slug)
     brand_phone = Phone.objects.filter(brand=phone.brand,)[:6]
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
+
 
     context = {
         'phone':phone,
         'brand_phone':brand_phone,
+        'date':date,
     }
     return render(request, 'phone/phone_details.html', context)
 
@@ -103,11 +127,15 @@ def phone_details(request, slug):
 def phone_gallery(request, slug):
     phone = Phone.objects.get(slug=slug)
     gallery = GalleryImage.objects.filter(phone=phone)
+
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
     
 
     context = {
         'phone':phone,
         'gallery':gallery,
+        'date': date,
     }
 
     return render(request, 'phone/phone_gallery.html', context)
@@ -175,8 +203,12 @@ class Compare(TemplateView):
     def get(self, request, *args, **kwargs):
         phonelist = Phone.objects.all()
 
+        currentdate = datetime.date.today()
+        date = currentdate.strftime("%B, %Y")
+
         context = {
             'phonelist':phonelist,
+            'date':date,
             
         }
         return render(request, 'phone/compare.html', context)

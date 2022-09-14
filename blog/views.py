@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
+import datetime
 
 def blog_list(request):
     blog = Blog.objects.all()
@@ -16,9 +17,12 @@ def blog_list(request):
 
 def blog_detail(request, title):
     blog = Blog.objects.get(slug=title)
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
 
     context = {
         'blog':blog,
+        'date':date,
     }
 
     return render(request, 'blog/blog_detail.html', context)
@@ -38,9 +42,12 @@ def top10_list(request):
 
 def top10_detail(request, slug):
     top10 = Top10.objects.get(slug=slug)
+    currentdate = datetime.date.today()
+    date = currentdate.strftime("%B, %Y")
 
     context = {
         'phone':top10,
+        'date':date,
     }
 
     return render(request, 'blog/top10_detail.html', context)

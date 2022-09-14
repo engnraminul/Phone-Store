@@ -110,6 +110,8 @@ class Phone(models.Model):
     updated = models.DateTimeField(auto_now=True)
     price = models.IntegerField(null=True, blank=True)
     old_price = models.IntegerField(null=True, blank=True)
+    price = models.IntegerField(null=True, blank=True, max_length=10)
+
 
     #Network
     network_type = models.CharField(max_length=100, null=True, blank=True)
@@ -241,6 +243,7 @@ class GalleryImage(models.Model):
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
     images = models.FileField(upload_to= 'phone', null=True, blank=True)
 
-
+    def get_absolute_url(self):
+        return reverse("Phone:phone_gallery", kwargs={"slug": self.phone.slug})
     
     

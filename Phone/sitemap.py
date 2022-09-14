@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 
-from .models import Phone, PhoneBrand, ProcessorBrand, Processor
+from .models import Phone, PhoneBrand, ProcessorBrand, Processor, GalleryImage
 
 class PhoneSitemap(Sitemap):
 		changefreq = "always"
@@ -35,3 +35,10 @@ class PhoneProcessorSitemap(Sitemap):
 		
 		def items(self):
 				return Processor.objects.all()
+
+class GallerySitemap(Sitemap):
+		changefreq = "always"
+		priority = 0.9
+		
+		def items(self):
+				return GalleryImage.objects.all()
