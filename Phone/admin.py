@@ -9,6 +9,7 @@ def clone(modeladmin, request, queryset):
             object.status = 'Draft'
             object.name ='(clone) ' + object.name
             object.created=datetime.datetime.now()
+            object.views=0
             object.save()
 clone.short_description = "Clone"
 
@@ -16,7 +17,13 @@ clone.short_description = "Clone"
 
 class GalleryImageAdmin(admin.StackedInline):
     model = GalleryImage
-    
+
+
+class ProcessorAdmin(admin.ModelAdmin):
+    list_display = ('title', 'released',)
+    list_filter = ('brand',)
+    search_fields = ('title',)  
+     
 #phone model fieldset
 class ProductAdmin(admin.ModelAdmin):
     inlines = [GalleryImageAdmin]
@@ -24,7 +31,9 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('brand', 'processor', 'status',)
     search_fields = ('name',)
     actions = [clone]
-    
+
+
+
     #prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
         ('Basic', {
@@ -48,7 +57,7 @@ class ProductAdmin(admin.ModelAdmin):
         }),
 
         ('Camera', {
-            'fields': ('back_camera', 'back_camera_features', 'back_camera_video',  'front_camera', 'front_camera_features', 'front_camera_video', 'camera_short'),
+            'fields': ('back_camera', 'back_camera_features', 'back_camera_video',  'front_camera', 'front_camera_features', 'front_camera_video', 'camera_short',),
 
         }),
 
@@ -68,7 +77,7 @@ class ProductAdmin(admin.ModelAdmin):
         }),
 
         ('Connectivity', {
-            'fields': ('wifi', 'hotspot', 'nfc', 'gps', 'radio', 'usb', 'infrared_port',),
+            'fields': ('wifi', 'hotspot', 'nfc', 'gps', 'radio', 'usb', 'infrared_port', 'bluetooth',),
 
         }),
 
@@ -96,6 +105,6 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(ProcessorBrand)
-admin.site.register(Processor)
+admin.site.register(Processor, ProcessorAdmin)
 admin.site.register(PhoneBrand)
 admin.site.register(Phone, ProductAdmin)

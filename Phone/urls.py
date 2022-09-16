@@ -15,7 +15,7 @@ phonebrandsitemaps = {
 		"phonebrand": PhoneBrandSitemap,
 }
 
-phonebrandsitemaps = {
+processorbrandsitemaps = {
 		"processorbrand": ProcessorBrandSitemap,
 }
 
@@ -28,8 +28,8 @@ imagegallerysitemaps = {
 }
 urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('phonebrand_sitemap.xml', sitemap, {'sitemaps': phonebrandsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('processorbrand_sitemap.xml', sitemap, {'sitemaps': phonebrandsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('brand_sitemap.xml', sitemap, {'sitemaps': phonebrandsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('processorbrand_sitemap.xml', sitemap, {'sitemaps': processorbrandsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('phoneprocessor_sitemap.xml', sitemap, {'sitemaps': phoneprocessorsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('imagegallery_sitemap.xml', sitemap, {'sitemaps': imagegallerysitemaps}, name='django.contrib.sitemaps.views.sitemap'),
                 

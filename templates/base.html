@@ -22,13 +22,13 @@
     <base href="/" />
     <link
       rel="shortcut icon"
-      href="https://specbuzz.com/media/phone/vivo_iQOO_Z6x.jpg"
+      href="https://priceinall.com/wp-content/uploads/2022/09/favicon.png"
       type="image/x-icon"
     />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="https://specbuzz.com/media/phone/vivo_iQOO_Z6x.jpg"
+      href="https://priceinall.com/wp-content/uploads/2022/09/favicon.png"
     />
 
     <!-- SEO -->
@@ -120,7 +120,7 @@
               <!-- end Upcoming Popular -->
 
               <!-- Top10 -->
-              <div class="d-grid p-1 mt-3 text-center border bg-light">
+              <div class="d-grid p-1 mt-2 text-center border bg-light">
                 <h2 class="h4 fw-bold">Top10 phone</h2>
               </div>
               {% for top10 in request|top10_tags %}
@@ -132,10 +132,10 @@
                   /></a>
                 </div>
                 <div class="col-8 col-sm-8 mt-2">
-                  <a href="{% url 'blog:top10_detail' slug=top10.slug %}"
-                    ><h5 class="text-start fw-bold text-dark" style="text-decoration:none;">
+                  <a style="text-decoration:none;" href="{% url 'blog:top10_detail' slug=top10.slug %}"
+                    ><h6 class="text-start fw-bold text-dark" >
                       {{top10.title}}
-                    </h5></a
+                    </h6></a
                   >
                   <h6 class="fs-7 text-start">
                     Published : {{top10.publish_date}}

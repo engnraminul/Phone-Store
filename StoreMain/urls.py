@@ -18,5 +18,6 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 #admin pannel header and title customization
-admin.site.site_header = "Phone Store"
-admin.site.site_title = "Admin Pannel"
+admin.site.site_header = "SpecBuzz"
+admin.site.site_title = "SpecBuzz"
+admin.site.index_title = "SpecBuzz Index"

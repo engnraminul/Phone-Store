@@ -183,6 +183,7 @@ class Phone(models.Model):
 
     #Connectivity
     wifi = models.CharField(max_length=100, null=True, blank=True)
+    bluetooth = models.CharField(max_length=100, null=True, blank=True)
     hotspot = models.BooleanField(default=True)
     nfc = models.BooleanField(default=False)
     gps = models.BooleanField(default=True)
