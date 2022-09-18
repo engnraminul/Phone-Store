@@ -1,7 +1,3 @@
-from codecs import charmap_build
-from distutils.command.upload import upload
-from email.mime import image
-from enum import unique
 from django.db import models
 from django.utils.text import slugify
 from django.utils.safestring import mark_safe

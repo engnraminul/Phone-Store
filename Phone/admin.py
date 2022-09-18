@@ -31,6 +31,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('brand', 'processor', 'status',)
     search_fields = ('name',)
     actions = [clone]
+    list_per_page = 10
 
 
 
