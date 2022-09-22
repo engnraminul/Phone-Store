@@ -3,6 +3,7 @@ from django.urls import path
 from Phone import views 
 from django.contrib.sitemaps.views import sitemap
 from Phone.sitemap import PhoneSitemap, PhoneBrandSitemap, ProcessorBrandSitemap, PhoneProcessorSitemap, GallerySitemap
+from StoreMain.views import robots_txt
 
 app_name = 'Phone'
 
@@ -33,7 +34,7 @@ urlpatterns = [
     path('phoneprocessor_sitemap.xml', sitemap, {'sitemaps': phoneprocessorsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('imagegallery_sitemap.xml', sitemap, {'sitemaps': imagegallerysitemaps}, name='django.contrib.sitemaps.views.sitemap'),
                 
-    
+    path("robots.txt", robots_txt),
     path('compare', views.Compare.as_view(), name="compare"),
     path('<slug>', views.phone_details, name="phone_details"),
     path('', views.home, name= "home"),

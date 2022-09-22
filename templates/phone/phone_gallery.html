@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block head %}
-     <title>{{phone.name}} Images Gallery- {{date}}</title>
+     <title>{{phone.name}} Images, Official Pictures</title>
      <meta name="description" content="{{phone.seo_des}}"/>
      <link rel="canonical" href="https://specbuzz.com{{request.get_full_path}}" />
      <meta property="og:type" content="article" />
-     <meta property="og:title" content="{{phone.name}} Images Gallery- {{date}}" />
+     <meta property="og:title" content="{{phone.name}} Images, Official Pictures" />
      <meta property="og:description" content="{{phone.seo_des}}" />
      <meta property="og:url" content="https://specbuzz.com{{request.get_full_path}}" />
      <meta property="og:updated_time" content="{{phone.updated}}" />
@@ -24,7 +24,7 @@
 {% block body %}
 
 <div class=" d-grid p-1 mb-3 text-center border bg-light">
-    <h1 class="h3 fw-bold page-title">{{phone.name}} Image Gallery</h1>
+    <h1 class="h3 fw-bold page-title">{{phone.name}} Images</h1>
     </div>
 
     <!--breadcrumb--> 
