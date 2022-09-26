@@ -48,6 +48,7 @@
 
 
 <div class="row">
+{% if page_obj %}
   {% for phone in page_obj %}
   <div class="col-lg-3 col-md-4 col-6 mb-4">
     <div class="card">
@@ -93,6 +94,13 @@
   </div>
 
   {% endfor %}
+
+  {% else %}
+      <div> 
+        <div class="bi bi-phone-flip text-danger" style="font-size: 5rem;"></div>
+        <h4 class="text-danger">{{status}} phone Not Available!</h4>
+      </div>
+  {% endif %}
 </div>
 
 <!-- Pagination -->

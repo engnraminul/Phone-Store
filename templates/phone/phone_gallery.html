@@ -88,6 +88,7 @@
 
     
 
+      {% if gallery %}
       <div class="row">
         <div class="col-12 border">
           
@@ -100,6 +101,14 @@
 
         </div>
       </div>
+      {% else %}
+
+      <div> 
+        <div class="bi bi-images text-danger" style="font-size: 5rem;"></div>
+        <h4 class="text-danger">Gallery Images Not Available!</h4>
+      </div>
+
+      {% endif %}
       
  
       
