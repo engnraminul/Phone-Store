@@ -71,6 +71,7 @@
 </div>
 
 <!-- Pagination -->
+{% if phone %}
 <div class="row">
   <div class="col-md-4 offset-md-3">
     <ul class="pagination">
@@ -116,5 +117,47 @@
     </ul>
   </div>
 </div>
+{% endif %}
+
+<! -- processor details -->
+             <table class="table table-bordered text-start table-hover" style="LINE-HEIGHT:20px">
+                <h2 class=" mb-0 p-1 text-start head-title fs-5 fw-bold">{{processor.title}} Details</h2>
+               
+                <tbody>
+                   
+                   <tr class="">
+                    
+                         <td class="td-title">Name</td>
+                         <td class="td-data" >{{processor.chipset}}</td>
+                         
+                   </tr>
+                   <tr>
+                    
+                         <td class="td-title">CPU</td>
+                         <td class="td-data">{{processor.cpu}}</td>
+                         
+                   </tr>
+                   <tr>
+                    
+                         <td class="td-title">GPU</td>
+                         <td class="td-data">{{processor.gpu}}</td>
+                        
+                   </tr>
+                   <tr>
+                    
+                         <td class="td-title">Design</td>
+                         <td class="td-data">{{processor.nm}}</td>
+                         
+                   </tr>
+                   <tr>
+                    
+                    <td class="td-title">Release Date</td>
+                    <td class="td-data">{{processor.released}}</td>
+                    
+              </tr>
+                   
+
+                </tbody>
+             </table>
 
 {% endblock %}
