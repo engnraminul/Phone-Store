@@ -74,7 +74,7 @@
               <div class="d-grid p-1 mb-3 text-center border bg-light">
                 <h2 class="h4 fw-bold">Latest Processor</h2>
               </div>
-              <ol class="list-group list-group-numbered pb-3">
+              <ol class="list-group list-group-numbered">
                 {% for processor in request|processor_tags %}
                 <li
                   class="list-group-item d-flex justify-content-between align-items-start shadow-sm"
@@ -87,12 +87,19 @@
                       >{{processor.title}}
                     </a>
                   </div>
-                  <span class="badge bg-info rounded-pill"
+                  <span class=" bi bi-phone badge bg-info rounded-pill"
                     >{{processor.phone_processor.count}}</span
                   >
                 </li>
                 {% endfor %}
               </ol>
+
+              <div class="pb-3 text-end p-1">
+                <a href="{% url 'Phone:Processor_by_brand' slug='snapdragon' %}">View all</a>
+              </div>
+                
+             
+
 
               <!-- Upcoming Popular -->
               <div class="d-grid p-1 mb-3 text-center border bg-light">
@@ -111,8 +118,8 @@
                       >{{phone.name}}
                     </a>
                   </div>
-                  <span class="badge bg-info rounded-pill"
-                    >{{phone.views}}</span
+                  <span class=" bi bi-eye badge bg-info rounded-pill"
+                    >{{ phone.views}}</span
                   >
                 </li>
                 {% endfor %}
