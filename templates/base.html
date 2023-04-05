@@ -72,10 +72,10 @@
 
               <!-- Upcoming Popular -->
               <div class="d-grid p-1 mb-3 text-center border bg-light">
-                <h2 class="h4 fw-bold">Popular Smartphone</h2>
+                <h2 class="h4 fw-bold">Latest Processor</h2>
               </div>
               <ol class="list-group list-group-numbered pb-3">
-                {% for phone in request|popular_tags %}
+                {% for processor in request|processor_tags %}
                 <li
                   class="list-group-item d-flex justify-content-between align-items-start shadow-sm"
                 >
@@ -83,12 +83,12 @@
                     <span> </span>
                     <a
                       class="stretched-link text-decoration-none fw-bold text-dark hover"
-                      href="{% url 'Phone:phone_details' slug=phone.slug  %}"
-                      >{{phone.name}}
+                      href="{% url 'Phone:phone_by_processor' slug=processor.slug %}"
+                      >{{processor.title}}
                     </a>
                   </div>
                   <span class="badge bg-info rounded-pill"
-                    >{{phone.views}}</span
+                    >{{processor.phone_processor.count}}</span
                   >
                 </li>
                 {% endfor %}
