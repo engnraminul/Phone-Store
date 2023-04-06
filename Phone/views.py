@@ -7,6 +7,15 @@ from .models import GalleryImage, Phone, PhoneBrand, ProcessorBrand, Processor
 from django.http import JsonResponse
 from django.core.paginator import Paginator
 import datetime
+from django.views import View
+
+
+
+class AdsView(View):
+    """Replace pub-0000000000000000 with your own publisher ID"""
+    
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0")
 
 
 

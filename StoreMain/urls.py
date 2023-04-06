@@ -5,6 +5,8 @@ from StoreMain import views
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import robots_txt
+from django.views.generic.base import RedirectView
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,6 +14,10 @@ urlpatterns = [
     path('page/', include('page.urls')),
     path('blog/', include('blog.urls')),
     path('tinymce/', include('tinymce.urls')),
+    path(
+        "ads.txt",
+        RedirectView.as_view(url=staticfiles_storage.url("ads.txt")),
+    ),
     
 
 ]

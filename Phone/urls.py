@@ -4,6 +4,8 @@ from Phone import views
 from django.contrib.sitemaps.views import sitemap
 from Phone.sitemap import PhoneSitemap, PhoneBrandSitemap, ProcessorBrandSitemap, PhoneProcessorSitemap, GallerySitemap
 from StoreMain.views import robots_txt
+from .views import AdsView
+
 
 app_name = 'Phone'
 
@@ -33,7 +35,8 @@ urlpatterns = [
     path('processorbrand_sitemap.xml', sitemap, {'sitemaps': processorbrandsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('phoneprocessor_sitemap.xml', sitemap, {'sitemaps': phoneprocessorsitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('imagegallery_sitemap.xml', sitemap, {'sitemaps': imagegallerysitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-                
+    
+    path('ads.txt', AdsView.as_view()),         
     path("robots.txt", robots_txt),
     path('compare', views.Compare.as_view(), name="compare"),
     path('<slug>', views.phone_details, name="phone_details"),

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'tinymce',
     
     
+    
 ]
 
 TINYMCE_DEFAULT_CONFIG = {
