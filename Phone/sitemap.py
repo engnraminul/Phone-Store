@@ -7,7 +7,8 @@ class PhoneSitemap(Sitemap):
 		priority = 0.9
 		
 		def items(self):
-				return Phone.objects.all()
+				return Phone.objects.exclude(status="Draft")
+				
 		
 		def lastmod(self, obj):
 				return obj.updated
