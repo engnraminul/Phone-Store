@@ -22,7 +22,7 @@
 
         {% for phone in page_obj %}
         <div class="col-lg-3 col-md-4 col-6 mb-4">
-          <div class="card">
+          <div class="card shadow-sm" style="border-radius:0.8rem;">
 
             {% if phone.status == 'Upcoming' or phone.status == 'Rumor' %}
 
@@ -38,7 +38,7 @@
               <a href="" class="text-reset">
                 <a class="card-title mb-3 stretched-link text-decoration-none fw-bold" href="{{phone.get_absolute_url}}">{{phone.name}} </a>
               </a>
-              <h6 class="mb-1 mt-1">
+              <h6 class="mb-1 mt-1 bg-light">
                 {% if phone.price %}
                 <s> {% if phone.old_price %} {{phone.old_price}}$ {% endif %}</s><strong class="ms-2 text-danger">{{phone.price}}$</strong>
                 {% else %}

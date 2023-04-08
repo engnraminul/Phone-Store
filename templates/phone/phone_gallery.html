@@ -111,6 +111,57 @@
       {% endif %}
       
  
+      <div class="row">
+        <h2 class="h5 fw-bolder border mt-2">{{phone.name}} Specifications</h2>
+        <div class="col-12 border">
+             <p style="text-align: justify;"> {{phone.name}} release date is {{phone.release}}. 
+             {{phone.os}} {{phone.os_version}} is used as the operating system in the phone.{% if phone.ui %} And the user interface is provided by {{phone.ui}}. {% endif %}
+             The {{phone.model}} has 2G, 3G, {% if phone.four_g %} 4G, {% endif %} {% if phone.five_g %} 5G, {% endif %} {% if phone.six_g %} 6G, {% endif %} 
+             {% if phone.seven_g %} 7G {% endif %} technology as network connectivity and the network speed is available up to {{phone.network_speed}}.
+   
+             Wireless connectivity also includes {{phone.wifi}}, bluetooth {{phone.bluetooth}}, {% if phone.hotspot %} yes, {% endif %} 
+             {% if phone.gps %} GPS, {% endif %} {% if phone.nfc %} NFC {% endif %}.
+             <br> <br>
+             {% if phone.back_camera %}{{phone.name}} uses {{phone.camera_short}} for taking pictures, they are {{phone.back_camera}}. 
+             {% if phone.back_camera_features %} Its features include {{phone.back_camera_features}}, {% endif %}
+             {% if phone.back_camera_video %}and  video recording up to {{phone.back_camera_video}}.{% endif %}{% endif %}
+   
+             {% if phone.front_camera %}{{phone.model}} has a {{phone.front_camera}} camera as a selfie shooter. 
+             {% if phone.front_camera_features %} This camera uses {{phone.front_camera_features}} feature {% endif %}
+             {% if phone.front_camera_video %} and can record videos up to {{phone.front_camera_video}}{% endif %}. {% endif %}
+          
+    
+             <span id="dots">...
+             </span><span id="more">
+             <br> <br> {% if phone.processor %}{{phone.processor.title}} chipset is used for {{phone.name}} performance.
+             It is an {{phone.processor.cpu}} processor built using {{phone.processor.nm}} architecture.
+             There is a {{phone.processor.gpu}} GPU to deliver the graphics.
+             {% endif %}
+             {{phone.model}} uses {{phone.storage}} Internal Storage and {{phone.ram}} RAM as memory.
+   
+             <br> <br> 
+             {{phone.name}} uses {{phone.display_type}} {{phone.size}} {{phone.refresh_rate}} refresh rate display. 
+             The display features {{phone.display_features}}. It has a resolution of {{phone.resulation}} and a pixel density of {{phone.pixel_density}}.
+             
+             {{phone.model}} body dimensions are {{phone.dimension}} and weight is {{phone.weight}}.
+             Front {{phone.front}}, back {{phone.back}}, and {{phone.frame}} frame have been used to build the phone.
+             This phone's available color is {{phone.color}}.
+   
+             <br> <br> 
+             There is a {{phone.battery_capacity}} {{phone.battery_type}} battery to power the {{phone.name}}.
+             {% if phone.charging %} 
+             And the charging features are {{phone.charging}} {% else %}And the charging features are no fast charging{% endif %} {% if phone.wireless_charging %}, {{phone.wireless_charging}} {% endif %} 
+             {% if phone.reverse_charging %}, {{phone.reverse_charging}} {% endif %} {% if phone.charging_features %}, {{phone.charging_features}} {% endif %}.
+             
+   
+   
+             </span></p>
+        <div class="d-grid">
+             <button class="btn text-danger" onclick="myFunction()" id="myBtn">Read more</button>
+        </div>
+   
+        </div>
+   </div>     
       
 <style>
 .td-title{

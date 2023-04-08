@@ -124,6 +124,19 @@ def phone_details(request, slug):
     currentdate = datetime.date.today()
     date = currentdate.strftime("%B, %Y")
 
+    #Gallersitemap condition
+    gallery1 = GalleryImage.objects.filter(phone=phone)
+
+    if phone.status=="Released" or phone.status=="Upcoming":
+        for gallery1 in gallery1:
+            gallery1.published="True"
+            gallery1.save()
+            break
+    else:
+        for gallery1 in gallery1:
+            gallery1.published="False"
+            gallery1.save()
+
 
     context = {
         'phone':phone,
@@ -135,7 +148,7 @@ def phone_details(request, slug):
 
 def phone_gallery(request, slug):
     phone = Phone.objects.get(slug=slug)
-    gallery = GalleryImage.objects.filter(phone=phone)
+    gallery = GalleryImage.objects.filter(phone=phone)  
 
     currentdate = datetime.date.today()
     date = currentdate.strftime("%B, %Y")

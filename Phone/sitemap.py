@@ -42,4 +42,9 @@ class GallerySitemap(Sitemap):
 		priority = 0.9
 		
 		def items(self):
-				return GalleryImage.objects.all()
+			
+			 return GalleryImage.objects.exclude(published=False)
+
+    			
+				
+				
