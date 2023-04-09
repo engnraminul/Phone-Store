@@ -242,8 +242,5 @@ class GalleryImage(models.Model):
     images = models.FileField(upload_to= 'phone', null=True, blank=True)
     published = models.BooleanField(default=False)
 
-    @classmethod
-    
-
     def get_absolute_url(self):
         return reverse("Phone:phone_gallery", kwargs={"slug": self.phone.slug})

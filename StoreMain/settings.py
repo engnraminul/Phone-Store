@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'page',
     'blog',
     'tinymce',
+    'robots',
     
     
     
@@ -159,3 +160,14 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+ROBOTS_USE_SITEMAP = False
+ROBOTS_SITEMAP_URLS = [
+        "https://specbuzz.com/sitemap.xml",
+        "https://specbuzz.com/brand_sitemap.xml",
+        "https://specbuzz.com/processorbrand_sitemap.xml",
+        "https://specbuzz.com/phoneprocessor_sitemap.xml",
+        "https://specbuzz.com/imagegallery_sitemap.xml",
+]
+
+SITE_ID = 6
